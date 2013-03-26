@@ -23,13 +23,37 @@ namespace RentIt.RentItServices {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AgeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CountryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long CreditsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
+        private string FbImageUrlField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RentIt.RentItServices.Gender GenderField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsAdminField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsFacebookField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SharedKeyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int UserIdField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -38,6 +62,45 @@ namespace RentIt.RentItServices {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Age {
+            get {
+                return this.AgeField;
+            }
+            set {
+                if ((this.AgeField.Equals(value) != true)) {
+                    this.AgeField = value;
+                    this.RaisePropertyChanged("Age");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Country {
+            get {
+                return this.CountryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CountryField, value) != true)) {
+                    this.CountryField = value;
+                    this.RaisePropertyChanged("Country");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long Credits {
+            get {
+                return this.CreditsField;
+            }
+            set {
+                if ((this.CreditsField.Equals(value) != true)) {
+                    this.CreditsField = value;
+                    this.RaisePropertyChanged("Credits");
+                }
             }
         }
         
@@ -55,14 +118,53 @@ namespace RentIt.RentItServices {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
+        public string FbImageUrl {
             get {
-                return this.NameField;
+                return this.FbImageUrlField;
             }
             set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
+                if ((object.ReferenceEquals(this.FbImageUrlField, value) != true)) {
+                    this.FbImageUrlField = value;
+                    this.RaisePropertyChanged("FbImageUrl");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RentIt.RentItServices.Gender Gender {
+            get {
+                return this.GenderField;
+            }
+            set {
+                if ((this.GenderField.Equals(value) != true)) {
+                    this.GenderField = value;
+                    this.RaisePropertyChanged("Gender");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsAdmin {
+            get {
+                return this.IsAdminField;
+            }
+            set {
+                if ((this.IsAdminField.Equals(value) != true)) {
+                    this.IsAdminField = value;
+                    this.RaisePropertyChanged("IsAdmin");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsFacebook {
+            get {
+                return this.IsFacebookField;
+            }
+            set {
+                if ((this.IsFacebookField.Equals(value) != true)) {
+                    this.IsFacebookField = value;
+                    this.RaisePropertyChanged("IsFacebook");
                 }
             }
         }
@@ -80,6 +182,32 @@ namespace RentIt.RentItServices {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SharedKey {
+            get {
+                return this.SharedKeyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SharedKeyField, value) != true)) {
+                    this.SharedKeyField = value;
+                    this.RaisePropertyChanged("SharedKey");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UserId {
+            get {
+                return this.UserIdField;
+            }
+            set {
+                if ((this.UserIdField.Equals(value) != true)) {
+                    this.UserIdField = value;
+                    this.RaisePropertyChanged("UserId");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -88,6 +216,18 @@ namespace RentIt.RentItServices {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.FlagsAttribute()]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Gender", Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain")]
+    public enum Gender : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Female = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Male = 2,
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -103,10 +243,31 @@ namespace RentIt.RentItServices {
         private string DescriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
+        private string ExtensionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsDeletedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int MediaIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double RentalPriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SmallDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SourceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] ThumbnailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TitleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RentIt.RentItServices.User UploadedByField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -132,14 +293,92 @@ namespace RentIt.RentItServices {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
+        public string Extension {
             get {
-                return this.IdField;
+                return this.ExtensionField;
             }
             set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
+                if ((object.ReferenceEquals(this.ExtensionField, value) != true)) {
+                    this.ExtensionField = value;
+                    this.RaisePropertyChanged("Extension");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int MediaId {
+            get {
+                return this.MediaIdField;
+            }
+            set {
+                if ((this.MediaIdField.Equals(value) != true)) {
+                    this.MediaIdField = value;
+                    this.RaisePropertyChanged("MediaId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double RentalPrice {
+            get {
+                return this.RentalPriceField;
+            }
+            set {
+                if ((this.RentalPriceField.Equals(value) != true)) {
+                    this.RentalPriceField = value;
+                    this.RaisePropertyChanged("RentalPrice");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SmallDescription {
+            get {
+                return this.SmallDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SmallDescriptionField, value) != true)) {
+                    this.SmallDescriptionField = value;
+                    this.RaisePropertyChanged("SmallDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Source {
+            get {
+                return this.SourceField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SourceField, value) != true)) {
+                    this.SourceField = value;
+                    this.RaisePropertyChanged("Source");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] Thumbnail {
+            get {
+                return this.ThumbnailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ThumbnailField, value) != true)) {
+                    this.ThumbnailField = value;
+                    this.RaisePropertyChanged("Thumbnail");
                 }
             }
         }
@@ -153,6 +392,19 @@ namespace RentIt.RentItServices {
                 if ((object.ReferenceEquals(this.TitleField, value) != true)) {
                     this.TitleField = value;
                     this.RaisePropertyChanged("Title");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RentIt.RentItServices.User UploadedBy {
+            get {
+                return this.UploadedByField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UploadedByField, value) != true)) {
+                    this.UploadedByField = value;
+                    this.RaisePropertyChanged("UploadedBy");
                 }
             }
         }
@@ -181,7 +433,7 @@ namespace RentIt.RentItServices {
         System.Tuple<bool, string> UpdateUser(RentIt.RentItServices.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/Login", ReplyAction="http://tempuri.org/IRentitService/LoginResponse")]
-        System.Tuple<bool, string> Login(string email, string password);
+        System.Tuple<bool, string, string> Login(string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/Logout", ReplyAction="http://tempuri.org/IRentitService/LogoutResponse")]
         System.Tuple<bool, string> Logout(string email);
@@ -199,7 +451,10 @@ namespace RentIt.RentItServices {
         System.Tuple<RentIt.RentItServices.Media, string> GetMedia(int mediaID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/RentMedia", ReplyAction="http://tempuri.org/IRentitService/RentMediaResponse")]
-        System.Tuple<bool, string> RentMedia(int mediaID, RentIt.RentItServices.User user, int credits);
+        System.Tuple<bool, string> RentMedia(int mediaID, RentIt.RentItServices.User user, int credits, double duration);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/BookmarkMedia", ReplyAction="http://tempuri.org/IRentitService/BookmarkMediaResponse")]
+        System.Tuple<bool, string> BookmarkMedia(int mediaId, RentIt.RentItServices.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/CommentMedia", ReplyAction="http://tempuri.org/IRentitService/CommentMediaResponse")]
         System.Tuple<bool, string> CommentMedia(int mediaId, RentIt.RentItServices.User user, string comment);
@@ -213,6 +468,15 @@ namespace RentIt.RentItServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/UpdateMedia", ReplyAction="http://tempuri.org/IRentitService/UpdateMediaResponse")]
         System.Tuple<bool, string> UpdateMedia(RentIt.RentItServices.Media media);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/GetGenderAnalytics", ReplyAction="http://tempuri.org/IRentitService/GetGenderAnalyticsResponse")]
+        System.Tuple<double, double, string> GetGenderAnalytics(RentIt.RentItServices.Media media);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/GetAgeAnalytics", ReplyAction="http://tempuri.org/IRentitService/GetAgeAnalyticsResponse")]
+        System.Tuple<double[], string> GetAgeAnalytics(RentIt.RentItServices.Media media);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/IsRented", ReplyAction="http://tempuri.org/IRentitService/IsRentedResponse")]
+        System.Tuple<bool, string> IsRented(int mediaId, RentIt.RentItServices.User user);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -330,7 +594,7 @@ namespace RentIt.RentItServices {
             return base.Channel.UpdateUser(user);
         }
         
-        public System.Tuple<bool, string> Login(string email, string password) {
+        public System.Tuple<bool, string, string> Login(string email, string password) {
             return base.Channel.Login(email, password);
         }
         
@@ -354,8 +618,12 @@ namespace RentIt.RentItServices {
             return base.Channel.GetMedia(mediaID);
         }
         
-        public System.Tuple<bool, string> RentMedia(int mediaID, RentIt.RentItServices.User user, int credits) {
-            return base.Channel.RentMedia(mediaID, user, credits);
+        public System.Tuple<bool, string> RentMedia(int mediaID, RentIt.RentItServices.User user, int credits, double duration) {
+            return base.Channel.RentMedia(mediaID, user, credits, duration);
+        }
+        
+        public System.Tuple<bool, string> BookmarkMedia(int mediaId, RentIt.RentItServices.User user) {
+            return base.Channel.BookmarkMedia(mediaId, user);
         }
         
         public System.Tuple<bool, string> CommentMedia(int mediaId, RentIt.RentItServices.User user, string comment) {
@@ -383,6 +651,161 @@ namespace RentIt.RentItServices {
         
         public System.Tuple<bool, string> UpdateMedia(RentIt.RentItServices.Media media) {
             return base.Channel.UpdateMedia(media);
+        }
+        
+        public System.Tuple<double, double, string> GetGenderAnalytics(RentIt.RentItServices.Media media) {
+            return base.Channel.GetGenderAnalytics(media);
+        }
+        
+        public System.Tuple<double[], string> GetAgeAnalytics(RentIt.RentItServices.Media media) {
+            return base.Channel.GetAgeAnalytics(media);
+        }
+        
+        public System.Tuple<bool, string> IsRented(int mediaId, RentIt.RentItServices.User user) {
+            return base.Channel.IsRented(mediaId, user);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="RentItServices.IRentItFileService")]
+    public interface IRentItFileService {
+        
+        // CODEGEN: Generating message contract since the wrapper name (UploadFileRequest) of message UploadFileRequest does not match the default value (UploadFile)
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentItFileService/UploadFile", ReplyAction="http://tempuri.org/IRentItFileService/UploadFileResponse")]
+        RentIt.RentItServices.UploadFileResult UploadFile(RentIt.RentItServices.UploadFileRequest request);
+        
+        // CODEGEN: Generating message contract since the wrapper name (DownloadFileRequest) of message DownloadFileRequest does not match the default value (DownloadFile)
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentItFileService/DownloadFile", ReplyAction="http://tempuri.org/IRentItFileService/DownloadFileResponse")]
+        RentIt.RentItServices.DownloadFileResult DownloadFile(RentIt.RentItServices.DownloadFileRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="UploadFileRequest", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class UploadFileRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public System.Tuple<string, RentIt.RentItServices.Media, RentIt.RentItServices.User> MediaLoginAndUserTuple;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public System.IO.Stream FileStream;
+        
+        public UploadFileRequest() {
+        }
+        
+        public UploadFileRequest(System.Tuple<string, RentIt.RentItServices.Media, RentIt.RentItServices.User> MediaLoginAndUserTuple, System.IO.Stream FileStream) {
+            this.MediaLoginAndUserTuple = MediaLoginAndUserTuple;
+            this.FileStream = FileStream;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="UploadFileResult", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class UploadFileResult {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public bool Success;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public string ErrorMessage;
+        
+        public UploadFileResult() {
+        }
+        
+        public UploadFileResult(bool Success, string ErrorMessage) {
+            this.Success = Success;
+            this.ErrorMessage = ErrorMessage;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="DownloadFileRequest", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class DownloadFileRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public System.Tuple<string, RentIt.RentItServices.Media, RentIt.RentItServices.User> MediaLoginAndUserTuple;
+        
+        public DownloadFileRequest() {
+        }
+        
+        public DownloadFileRequest(System.Tuple<string, RentIt.RentItServices.Media, RentIt.RentItServices.User> MediaLoginAndUserTuple) {
+            this.MediaLoginAndUserTuple = MediaLoginAndUserTuple;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="DownloadFileResult", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class DownloadFileResult {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public System.IO.Stream FileDownload;
+        
+        public DownloadFileResult() {
+        }
+        
+        public DownloadFileResult(System.IO.Stream FileDownload) {
+            this.FileDownload = FileDownload;
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IRentItFileServiceChannel : RentIt.RentItServices.IRentItFileService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class RentItFileServiceClient : System.ServiceModel.ClientBase<RentIt.RentItServices.IRentItFileService>, RentIt.RentItServices.IRentItFileService {
+        
+        public RentItFileServiceClient() {
+        }
+        
+        public RentItFileServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public RentItFileServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public RentItFileServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public RentItFileServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        RentIt.RentItServices.UploadFileResult RentIt.RentItServices.IRentItFileService.UploadFile(RentIt.RentItServices.UploadFileRequest request) {
+            return base.Channel.UploadFile(request);
+        }
+        
+        public bool UploadFile(System.Tuple<string, RentIt.RentItServices.Media, RentIt.RentItServices.User> MediaLoginAndUserTuple, System.IO.Stream FileStream, out string ErrorMessage) {
+            RentIt.RentItServices.UploadFileRequest inValue = new RentIt.RentItServices.UploadFileRequest();
+            inValue.MediaLoginAndUserTuple = MediaLoginAndUserTuple;
+            inValue.FileStream = FileStream;
+            RentIt.RentItServices.UploadFileResult retVal = ((RentIt.RentItServices.IRentItFileService)(this)).UploadFile(inValue);
+            ErrorMessage = retVal.ErrorMessage;
+            return retVal.Success;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        RentIt.RentItServices.DownloadFileResult RentIt.RentItServices.IRentItFileService.DownloadFile(RentIt.RentItServices.DownloadFileRequest request) {
+            return base.Channel.DownloadFile(request);
+        }
+        
+        public System.IO.Stream DownloadFile(System.Tuple<string, RentIt.RentItServices.Media, RentIt.RentItServices.User> MediaLoginAndUserTuple) {
+            RentIt.RentItServices.DownloadFileRequest inValue = new RentIt.RentItServices.DownloadFileRequest();
+            inValue.MediaLoginAndUserTuple = MediaLoginAndUserTuple;
+            RentIt.RentItServices.DownloadFileResult retVal = ((RentIt.RentItServices.IRentItFileService)(this)).DownloadFile(inValue);
+            return retVal.FileDownload;
         }
     }
 }

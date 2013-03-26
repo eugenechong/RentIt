@@ -9,15 +9,21 @@ namespace RentIt
     public class Utility
     {
         RentItServices.IRentitService rentItServiceClient;
-        
+        RentItServices.IRentItFileService rentItFileServiceClient;
+
         public void loadClient()
         {
             this.rentItServiceClient = new RentItServices.RentitServiceClient();
         }
 
+        public void loadFileService()
+        {
+            this.rentItFileServiceClient = new RentItServices.RentItFileServiceClient();
+        }
+
         public bool createUser(String userEmail, String userPwd)
         {
-            return rentItServiceClient.CreateUser(userEmail, userPwd).Item1;            
+            return rentItServiceClient.CreateUser(userEmail, userPwd).Item1; 
         }
 
         public RentItServices.User getUser(String userEmail)
@@ -75,9 +81,9 @@ namespace RentIt
             return rentItServiceClient.SearchMediaFromCategory(category).Item1;
         }
 
-        public bool rentMedia(int mediaId, RentItServices.User user, int credits)
+        public bool rentMedia(int mediaId, RentItServices.User user, int credits, double duration)
         {
-            return rentItServiceClient.RentMedia(mediaId, user, credits).Item1;
+            return rentItServiceClient.RentMedia(mediaId, user, credits, duration).Item1;
         }
 
         public static String GetTeamPath(String serverPath)

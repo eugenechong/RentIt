@@ -221,38 +221,37 @@
             <tr>
                 <td>
                     <div class="well">
-
-
+<form id="form_signup" runat="server">  
                         <h4>Classic Signup</h4>
                         <div class="control-group">
 
                             <div class="controls">
-                                <input type="text" id="email" placeholder="Email">
+                                <input type="text" id="email" name="signup_email" placeholder="Email">
                             </div>
                         </div>
                         <div class="control-group">
 
                             <div class="controls">
-                                <input type="text" id="username" placeholder="Username">
+                                <input type="text" id="username" name="signup_username" placeholder="Username">
                             </div>
                         </div>
                         <div class="control-group">
 
                             <div class="controls">
-                                <input type="password" id="Password1" placeholder="Password">
+                                <input type="password" id="Password1" name="signup_password1" placeholder="Password">
                             </div>
                         </div>
                         <div class="control-group">
 
                             <div class="controls">
-                                <input type="password" id="Password2" placeholder="Password Again">
+                                <input type="password" id="Password2" name="signup_password2" placeholder="Password Again">
                             </div>
                         </div>
 
                         <div class="control-group">
 
                             <div class="controls">
-                                <select id="gender">
+                                <select id="gender" name="signup_gender">
 
                                     <option value="1">Male</option>
 
@@ -265,7 +264,7 @@
                         <div class="control-group">
 
                             <div class="controls">
-                                <select id="country">
+                                <select id="country" name="signup_country">
                                     <% for (int i = 0; i < countries.Length; i++)
                                        {                                       
                                     %>
@@ -277,7 +276,7 @@
                         <div class="control-group">
 
                             <div class="controls">
-                                <select id="age">
+                                <select id="age" name="signup_age">
                                     <% for (int i = 18; i < 99; i++)
                                        {                                       
                                     %>
@@ -287,12 +286,12 @@
                             </div>
                         </div>
                         <div class="control-group">
-                            <div class="controls">
-                               <button type="submit" class="btn-success btn" onclick="register_click" runat="server">Register</button>
+                            <div class="controls">                       
+                                <asp:Button id="btn_register" class="btn-success btn" 
+                                    onclick="register_click" runat="server" text="Register" />                               
                             </div>
-                        </div>
-                    </form>
-                        
+                        </div> 
+</form>                                              
                 </td>
                 <td>
                     <h5>Or</h5>

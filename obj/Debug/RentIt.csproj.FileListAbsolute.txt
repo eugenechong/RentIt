@@ -24,6 +24,5 @@ Z:\Eugene On My Mac\Dropbox\GSPM Magic\RentIt\obj\Debug\RentIt.dll
 Z:\Eugene On My Mac\Dropbox\GSPM Magic\RentIt\obj\Debug\RentIt.pdb
 C:\RentIt\bin\RentIt.dll
 C:\RentIt\bin\RentIt.pdb
-C:\RentIt\obj\Debug\RentIt.csprojResolveAssemblyReference.cache
 C:\RentIt\obj\Debug\RentIt.dll
 C:\RentIt\obj\Debug\RentIt.pdb

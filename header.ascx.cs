@@ -35,11 +35,36 @@ namespace RentIt
         protected void register_click(object sender, EventArgs e)
         {            
             currentUser = new RentItServices.User();
-            currentUser.Email = Request.QueryString["email"];
-            currentUser.Name = Request.QueryString["username"];
-            if (Request.QueryString["Password1"].Equals(Request.QueryString["Password2"])) 
+            currentUser.Email = this.Request.Form.Get("signup_email");
+            String password1 = this.Request.Form.Get("signup_password1");
+            String password2 = this.Request.Form.Get("signup_password2");
+
+            if (this.Request.Form.Get("signup_gender").Equals("Male"))
             {
-                currentUser.Password = Request.QueryString["Password1"];
+                currentUser.Gender = RentItServices.Gender.Male;
+            }
+            else
+            {
+                currentUser.Gender = RentItServices.Gender.Female;
+            }
+
+            currentUser.Age = int.Parse(this.Request.Form.Get("signup_age"));
+            currentUser.Country = this.Request.Form.Get("signup_country");
+
+            String msgTitle = "Registration%20Failed";
+            
+            if (password1.Equals("") || password2.Equals(""))
+            {
+                redirect(msgTitle, "Please%20enter%20password%20again.");
+            } else {
+                if (password1.Equals(password2))
+                {
+                    currentUser.Password = password1;
+                }
+                else
+                {
+                    redirect(msgTitle, "Please%20enter%20password%20again.");
+                }
             }
 
             if (utility.createUser(currentUser.Email, currentUser.Password))
@@ -48,10 +73,15 @@ namespace RentIt
             }
             else
             {
-                Response.Redirect("~/index.aspx?msgTitle=Registration%20failed&msg=Please%20register%20again.");
+                redirect(msgTitle, "Please%20register%20again.");
             }
-
-        }        
+        
+        }
+            
+        private void redirect(String msgTitle, String msg)
+        {
+            Response.Redirect("~/index.aspx?msgTitle=" + msgTitle + "&msg=" + msg);
+        }
 
     }
 }
