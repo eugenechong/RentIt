@@ -1,0 +1,29 @@
+C:\inetpub\wwwroot\gspm2013\team09\RentIt\bin\RentIt.dll
+C:\inetpub\wwwroot\gspm2013\team09\RentIt\bin\RentIt.pdb
+C:\inetpub\wwwroot\gspm2013\team09\RentIt\obj\Debug\RentIt.csprojResolveAssemblyReference.cache
+C:\inetpub\wwwroot\gspm2013\team09\RentIt\obj\Debug\RentIt.dll
+C:\inetpub\wwwroot\gspm2013\team09\RentIt\obj\Debug\RentIt.pdb
+D:\Dropbox\SMU\Global Software Project Management\RentIt\RentIt\bin\RentIt.dll
+D:\Dropbox\SMU\Global Software Project Management\RentIt\RentIt\bin\RentIt.pdb
+D:\Dropbox\SMU\Global Software Project Management\RentIt\RentIt\obj\Debug\RentIt.csprojResolveAssemblyReference.cache
+D:\Dropbox\SMU\Global Software Project Management\RentIt\RentIt\obj\Debug\RentIt.dll
+D:\Dropbox\SMU\Global Software Project Management\RentIt\RentIt\obj\Debug\RentIt.pdb
+I:\Dropbox\GSPM Magic\RentIt\bin\RentIt.dll
+I:\Dropbox\GSPM Magic\RentIt\bin\RentIt.pdb
+I:\Dropbox\GSPM Magic\RentIt\obj\Debug\RentIt.csprojResolveAssemblyReference.cache
+I:\Dropbox\GSPM Magic\RentIt\obj\Debug\RentIt.dll
+I:\Dropbox\GSPM Magic\RentIt\obj\Debug\RentIt.pdb
+D:\Dropbox\GSPM Magic\RentIt\bin\RentIt.dll
+D:\Dropbox\GSPM Magic\RentIt\bin\RentIt.pdb
+D:\Dropbox\GSPM Magic\RentIt\obj\Debug\RentIt.dll
+D:\Dropbox\GSPM Magic\RentIt\obj\Debug\RentIt.pdb
+D:\Dropbox\GSPM Magic\RentIt\obj\Debug\RentIt.csprojResolveAssemblyReference.cache
+Z:\Eugene On My Mac\Dropbox\GSPM Magic\RentIt\bin\RentIt.dll
+Z:\Eugene On My Mac\Dropbox\GSPM Magic\RentIt\bin\RentIt.pdb
+Z:\Eugene On My Mac\Dropbox\GSPM Magic\RentIt\obj\Debug\RentIt.dll
+Z:\Eugene On My Mac\Dropbox\GSPM Magic\RentIt\obj\Debug\RentIt.pdb
+C:\RentIt\bin\RentIt.dll
+C:\RentIt\bin\RentIt.pdb
+C:\RentIt\obj\Debug\RentIt.csprojResolveAssemblyReference.cache
+C:\RentIt\obj\Debug\RentIt.dll
+C:\RentIt\obj\Debug\RentIt.pdb

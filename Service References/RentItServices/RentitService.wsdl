@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="RentitService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpsBinding_IRentitService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://rentit.itu.dk/RentIt29/RentitService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://rentit.itu.dk/RentIt29/RentitService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://rentit.itu.dk/RentIt29/RentitService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xsd:import schemaLocation="http://rentit.itu.dk/RentIt29/RentitService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" />
+      <xsd:import schemaLocation="http://rentit.itu.dk/RentIt29/RentitService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/RentitService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IRentitService_CreateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUser" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_CreateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_GetUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUser" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_GetUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_UpdateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUser" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_UpdateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_Logout_InputMessage">
+    <wsdl:part name="parameters" element="tns:Logout" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_Logout_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_IsLoggedIn_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsLoggedIn" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_IsLoggedIn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsLoggedInResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_SearchMediaFromTitle_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchMediaFromTitle" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_SearchMediaFromTitle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchMediaFromTitleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_SearchMediaFromCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchMediaFromCategory" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_SearchMediaFromCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchMediaFromCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_GetMedia_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMedia" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_GetMedia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMediaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_RentMedia_InputMessage">
+    <wsdl:part name="parameters" element="tns:RentMedia" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_RentMedia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RentMediaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_CommentMedia_InputMessage">
+    <wsdl:part name="parameters" element="tns:CommentMedia" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_CommentMedia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CommentMediaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_RateMedia_InputMessage">
+    <wsdl:part name="parameters" element="tns:RateMedia" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_RateMedia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RateMediaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_UploadMedia_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadMedia" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_UploadMedia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadMediaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_UpdateMedia_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMedia" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_UpdateMedia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMediaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IRentitService">
+    <wsdl:operation name="CreateUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/CreateUser" message="tns:IRentitService_CreateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/CreateUserResponse" message="tns:IRentitService_CreateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/GetUser" message="tns:IRentitService_GetUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/GetUserResponse" message="tns:IRentitService_GetUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/UpdateUser" message="tns:IRentitService_UpdateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/UpdateUserResponse" message="tns:IRentitService_UpdateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/Login" message="tns:IRentitService_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/LoginResponse" message="tns:IRentitService_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/Logout" message="tns:IRentitService_Logout_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/LogoutResponse" message="tns:IRentitService_Logout_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsLoggedIn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/IsLoggedIn" message="tns:IRentitService_IsLoggedIn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/IsLoggedInResponse" message="tns:IRentitService_IsLoggedIn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchMediaFromTitle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/SearchMediaFromTitle" message="tns:IRentitService_SearchMediaFromTitle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/SearchMediaFromTitleResponse" message="tns:IRentitService_SearchMediaFromTitle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchMediaFromCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/SearchMediaFromCategory" message="tns:IRentitService_SearchMediaFromCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/SearchMediaFromCategoryResponse" message="tns:IRentitService_SearchMediaFromCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMedia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/GetMedia" message="tns:IRentitService_GetMedia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/GetMediaResponse" message="tns:IRentitService_GetMedia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RentMedia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/RentMedia" message="tns:IRentitService_RentMedia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/RentMediaResponse" message="tns:IRentitService_RentMedia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CommentMedia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/CommentMedia" message="tns:IRentitService_CommentMedia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/CommentMediaResponse" message="tns:IRentitService_CommentMedia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RateMedia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/RateMedia" message="tns:IRentitService_RateMedia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/RateMediaResponse" message="tns:IRentitService_RateMedia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadMedia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/UploadMedia" message="tns:IRentitService_UploadMedia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/UploadMediaResponse" message="tns:IRentitService_UploadMedia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMedia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/UpdateMedia" message="tns:IRentitService_UpdateMedia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/UpdateMediaResponse" message="tns:IRentitService_UpdateMedia_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IRentitService" type="tns:IRentitService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateUser">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/CreateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/GetUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/Logout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsLoggedIn">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/IsLoggedIn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchMediaFromTitle">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/SearchMediaFromTitle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchMediaFromCategory">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/SearchMediaFromCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMedia">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/GetMedia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RentMedia">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/RentMedia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CommentMedia">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/CommentMedia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RateMedia">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/RateMedia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadMedia">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/UploadMedia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMedia">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/UpdateMedia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpsBinding_IRentitService" type="tns:IRentitService">
+    <wsp:PolicyReference URI="#BasicHttpsBinding_IRentitService_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateUser">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/CreateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/GetUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/Logout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsLoggedIn">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/IsLoggedIn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchMediaFromTitle">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/SearchMediaFromTitle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchMediaFromCategory">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/SearchMediaFromCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMedia">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/GetMedia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RentMedia">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/RentMedia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CommentMedia">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/CommentMedia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RateMedia">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/RateMedia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadMedia">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/UploadMedia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMedia">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/UpdateMedia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RentitService">
+    <wsdl:port name="BasicHttpBinding_IRentitService" binding="tns:BasicHttpBinding_IRentitService">
+      <soap:address location="http://rentit.itu.dk/RentIt29/RentitService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpsBinding_IRentitService" binding="tns:BasicHttpsBinding_IRentitService">
+      <soap:address location="https://rentit/RentIt29/RentitService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
