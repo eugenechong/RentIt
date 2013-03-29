@@ -21,9 +21,9 @@ namespace RentIt
             this.rentItFileServiceClient = new RentItServices.RentItFileServiceClient();
         }
 
-        public bool createUser(String userEmail, String userPwd)
+        public bool createUser(String email, String password, RentIt.RentItServices.Gender gender, RentIt.RentItServices.Country country, int age)
         {
-            return rentItServiceClient.CreateUser(userEmail, userPwd).Item1; 
+            return rentItServiceClient.CreateUser(email, password, gender, country, age).Item1; 
         }
 
         public RentItServices.User getUser(String userEmail)
@@ -84,6 +84,11 @@ namespace RentIt
         public bool rentMedia(int mediaId, RentItServices.User user, int credits, double duration)
         {
             return rentItServiceClient.RentMedia(mediaId, user, credits, duration).Item1;
+        }
+
+        public RentIt.RentItServices.Country[] getCountries()
+        {
+            return rentItServiceClient.GetCountries();
         }
 
         public static String GetTeamPath(String serverPath)

@@ -33,10 +33,29 @@ namespace RentIt
             String msgTitle = Request.QueryString["msgTitle"];
             String msg = Request.QueryString["msg"];
 
+            //GET params that determine if redirected with user 
+            String userEmail = Request.QueryString["user"];
+
             //load webservice client
             utility = new Utility();
             utility.loadClient();
-            
+
+            //PREPARE THE NAV BAR WITH INFO
+            header thisHeader = (header)LoadControl("~/header.ascx");
+
+            if (userEmail != null)
+            {
+                login = utility.isLoggedIn(currentUser);
+                currentUser = utility.getUser(userEmail);
+                               
+                thisHeader.login = login;
+                thisHeader.userid = currentUser.UserId;
+                //thisHeader.username = username;
+                thisHeader.email = currentUser.Email;
+                thisHeader.dp_url = "https://graph.facebook.com/514457901/picture?type=square"; //to change
+                thisHeader.edollar = currentUser.Credits;                
+            }            
+/*
             //INSERT CODE TO GRAB USER INFO/LOGIN STATE HERE
             login = false;
             userid = 25;
@@ -45,22 +64,16 @@ namespace RentIt
             edollar = 50.0F;
             dp_url = "https://graph.facebook.com/514457901/picture?type=square";
 
-            /*login = utility.isLoggedIn(currentUser);
-            currentUser = utility.getUser(email);
-            */
-
-
-            //PREPARE THE NAV BAR WITH INFO
-            header thisHeader = (header)LoadControl("~/header.ascx");
+            //PREPARE THE NAV BAR WITH INFO            
             thisHeader.login = login;
             thisHeader.userid = userid;
             thisHeader.username = username;
             thisHeader.email = email;
             thisHeader.dp_url = dp_url;
             thisHeader.edollar = edollar;
-
+*/
             headerBar.Controls.Add(thisHeader);
-
+            
             //PREPARE MSG BAR
             if (msg != null)
             {
@@ -121,9 +134,6 @@ namespace RentIt
 
 
         }
-
-
-
 
         private void showItemUI(int itemID) //HANDLES ITEM VIEW UI
         {

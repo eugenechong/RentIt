@@ -85,15 +85,14 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Service References\RentItServices\RentIt.RentItServices.Country.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RentItServices\RentIt.RentItServices.Rental.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\RentItServices\RentitService1.disco" />
     <Content Include="splash_carousel.ascx" />
-    <None Include="Service References\RentIt00\RentIt.disco" />
-    <None Include="Service References\RentIt00\configuration91.svcinfo" />
-    <None Include="Service References\RentIt00\configuration.svcinfo" />
-    <None Include="Service References\RentIt00\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <EmbeddedResource Include="Web.config">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -204,35 +203,8 @@
     <Compile Include="rent.aspx.designer.cs">
       <DependentUpon>rent.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Service References\RentIt00\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Service References\RentIt00\RentIt.RentIt00.CompositeType.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\RentIt00\RentIt.RentIt00.Names.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\RentIt00\RentIt.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RentIt00\RentIt1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RentIt00\RentIt2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RentIt00\RentIt3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RentIt00\RentIt4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RentIt00\RentItService.wsdl" />
     <None Include="Service References\RentItServices\RentitService1.wsdl" />
     <None Include="Service References\RentItServices\RentitService5.xsd">
       <SubType>Designer</SubType>
@@ -266,7 +238,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\RentIt00\" />
     <WCFMetadataStorage Include="Service References\RentItServices\" />
   </ItemGroup>
   <PropertyGroup>

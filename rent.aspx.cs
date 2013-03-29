@@ -9,6 +9,7 @@ namespace RentIt
 {
     public partial class rent : System.Web.UI.Page
     {
+/*        
         RentIt00.IRentIt rentItServices;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -25,7 +26,7 @@ namespace RentIt
                 tc.Text = s;
             }
         }
-
+*/
         protected void Button1_Click(object sender, EventArgs e)
         {
 

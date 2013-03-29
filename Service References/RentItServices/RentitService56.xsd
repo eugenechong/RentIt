@@ -1,51 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="User">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/System" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/System" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://rentit.itu.dk/RentIt29WCF/RentitService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" />
+  <xs:import schemaLocation="http://rentit.itu.dk/RentIt29WCF/RentitService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="TupleOfbooleanstring">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="TupleOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/System" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="boolean" Namespace="http://www.w3.org/2001/XMLSchema" />
+          <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
     <xs:sequence>
-      <xs:element minOccurs="0" name="Age" type="xs:int" />
-      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Credits" type="xs:long" />
-      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FbImageUrl" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Gender" type="tns:Gender" />
-      <xs:element minOccurs="0" name="IsAdmin" type="xs:boolean" />
-      <xs:element minOccurs="0" name="IsFacebook" type="xs:boolean" />
-      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SharedKey" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      <xs:element name="m_Item1" type="xs:boolean" />
+      <xs:element name="m_Item2" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="User" nillable="true" type="tns:User" />
-  <xs:simpleType name="Gender">
-    <xs:list>
-      <xs:simpleType>
-        <xs:restriction base="xs:string">
-          <xs:enumeration value="Female" />
-          <xs:enumeration value="Male" />
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:list>
-  </xs:simpleType>
-  <xs:element name="Gender" nillable="true" type="tns:Gender" />
-  <xs:complexType name="ArrayOfMedia">
+  <xs:element name="TupleOfbooleanstring" nillable="true" type="tns:TupleOfbooleanstring" />
+  <xs:complexType name="TupleOfUserstringyhomVriE">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="TupleOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/System" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="User" Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" />
+          <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Media" nillable="true" type="tns:Media" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" name="m_Item1" nillable="true" type="q1:User" />
+      <xs:element name="m_Item2" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfMedia" nillable="true" type="tns:ArrayOfMedia" />
-  <xs:complexType name="Media">
+  <xs:element name="TupleOfUserstringyhomVriE" nillable="true" type="tns:TupleOfUserstringyhomVriE" />
+  <xs:complexType name="TupleOfbooleanUserstringstring2sbxR358">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="TupleOf{0}{1}{2}{3}{#}" Namespace="http://schemas.datacontract.org/2004/07/System" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="boolean" Namespace="http://www.w3.org/2001/XMLSchema" />
+          <GenericParameter Name="User" Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" />
+          <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+          <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
     <xs:sequence>
-      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Extension" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IsDeleted" type="xs:boolean" />
-      <xs:element minOccurs="0" name="MediaId" type="xs:int" />
-      <xs:element minOccurs="0" name="RentalPrice" type="xs:double" />
-      <xs:element minOccurs="0" name="SmallDescription" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Source" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Thumbnail" nillable="true" type="xs:base64Binary" />
-      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="UploadedBy" nillable="true" type="tns:User" />
+      <xs:element name="m_Item1" type="xs:boolean" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" name="m_Item2" nillable="true" type="q2:User" />
+      <xs:element name="m_Item3" nillable="true" type="xs:string" />
+      <xs:element name="m_Item4" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="Media" nillable="true" type="tns:Media" />
+  <xs:element name="TupleOfbooleanUserstringstring2sbxR358" nillable="true" type="tns:TupleOfbooleanUserstringstring2sbxR358" />
+  <xs:complexType name="TupleOfArrayOfMediastringyhomVriE">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="TupleOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/System" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfMedia" Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" />
+          <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" name="m_Item1" nillable="true" type="q3:ArrayOfMedia" />
+      <xs:element name="m_Item2" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TupleOfArrayOfMediastringyhomVriE" nillable="true" type="tns:TupleOfArrayOfMediastringyhomVriE" />
+  <xs:complexType name="TupleOfMediastringyhomVriE">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="TupleOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/System" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Media" Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" />
+          <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" name="m_Item1" nillable="true" type="q4:Media" />
+      <xs:element name="m_Item2" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TupleOfMediastringyhomVriE" nillable="true" type="tns:TupleOfMediastringyhomVriE" />
+  <xs:complexType name="TupleOfdoubledoublestring">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="TupleOf{0}{1}{2}{#}" Namespace="http://schemas.datacontract.org/2004/07/System" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="double" Namespace="http://www.w3.org/2001/XMLSchema" />
+          <GenericParameter Name="double" Namespace="http://www.w3.org/2001/XMLSchema" />
+          <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="m_Item1" type="xs:double" />
+      <xs:element name="m_Item2" type="xs:double" />
+      <xs:element name="m_Item3" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TupleOfdoubledoublestring" nillable="true" type="tns:TupleOfdoubledoublestring" />
+  <xs:complexType name="TupleOfArrayOfdoublestring9_SUPjmKX">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="TupleOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/System" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfdouble" Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+          <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="m_Item1" nillable="true" type="q5:ArrayOfdouble" />
+      <xs:element name="m_Item2" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TupleOfArrayOfdoublestring9_SUPjmKX" nillable="true" type="tns:TupleOfArrayOfdoublestring9_SUPjmKX" />
+  <xs:complexType name="TupleOfArrayOfRentalstringyhomVriE">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="TupleOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/System" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfRental" Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" />
+          <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" name="m_Item1" nillable="true" type="q6:ArrayOfRental" />
+      <xs:element name="m_Item2" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TupleOfArrayOfRentalstringyhomVriE" nillable="true" type="tns:TupleOfArrayOfRentalstringyhomVriE" />
+  <xs:complexType name="TupleOfstringMediaUserVjFLLhCb">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="TupleOf{0}{1}{2}{#}" Namespace="http://schemas.datacontract.org/2004/07/System" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+          <GenericParameter Name="Media" Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" />
+          <GenericParameter Name="User" Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="m_Item1" nillable="true" type="xs:string" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" name="m_Item2" nillable="true" type="q7:Media" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" name="m_Item3" nillable="true" type="q8:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TupleOfstringMediaUserVjFLLhCb" nillable="true" type="tns:TupleOfstringMediaUserVjFLLhCb" />
 </xs:schema>

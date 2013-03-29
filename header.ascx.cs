@@ -18,18 +18,31 @@ namespace RentIt
         public float edollar = 0;
 
         public string[] countries = null;
+        public RentItServices.Country[] country_list = null;
 
         public Utility utility = null;
         public RentItServices.User currentUser = null;
+
+        private static string URL_SPACE = "%20";
+        private static string REG_FAIL = "Registration" + URL_SPACE + "Failed";
+        private static string REG_AGAIN = "Please" + URL_SPACE + "register" + URL_SPACE + "again.";
+        private static string PWD_AGAIN = "Please" + URL_SPACE + "enter" + URL_SPACE + "password" + URL_SPACE + "again.";
+        private static string LOGIN_FAIL = "Login" + URL_SPACE + "Failed";
+        private static string LOGIN_AGAIN = "Please" + URL_SPACE + "Login" + URL_SPACE + "again.";
 
         protected void Page_Load(object sender, EventArgs e)
         {
             //load webservice client
             utility = new Utility();
             utility.loadClient();
-
+            /*
             //call the web service to retrieve list of country here
-            countries = new string[] { "Singapore", "Denmark", "Others" };
+            country_list = utility.getCountries();
+            countries = new string[country_list.Count()];
+            for (int i=0; i<country_list.Count(); i++) {
+                countries[i] = country_list.GetValue(i).ToString();
+            }
+             */
         }
 
         protected void register_click(object sender, EventArgs e)
@@ -49,13 +62,12 @@ namespace RentIt
             }
 
             currentUser.Age = int.Parse(this.Request.Form.Get("signup_age"));
-            currentUser.Country = this.Request.Form.Get("signup_country");
-
-            String msgTitle = "Registration%20Failed";
+            int country_position = int.Parse(this.Request.Form.Get("signup_country"));
+            currentUser.Country = (RentItServices.Country) country_list.GetValue(country_position);
             
             if (password1.Equals("") || password2.Equals(""))
             {
-                redirect(msgTitle, "Please%20enter%20password%20again.");
+                redirect_error(REG_FAIL, PWD_AGAIN);
             } else {
                 if (password1.Equals(password2))
                 {
@@ -63,24 +75,44 @@ namespace RentIt
                 }
                 else
                 {
-                    redirect(msgTitle, "Please%20enter%20password%20again.");
+                    redirect_error(REG_FAIL, PWD_AGAIN);
                 }
             }
 
-            if (utility.createUser(currentUser.Email, currentUser.Password))
+            if (utility.createUser(currentUser.Email, currentUser.Password, currentUser.Gender, currentUser.Country, currentUser.Age))
             {
-                Response.Redirect("~/index.aspx?type=login");
+
+                redirect_user(currentUser.Email);
             }
             else
             {
-                redirect(msgTitle, "Please%20register%20again.");
+                redirect_error(REG_FAIL, REG_AGAIN);
             }
         
         }
             
-        private void redirect(String msgTitle, String msg)
+        private void redirect_error(String msgTitle, String msg)
         {
             Response.Redirect("~/index.aspx?msgTitle=" + msgTitle + "&msg=" + msg);
+        }
+
+        private void redirect_user(String userEmail)
+        {
+            Response.Redirect("~/index.aspx?user=" + userEmail);
+        }
+
+        protected void login_click(object sender, EventArgs e)
+        {            
+            String inputEmail = this.Request.Form.Get("inputEmail");
+            String inputPassword = this.Request.Form.Get("inputPassword");            
+            if (utility.userLogin(inputEmail, inputPassword))
+            {
+                redirect_user(inputEmail);
+            }
+            else
+            {
+                redirect_error(LOGIN_FAIL, LOGIN_AGAIN);
+            }
         }
 
     }

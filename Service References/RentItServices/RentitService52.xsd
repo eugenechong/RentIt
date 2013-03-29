@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RentitService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RentitService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:simpleType name="Rating">
-    <xs:restriction base="xs:string" />
-  </xs:simpleType>
-  <xs:element name="Rating" nillable="true" type="tns:Rating" />
+<xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://rentit.itu.dk/RentIt29WCF/RentitService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" />
+  <xs:complexType name="ArrayOfKeyValueOfMediaintyhomVriE">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfMediaintyhomVriE">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" name="Key" nillable="true" type="q1:Media" />
+            <xs:element name="Value" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfMediaintyhomVriE" nillable="true" type="tns:ArrayOfKeyValueOfMediaintyhomVriE" />
+  <xs:complexType name="ArrayOfdouble">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="double" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfdouble" nillable="true" type="tns:ArrayOfdouble" />
 </xs:schema>

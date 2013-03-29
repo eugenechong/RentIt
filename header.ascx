@@ -125,7 +125,7 @@
 </div>
 
 
-<!---BookMARK MODAL---->
+<!---BOOKMARK MODAL---->
 <div id="bookmark-pop" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -160,6 +160,7 @@
 
 
 <!---LOGIN MODAL---->
+<form id="form" runat="server">
 <div id="login-pop" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -169,29 +170,27 @@
         <table cellpadding="4px" width="100%" height="100%">
             <tr>
                 <td>
-                    <div class="well">
+                    <div class="well">                        
+                        <h4>Classic Login</h4>
+                        <div class="control-group">
 
-                        <form>
-                            <h4>Classic Login</h4>
-                            <div class="control-group">
-
-                                <div class="controls">
-                                    <input type="text" id="inputEmail" placeholder="Email">
-                                </div>
+                            <div class="controls">
+                                <input type="text" id="inputEmail" name="inputEmail" placeholder="Email">
                             </div>
-                            <div class="control-group">
+                        </div>
+                        <div class="control-group">
 
-                                <div class="controls">
-                                    <input type="password" id="inputPassword" placeholder="Password">
-                                </div>
+                            <div class="controls">
+                                <input type="password" id="inputPassword" name="inputPassword" placeholder="Password">
                             </div>
-                            <div class="control-group">
-                                <div class="controls">
+                        </div>
+                        <div class="control-group">
+                            <div class="controls">
 
-                                    <button type="submit" class="btn-success btn">Login</button>
-                                </div>
+                                <asp:Button id="btn_login" class="btn-success btn" 
+                                onclick="login_click" runat="server" text="Login" />   
                             </div>
-                        </form>
+                        </div>                        
                     </div>
                 </td>
                 <td>
@@ -221,7 +220,6 @@
             <tr>
                 <td>
                     <div class="well">
-<form id="form_signup" runat="server">  
                         <h4>Classic Signup</h4>
                         <div class="control-group">
 
@@ -253,9 +251,9 @@
                             <div class="controls">
                                 <select id="gender" name="signup_gender">
 
-                                    <option value="1">Male</option>
+                                    <option value="Male">Male</option>
 
-                                    <option value="2">Female</option>
+                                    <option value="Female">Female</option>
 
                                 </select>
                             </div>
@@ -268,7 +266,7 @@
                                     <% for (int i = 0; i < countries.Length; i++)
                                        {                                       
                                     %>
-                                    <option value="<%=countries[i] %>"><%=countries[i] %></option>
+                                    <option value="<%=i %>"><%=countries[i] %></option>
                                     <%} %>
                                 </select>
                             </div>
@@ -290,12 +288,10 @@
                                 <asp:Button id="btn_register" class="btn-success btn" 
                                     onclick="register_click" runat="server" text="Register" />                               
                             </div>
-                        </div> 
-</form>                                              
+                        </div                                              
                 </td>
                 <td>
                     <h5>Or</h5>
-
                 </td>
                 <td>
                     <div class="well">
@@ -309,6 +305,7 @@
     </div>
 
 </div>
+</form>
 
 
 
