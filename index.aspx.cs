@@ -166,5 +166,7 @@ namespace RentIt
             mainBody.Controls.Add(msgBar);
         }
 
+        
+
     }
 }

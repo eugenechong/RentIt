@@ -88,6 +88,7 @@ namespace RentIt
 
         public RentIt.RentItServices.Country[] getCountries()
         {
+            
             return rentItServiceClient.GetCountries();
         }
 

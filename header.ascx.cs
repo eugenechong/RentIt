@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -16,7 +17,7 @@ namespace RentIt
         public int userid = 0;
         public string dp_url = null;
         public float edollar = 0;
-               
+
         public Utility utility = null;
         public RentItServices.User currentUser = null;
 
@@ -35,7 +36,7 @@ namespace RentIt
             //load webservice client
             utility = new Utility();
             utility.loadClient();
-            
+
             //call the web service to retrieve list of country
             country_list = utility.getCountries();
 
@@ -45,7 +46,7 @@ namespace RentIt
         }
 
         protected void register_click(object sender, EventArgs e)
-        {            
+        {
             currentUser = new RentItServices.User();
             currentUser.Email = this.Request.Form.Get("signup_email");
             String password1 = this.Request.Form.Get("signup_password1");
@@ -63,11 +64,13 @@ namespace RentIt
             currentUser.Age = int.Parse(this.Request.Form.Get("signup_age"));
             int country_position = int.Parse(this.Request.Form.Get("signup_country"));
             currentUser.Country = country_list[country_position];
-            
+
             if (password1.Equals("") || password2.Equals(""))
             {
                 redirect_error(REG_FAIL, PWD_AGAIN);
-            } else {
+            }
+            else
+            {
                 if (password1.Equals(password2))
                 {
                     currentUser.Password = password1;
@@ -87,9 +90,9 @@ namespace RentIt
             {
                 redirect_error(REG_FAIL, REG_AGAIN);
             }
-        
+
         }
-            
+
         private void redirect_error(String msgTitle, String msg)
         {
             Response.Redirect("~/index.aspx?msgTitle=" + msgTitle + "&msg=" + msg);
@@ -101,9 +104,9 @@ namespace RentIt
         }
 
         protected void login_click(object sender, EventArgs e)
-        {            
+        {
             String inputEmail = this.Request.Form.Get("inputEmail");
-            String inputPassword = this.Request.Form.Get("inputPassword");            
+            String inputPassword = this.Request.Form.Get("inputPassword");
             if (utility.userLogin(inputEmail, inputPassword))
             {
                 redirect_user(inputEmail);
@@ -114,5 +117,19 @@ namespace RentIt
             }
         }
 
+        protected void logoutButton_Click(object sender, EventArgs e)
+        {
+
+            //still cannot work yet cos no current user
+            utility.userLogout(currentUser.Email);
+            Response.Redirect("~/index.aspx?msg=You have logged out successfully!");
+        }
+
+
+
+
+      
     }
+
+      
 }

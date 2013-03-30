@@ -27,7 +27,7 @@
    { %>
 <!--navbar with login-->
 <div class="container">
-    <div class="navbar navbar">
+    <div class="navbar ">
         <div class="navbar-inner">
             <a class="brand" href="index.aspx"><i class=" icon-film"></i>&nbsp;&nbsp; RentIt</a>
             <ul class="nav">
@@ -37,40 +37,43 @@
                         <li><a tabindex="-1" href="index.aspx?type=popular"><i class="icon-thumbs-up"></i>Most Popular</a></li>
                         <li class="divider"></li>
                         <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#"><i class="icon-music"></i>Music</a>
+                            <a tabindex="-1" href="#"><i class="icon-music"></i>&nbsp;Music</a>
                             <ul class="dropdown-menu">
-                                <li><a tabindex="-1" href="#">Country</a></li>
-                                <li><a tabindex="-1" href="#">Classical</a></li>
-                                <li><a tabindex="-1" href="#">Pop</a></li>
+                                <li><a tabindex="-1" href="#">&nbsp;Country</a></li>
+                                <li><a tabindex="-1" href="#">&nbsp;Classical</a></li>
+                                <li><a tabindex="-1" href="#">&nbsp;Pop</a></li>
                             </ul>
                         </li>
                         <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#"><i class="icon-facetime-video"></i>Movies</a>
+                            <a tabindex="-1" href="#"><i class="icon-facetime-video"></i>&nbsp;Movies</a>
                             <ul class="dropdown-menu">
-                                <li><a tabindex="-1" href="#">Thriller</a></li>
-                                <li><a tabindex="-1" href="#">Comedy</a></li>
-                                <li><a tabindex="-1" href="#">Sci-Fi</a></li>
+                                <li><a tabindex="-1" href="#">&nbsp;Thriller</a></li>
+                                <li><a tabindex="-1" href="#">&nbsp;Comedy</a></li>
+                                <li><a tabindex="-1" href="#">&nbsp;Sci-Fi</a></li>
                             </ul>
                         </li>
 
                     </ul>
                 </li>
             </ul>
+            <ul class="nav">
+                <div style="padding-top:8px;">
+            <form class="navbar-search "  method="get">
+                <input name="param" type="text" class="search-query" placeholder="Search" />
+                <input name="type" type="hidden" value="search" />
+            </form></div>
+                </ul>
             <ul class="nav pull-right">
-                <form class="navbar-search pull-left" method="get">
-                    <input name="param" type="text" class="search-query" placeholder="Search" />
-                    <input name="type" type="hidden" value="search" />
-                </form>
                 <li class="divider-vertical"></li>
                 <li class="dropdown"><a href="#" id="drop2" class="dropdown-toggle" data-toggle="dropdown">
                     <img src="<% =dp_url %>" style="border-radius: 2px; max-height: 22px;" alt="">
                     <%=username %> <b class="caret"></b></a>
                     <ul class="dropdown-menu" aria-labelledby="drop2">
-                        <li class="disabled"><a tabindex="-1" href="#"  style="color:black;"><i class="icon-money"></i>&nbsp;Balance: $<%=edollar %></a></li>
-                         <li class="divider"></li>
+                        <li class="disabled"><a tabindex="-1" href="#" style="color: black;"><i class="icon-money"></i>&nbsp;Balance: $<%=edollar %></a></li>
+                        <li class="divider"></li>
                         <li><a tabindex="-1" href="#"><i class="icon-cog"></i>&nbsp;Account Settings</a></li>
-                       
-                        <li><a tabindex="-1" href="#"><i class="icon-signout"></i>&nbsp;Logout</a></li>
+                        
+                        <li><asp:LinkButton ID="logoutButton" runat="server" OnClick="logoutButton_Click"><i class="icon-signout"></i>&nbsp;Logout</asp:LinkButton></li>
                     </ul>
                 </li>
                 <li class="divider-vertical"></li>
@@ -78,6 +81,7 @@
                 <li class="divider-vertical"></li>
                 <li><a href="#cart-pop" data-toggle="modal"><i class="icon-large icon-shopping-cart"></i></a></li>
             </ul>
+
         </div>
     </div>
 </div>
@@ -94,22 +98,26 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="H3"><i class=" icon-shopping-cart"></i>&nbsp;&nbsp;&nbsp;&nbsp;Rental History</h3>
     </div>
-    <div class="modal-body">     
+    <div class="modal-body">
         <ul class="media-list">
-            <!--LOOP CART ITEM HERE-->      
-            <% for (int i=0; i<rental_list.Length; i++) { %>      
+            <!--LOOP CART ITEM HERE-->
+            <% for (int i = 0; i < rental_list.Length; i++)
+               { %>
             <li class="media ">
                 <a class="pull-left" href="#">
                     <img class="media-object" style="height: 100px;" src="<%=rental_list[i].Media.Thumbnail %>">
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading"><i class="icon-music"></i>&nbsp;<%=rental_list[i].Media.Title %></h4>
-                    <p><%=rental_list[i].Media.SmallDescription %><br />Rented on <%=rental_list[i].StartDate %> for $<%=rental_list[i].Price %> </p>
+                    <p>
+                        <%=rental_list[i].Media.SmallDescription %><br />
+                        Rented on <%=rental_list[i].StartDate %>for $<%=rental_list[i].Price %>
+                    </p>
                     <a href="index.aspx?type=item&param=<%=rental_list[i].Media.MediaId %>" class="btn btn-success btn-small tip" data-placement="bottom" rel="tooltip" title="More details about this item">More</a>
-                    <a target="_blank" href="http://www.facebook.com/sharer.php?u=http://www.google.com" class="btn btn-small btn-danger tip" data-placement="bottom" rel="tooltip" title="Share on Facebook"><i class="icon-share-alt"></i>&nbsp;Share</a>                    
+                    <a target="_blank" href="http://www.facebook.com/sharer.php?u=http://www.google.com" class="btn btn-small btn-danger tip" data-placement="bottom" rel="tooltip" title="Share on Facebook"><i class="icon-share-alt"></i>&nbsp;Share</a>
                 </div>
             </li>
-            <% }  %>
+                <% }  %>
             <!--END LOOP-->
         </ul>
     </div>
@@ -164,7 +172,7 @@
         <table cellpadding="4px" width="100%" height="100%">
             <tr>
                 <td>
-                    <div class="well">                        
+                    <div class="well">
                         <h4>Classic Login</h4>
                         <div class="control-group">
 
@@ -181,10 +189,10 @@
                         <div class="control-group">
                             <div class="controls">
 
-                                <asp:Button id="btn_login" class="btn-success btn" 
-                                onclick="login_click" runat="server" text="Login" />   
+                                <asp:Button ID="btn_login" class="btn-success btn"
+                                    OnClick="login_click" runat="server" Text="Login" />
                             </div>
-                        </div>                        
+                        </div>
                     </div>
                 </td>
                 <td>
@@ -278,10 +286,10 @@
                             </div>
                         </div>
                         <div class="control-group">
-                            <div class="controls">                       
-                                <asp:Button id="btn_register" class="btn-success btn" onclick="register_click" runat="server" text="Register" />                               
+                            <div class="controls">
+                                <asp:Button ID="btn_register" class="btn-success btn" OnClick="register_click" runat="server" Text="Register" />
                             </div>
-                        </div>                                              
+                        </div>
                 </td>
                 <td>
                     <h5>Or</h5>
@@ -298,6 +306,11 @@
     </div>
 
 </div>
+
+
+
+
+
 
 
 
