@@ -61,11 +61,6 @@ namespace RentIt
             return rentItServiceClient.GetMedia(mediaId).Item1;
         }
 
-        public bool uploadMedia(RentItServices.Media media, RentIt.RentItServices.User admin)
-        {
-            return rentItServiceClient.UploadMedia(media, admin).Item1;
-        }
-
         public bool updateMedia(RentItServices.Media media)
         {
             return rentItServiceClient.UpdateMedia(media).Item1;
@@ -95,6 +90,16 @@ namespace RentIt
         public RentIt.RentItServices.Rental[] getRentalHistory(RentIt.RentItServices.User user) 
         {
             return rentItServiceClient.GetRentalHistory(user).Item1;
+        }
+
+        public RentIt.RentItServices.MovieCategory[] getMovieCategories()
+        {
+            return rentItServiceClient.GetMovieCategories();
+        }
+
+        public bool bookmarkMedia(int mediaId, RentIt.RentItServices.User user)
+        {
+            return rentItServiceClient.BookmarkMedia(mediaId, user).Item1;
         }
 
         public static String GetTeamPath(String serverPath)

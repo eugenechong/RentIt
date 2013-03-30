@@ -2,8 +2,7 @@
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://rentit.itu.dk/RentIt29WCF/RentitService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" />
   <xs:import schemaLocation="http://rentit.itu.dk/RentIt29WCF/RentitService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
-  <xs:import schemaLocation="http://rentit.itu.dk/RentIt29WCF/RentitService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/RentitService" />
-  <xs:import schemaLocation="http://rentit.itu.dk/RentIt29WCF/RentitService.svc?xsd=xsd6" namespace="http://schemas.microsoft.com/Message" />
+  <xs:import schemaLocation="http://rentit.itu.dk/RentIt29WCF/RentitService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/Message" />
   <xs:element name="CreateUser">
     <xs:complexType>
       <xs:sequence>
@@ -188,43 +187,28 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="mediaId" type="xs:int" />
         <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" minOccurs="0" name="user" nillable="true" type="q20:User" />
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/RentitService" minOccurs="0" name="rating" type="q21:Rating" />
+        <xs:element minOccurs="0" name="rating" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="RateMediaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="RateMediaResult" nillable="true" type="q22:TupleOfbooleanstring" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UploadMedia">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" minOccurs="0" name="media" nillable="true" type="q23:Media" />
-        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" minOccurs="0" name="admin" nillable="true" type="q24:User" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UploadMediaResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="UploadMediaResult" nillable="true" type="q25:TupleOfbooleanstring" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="RateMediaResult" nillable="true" type="q21:TupleOfbooleanstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateMedia">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" minOccurs="0" name="media" nillable="true" type="q26:Media" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" minOccurs="0" name="media" nillable="true" type="q22:Media" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateMediaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="UpdateMediaResult" nillable="true" type="q27:TupleOfbooleanstring" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="UpdateMediaResult" nillable="true" type="q23:TupleOfbooleanstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -238,49 +222,49 @@
   <xs:element name="DeleteMediaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="DeleteMediaResult" nillable="true" type="q28:TupleOfbooleanstring" />
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="DeleteMediaResult" nillable="true" type="q24:TupleOfbooleanstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetGenderAnalytics">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" minOccurs="0" name="media" nillable="true" type="q29:Media" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" minOccurs="0" name="media" nillable="true" type="q25:Media" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetGenderAnalyticsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="GetGenderAnalyticsResult" nillable="true" type="q30:TupleOfdoubledoublestring" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="GetGenderAnalyticsResult" nillable="true" type="q26:TupleOfdoubledoublestring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetAgeAnalytics">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" minOccurs="0" name="media" nillable="true" type="q31:Media" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" minOccurs="0" name="media" nillable="true" type="q27:Media" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetAgeAnalyticsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="GetAgeAnalyticsResult" nillable="true" type="q32:TupleOfArrayOfdoublestring9_SUPjmKX" />
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="GetAgeAnalyticsResult" nillable="true" type="q28:TupleOfArrayOfdoublestring9_SUPjmKX" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetContinentAnalytics">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" minOccurs="0" name="media" nillable="true" type="q33:Media" />
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" minOccurs="0" name="media" nillable="true" type="q29:Media" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetContinentAnalyticsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="GetContinentAnalyticsResult" nillable="true" type="q34:TupleOfArrayOfdoublestring9_SUPjmKX" />
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="GetContinentAnalyticsResult" nillable="true" type="q30:TupleOfArrayOfdoublestring9_SUPjmKX" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -288,28 +272,28 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="mediaId" type="xs:int" />
-        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" minOccurs="0" name="user" nillable="true" type="q35:User" />
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" minOccurs="0" name="user" nillable="true" type="q31:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="IsRentedResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="IsRentedResult" nillable="true" type="q36:TupleOfbooleanstring" />
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="IsRentedResult" nillable="true" type="q32:TupleOfbooleanstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetRentalHistory">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" minOccurs="0" name="user" nillable="true" type="q37:User" />
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" minOccurs="0" name="user" nillable="true" type="q33:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetRentalHistoryResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="GetRentalHistoryResult" nillable="true" type="q38:TupleOfArrayOfRentalstringyhomVriE" />
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="GetRentalHistoryResult" nillable="true" type="q34:TupleOfArrayOfRentalstringyhomVriE" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -323,7 +307,7 @@
   <xs:element name="FacebookLoginResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="FacebookLoginResult" nillable="true" type="q39:TupleOfbooleanUserstringstring2sbxR358" />
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="FacebookLoginResult" nillable="true" type="q35:TupleOfbooleanUserstringstring2sbxR358" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -335,18 +319,42 @@
   <xs:element name="GetCountriesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" minOccurs="0" name="GetCountriesResult" nillable="true" type="q40:ArrayOfCountry" />
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" minOccurs="0" name="GetCountriesResult" nillable="true" type="q36:ArrayOfCountry" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMovieCategories">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMovieCategoriesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" minOccurs="0" name="GetMovieCategoriesResult" nillable="true" type="q37:ArrayOfMovieCategory" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBookCategories">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBookCategoriesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" minOccurs="0" name="GetBookCategoriesResult" nillable="true" type="q38:ArrayOfBookCategory" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UploadFileRequest">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q41="http://schemas.microsoft.com/Message" name="FileStream" type="q41:StreamBody" />
+        <xs:element xmlns:q39="http://schemas.microsoft.com/Message" name="FileStream" type="q39:StreamBody" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/System" name="MediaLoginAndUserTuple" nillable="true" type="q42:TupleOfstringMediaUserVjFLLhCb" />
+  <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/System" name="MediaLoginAndUserTuple" nillable="true" type="q40:TupleOfstringMediaUserVjFLLhCb" />
   <xs:element name="UploadFileResult">
     <xs:complexType>
       <xs:sequence>
@@ -363,7 +371,7 @@
   <xs:element name="DownloadFileResult">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q43="http://schemas.microsoft.com/Message" name="FileDownload" type="q43:StreamBody" />
+        <xs:element xmlns:q41="http://schemas.microsoft.com/Message" name="FileDownload" type="q41:StreamBody" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

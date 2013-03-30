@@ -47,9 +47,9 @@
                         <li class="dropdown-submenu">
                             <a tabindex="-1" href="#"><i class="icon-facetime-video"></i>&nbsp;Movies</a>
                             <ul class="dropdown-menu">
-                                <li><a tabindex="-1" href="#">&nbsp;Thriller</a></li>
-                                <li><a tabindex="-1" href="#">&nbsp;Comedy</a></li>
-                                <li><a tabindex="-1" href="#">&nbsp;Sci-Fi</a></li>
+                                <% for (int i=0; i<movie_category_list.Length; i++) { %>
+                                <li><a tabindex="-1" href="#"><%=movie_category_list[i].Title %></a></li>                                
+                                <% } %>
                             </ul>
                         </li>
 

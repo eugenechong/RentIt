@@ -7,8 +7,7 @@
       <xsd:import schemaLocation="http://rentit.itu.dk/RentIt29WCF/RentitService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" />
       <xsd:import schemaLocation="http://rentit.itu.dk/RentIt29WCF/RentitService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
       <xsd:import schemaLocation="http://rentit.itu.dk/RentIt29WCF/RentitService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-      <xsd:import schemaLocation="http://rentit.itu.dk/RentIt29WCF/RentitService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/RentitService" />
-      <xsd:import schemaLocation="http://rentit.itu.dk/RentIt29WCF/RentitService.svc?xsd=xsd6" namespace="http://schemas.microsoft.com/Message" />
+      <xsd:import schemaLocation="http://rentit.itu.dk/RentIt29WCF/RentitService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/Message" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IRentitService_CreateUser_InputMessage">
@@ -89,12 +88,6 @@
   <wsdl:message name="IRentitService_RateMedia_OutputMessage">
     <wsdl:part name="parameters" element="tns:RateMediaResponse" />
   </wsdl:message>
-  <wsdl:message name="IRentitService_UploadMedia_InputMessage">
-    <wsdl:part name="parameters" element="tns:UploadMedia" />
-  </wsdl:message>
-  <wsdl:message name="IRentitService_UploadMedia_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UploadMediaResponse" />
-  </wsdl:message>
   <wsdl:message name="IRentitService_UpdateMedia_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateMedia" />
   </wsdl:message>
@@ -148,6 +141,18 @@
   </wsdl:message>
   <wsdl:message name="IRentitService_GetCountries_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCountriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_GetMovieCategories_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMovieCategories" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_GetMovieCategories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMovieCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_GetBookCategories_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookCategories" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_GetBookCategories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookCategoriesResponse" />
   </wsdl:message>
   <wsdl:message name="UploadFileRequest">
     <wsdl:part name="parameters" element="tns:UploadFileRequest" />
@@ -220,10 +225,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/RateMedia" message="tns:IRentitService_RateMedia_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/RateMediaResponse" message="tns:IRentitService_RateMedia_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="UploadMedia">
-      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/UploadMedia" message="tns:IRentitService_UploadMedia_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/UploadMediaResponse" message="tns:IRentitService_UploadMedia_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="UpdateMedia">
       <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/UpdateMedia" message="tns:IRentitService_UpdateMedia_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/UpdateMediaResponse" message="tns:IRentitService_UpdateMedia_OutputMessage" />
@@ -259,6 +260,14 @@
     <wsdl:operation name="GetCountries">
       <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/GetCountries" message="tns:IRentitService_GetCountries_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/GetCountriesResponse" message="tns:IRentitService_GetCountries_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMovieCategories">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/GetMovieCategories" message="tns:IRentitService_GetMovieCategories_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/GetMovieCategoriesResponse" message="tns:IRentitService_GetMovieCategories_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBookCategories">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/GetBookCategories" message="tns:IRentitService_GetBookCategories_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/GetBookCategoriesResponse" message="tns:IRentitService_GetBookCategories_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IRentItFileService">
@@ -390,15 +399,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="UploadMedia">
-      <soap:operation soapAction="http://tempuri.org/IRentitService/UploadMedia" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="UpdateMedia">
       <soap:operation soapAction="http://tempuri.org/IRentitService/UpdateMedia" style="document" />
       <wsdl:input>
@@ -473,6 +473,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetCountries">
       <soap:operation soapAction="http://tempuri.org/IRentitService/GetCountries" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMovieCategories">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/GetMovieCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBookCategories">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/GetBookCategories" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

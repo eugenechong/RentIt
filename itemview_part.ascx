@@ -5,9 +5,9 @@
         <div class="row-fluid">
             <div class="span4 well" style="background-color: #4dccd9;">
                 <p>
-                    <img src="http://moviemusicuk.files.wordpress.com/2010/10/ironman2cover.jpg" alt="">
+                    <img src="<%=media.Thumbnail %>" alt="">
                 </p>
-                <a href="#" class="btn btn-warning tip" data-placement="bottom" rel="tooltip" title="Add to bookmark"><i class="icon-bookmark"></i></a>
+                <asp:LinkButton ID="bookmarkButton" runat="server" class="btn btn-warning tip" OnClick="bookmarkButton_Click" data-placement="bottom" rel="tooltip" title="Add to bookmark"><i class="icon-bookmark"></i></asp:LinkButton>
                 <a target="_blank" href="http://www.facebook.com/sharer.php?u=http://www.google.com" class="btn btn-danger tip" data-placement="bottom" rel="tooltip" title="Share on Facebook"><i class="icon-share-alt"></i></a>
                 <a  href="#confirmRent" role="button"  data-toggle="modal" class="btn btn-success tip" data-placement="bottom" rel="tooltip" title="Add media to rental cart"><i class="icon-shopping-cart"></i>&nbsp;Rent for $2</a>
                  <br /><br />
@@ -36,16 +36,22 @@
             <div class="span8 well" style="background-color: #4dccd9;">
                 <h3>Comments</h3>
                 <div class="media">
-                    <!--LOOP INDIVIDUAL COMMENTS HERE--->
-                    <% for (int i=0; i<comment_list.Length; i++) { %>
+                    <!--LOOP INDIVIDUAL COMMENTS HERE--->                    
+                    <% if (comment_list.Length > 0 || comment_list != null) {
+                        for (int i=0; i<comment_list.Length; i++) { %>
                     <a class="pull-left" href="#">
                         <img class="media-object" src="https://graph.facebook.com/514457901/picture?type=square">
                     </a>
-                    <h5>By <%=comment_list[i].User.Email %></h5> <!--TO CHANGE NAME--->
+                    <h5>By User</h5> <!--TO CHANGE NAME comment_list[i].User.UserId --->
                     <div class="media-body">
                         <h4 class="media-heading">Super Crazy awesome movie&nbsp;</h4> <!--TO CHANGE COMMENT TITLE--->
                         <p><%=comment_list[i].Content %></p>
                     </div>
+                    <%  }
+                       } else { %>
+                        <div class="media-body">
+                            <h4 class="media-heading">No comments yet&nbsp;</h4>                            
+                        </div>                                
                     <% } %>
                     <!-------END OF LOOP----->
                 </div>
@@ -59,7 +65,7 @@
                         </div>
                     </div>
                     <div class="control-group"><div class="controls">
-                      <asp:Button id="btn_comment" class="btn btn-warning" onclick="comment_click" runat="server" Text="Leave my comment"></asp:Button>
+                      <asp:Button id="commentButton" class="btn btn-warning" onclick="commentButton_Click" runat="server" Text="Leave my comment"></asp:Button>
                         </div></div>
                 </form>
 

@@ -91,6 +91,12 @@
     <Content Include="Service References\RentItServices\RentIt.RentItServices.Rental.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\RentItServices\RentIt.RentItServices.BookCategory.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RentItServices\RentIt.RentItServices.MovieCategory.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\RentItServices\RentitService1.disco" />
     <Content Include="splash_carousel.ascx" />
     <EmbeddedResource Include="Web.config">
@@ -216,9 +222,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\RentItServices\RentitService53.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RentItServices\RentitService54.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\RentItServices\RentitService55.xsd">

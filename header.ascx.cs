@@ -22,14 +22,15 @@ namespace RentIt
         public RentItServices.User currentUser = null;
 
         public RentItServices.Country[] country_list = null;
+        public RentIt.RentItServices.MovieCategory[] movie_category_list = null;
         public RentItServices.Rental[] rental_list = null;
+        
+        private static string REG_FAIL = "Registration Failed";
+        private static string REG_AGAIN = "Please register again.";
+        private static string PWD_AGAIN = "Please enter password again.";
 
-        private static string URL_SPACE = "%20";
-        private static string REG_FAIL = "Registration" + URL_SPACE + "Failed";
-        private static string REG_AGAIN = "Please" + URL_SPACE + "register" + URL_SPACE + "again.";
-        private static string PWD_AGAIN = "Please" + URL_SPACE + "enter" + URL_SPACE + "password" + URL_SPACE + "again.";
-        private static string LOGIN_FAIL = "Login" + URL_SPACE + "Failed";
-        private static string LOGIN_AGAIN = "Please" + URL_SPACE + "Login" + URL_SPACE + "again.";
+        private static string LOGIN_FAIL = "Login Failed";
+        private static string LOGIN_AGAIN = "Please login again.";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -37,10 +38,10 @@ namespace RentIt
             utility = new Utility();
             utility.loadClient();
 
-            //call the web service to retrieve list of country
+            //call the web service to load data
             country_list = utility.getCountries();
-
-            //call the web service to retrieve list of rental history
+            movie_category_list = utility.getMovieCategories();
+            
             currentUser = utility.getUser(email);
             rental_list = utility.getRentalHistory(currentUser);
         }

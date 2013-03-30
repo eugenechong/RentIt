@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://rentit.itu.dk/RentIt29WCF/RentitService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:import schemaLocation="http://rentit.itu.dk/RentIt29WCF/RentitService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:simpleType name="Gender">
     <xs:list>
@@ -21,6 +22,8 @@
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Number" type="xs:int" />
     </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
   </xs:complexType>
   <xs:element name="Country" nillable="true" type="tns:Country" />
   <xs:complexType name="Continent">
@@ -28,6 +31,8 @@
       <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
     </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
   </xs:complexType>
   <xs:element name="Continent" nillable="true" type="tns:Continent" />
   <xs:complexType name="User">
@@ -48,6 +53,8 @@
       <xs:element minOccurs="0" name="SharedKey" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="UserId" type="xs:int" />
     </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
   </xs:complexType>
   <xs:element name="User" nillable="true" type="tns:User" />
   <xs:complexType name="ArrayOfMedia">
@@ -59,7 +66,7 @@
   <xs:complexType name="Media">
     <xs:sequence>
       <xs:element minOccurs="0" name="AverageRating" type="xs:int" />
-      <xs:element minOccurs="0" name="Categories" nillable="true" type="tns:ArrayOfCategory" />
+      <xs:element minOccurs="0" name="Categories" nillable="true" type="tns:ArrayOfBookCategory" />
       <xs:element minOccurs="0" name="Comments" nillable="true" type="tns:ArrayOfComment" />
       <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Extension" nillable="true" type="xs:string" />
@@ -73,21 +80,25 @@
       <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="UploadedBy" nillable="true" type="tns:User" />
     </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
   </xs:complexType>
   <xs:element name="Media" nillable="true" type="tns:Media" />
-  <xs:complexType name="ArrayOfCategory">
+  <xs:complexType name="ArrayOfBookCategory">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Category" nillable="true" type="tns:Category" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BookCategory" nillable="true" type="tns:BookCategory" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfCategory" nillable="true" type="tns:ArrayOfCategory" />
-  <xs:complexType name="Category">
+  <xs:element name="ArrayOfBookCategory" nillable="true" type="tns:ArrayOfBookCategory" />
+  <xs:complexType name="BookCategory">
     <xs:sequence>
       <xs:element minOccurs="0" name="CategoryId" type="xs:int" />
       <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
     </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
   </xs:complexType>
-  <xs:element name="Category" nillable="true" type="tns:Category" />
+  <xs:element name="BookCategory" nillable="true" type="tns:BookCategory" />
   <xs:complexType name="ArrayOfComment">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Comment" nillable="true" type="tns:Comment" />
@@ -102,8 +113,40 @@
       <xs:element minOccurs="0" name="Media" nillable="true" type="tns:Media" />
       <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
     </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
   </xs:complexType>
   <xs:element name="Comment" nillable="true" type="tns:Comment" />
+  <xs:complexType name="Movie">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Media">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Category" nillable="true" type="tns:MovieCategory" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Movie" nillable="true" type="tns:Movie" />
+  <xs:complexType name="MovieCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CategoryId" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="MovieCategory" nillable="true" type="tns:MovieCategory" />
+  <xs:complexType name="Book">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Media">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Category" nillable="true" type="tns:BookCategory" />
+          <xs:element minOccurs="0" name="Pages" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Book" nillable="true" type="tns:Book" />
   <xs:complexType name="ArrayOfRental">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Rental" nillable="true" type="tns:Rental" />
@@ -119,6 +162,8 @@
       <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
       <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
     </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
   </xs:complexType>
   <xs:element name="Rental" nillable="true" type="tns:Rental" />
   <xs:complexType name="ArrayOfCountry">
@@ -127,4 +172,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfCountry" nillable="true" type="tns:ArrayOfCountry" />
+  <xs:complexType name="ArrayOfMovieCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MovieCategory" nillable="true" type="tns:MovieCategory" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMovieCategory" nillable="true" type="tns:ArrayOfMovieCategory" />
 </xs:schema>

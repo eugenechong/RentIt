@@ -27,7 +27,7 @@ namespace RentIt.RentItServices {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Country", Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Country", Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain", IsReference=true)]
     [System.SerializableAttribute()]
     public partial class Country : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -152,7 +152,7 @@ namespace RentIt.RentItServices {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Continent", Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Continent", Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain", IsReference=true)]
     [System.SerializableAttribute()]
     public partial class Continent : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -213,7 +213,7 @@ namespace RentIt.RentItServices {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain", IsReference=true)]
     [System.SerializableAttribute()]
     public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -482,8 +482,10 @@ namespace RentIt.RentItServices {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Media", Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Media", Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain", IsReference=true)]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RentIt.RentItServices.Movie))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RentIt.RentItServices.Book))]
     public partial class Media : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -493,7 +495,7 @@ namespace RentIt.RentItServices {
         private int AverageRatingField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private RentIt.RentItServices.Category[] CategoriesField;
+        private RentIt.RentItServices.BookCategory[] CategoriesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private RentIt.RentItServices.Comment[] CommentsField;
@@ -555,7 +557,7 @@ namespace RentIt.RentItServices {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public RentIt.RentItServices.Category[] Categories {
+        public RentIt.RentItServices.BookCategory[] Categories {
             get {
                 return this.CategoriesField;
             }
@@ -735,7 +737,7 @@ namespace RentIt.RentItServices {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Comment", Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Comment", Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain", IsReference=true)]
     [System.SerializableAttribute()]
     public partial class Comment : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -844,7 +846,7 @@ namespace RentIt.RentItServices {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Rental", Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Rental", Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain", IsReference=true)]
     [System.SerializableAttribute()]
     public partial class Rental : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -969,9 +971,132 @@ namespace RentIt.RentItServices {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Category", Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Movie", Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain", IsReference=true)]
     [System.SerializableAttribute()]
-    public partial class Category : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Movie : RentIt.RentItServices.Media {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RentIt.RentItServices.MovieCategory CategoryField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RentIt.RentItServices.MovieCategory Category {
+            get {
+                return this.CategoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoryField, value) != true)) {
+                    this.CategoryField = value;
+                    this.RaisePropertyChanged("Category");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Book", Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain", IsReference=true)]
+    [System.SerializableAttribute()]
+    public partial class Book : RentIt.RentItServices.Media {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RentIt.RentItServices.BookCategory CategoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PagesField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RentIt.RentItServices.BookCategory Category {
+            get {
+                return this.CategoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoryField, value) != true)) {
+                    this.CategoryField = value;
+                    this.RaisePropertyChanged("Category");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Pages {
+            get {
+                return this.PagesField;
+            }
+            set {
+                if ((this.PagesField.Equals(value) != true)) {
+                    this.PagesField = value;
+                    this.RaisePropertyChanged("Pages");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BookCategory", Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain", IsReference=true)]
+    [System.SerializableAttribute()]
+    public partial class BookCategory : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CategoryIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TitleField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CategoryId {
+            get {
+                return this.CategoryIdField;
+            }
+            set {
+                if ((this.CategoryIdField.Equals(value) != true)) {
+                    this.CategoryIdField = value;
+                    this.RaisePropertyChanged("CategoryId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Title {
+            get {
+                return this.TitleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
+                    this.TitleField = value;
+                    this.RaisePropertyChanged("Title");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MovieCategory", Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain", IsReference=true)]
+    [System.SerializableAttribute()]
+    public partial class MovieCategory : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -1068,12 +1193,8 @@ namespace RentIt.RentItServices {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/CommentMedia", ReplyAction="http://tempuri.org/IRentitService/CommentMediaResponse")]
         System.Tuple<bool, string> CommentMedia(int mediaId, RentIt.RentItServices.User user, string comment);
         
-        // CODEGEN: Generating message contract since element name rating from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/RateMedia", ReplyAction="http://tempuri.org/IRentitService/RateMediaResponse")]
-        RentIt.RentItServices.RateMediaResponse RateMedia(RentIt.RentItServices.RateMediaRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/UploadMedia", ReplyAction="http://tempuri.org/IRentitService/UploadMediaResponse")]
-        System.Tuple<bool, string> UploadMedia(RentIt.RentItServices.Media media, RentIt.RentItServices.User admin);
+        System.Tuple<bool, string> RateMedia(int mediaId, RentIt.RentItServices.User user, int rating);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/UpdateMedia", ReplyAction="http://tempuri.org/IRentitService/UpdateMediaResponse")]
         System.Tuple<bool, string> UpdateMedia(RentIt.RentItServices.Media media);
@@ -1101,82 +1222,12 @@ namespace RentIt.RentItServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/GetCountries", ReplyAction="http://tempuri.org/IRentitService/GetCountriesResponse")]
         RentIt.RentItServices.Country[] GetCountries();
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class RateMediaRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="RateMedia", Namespace="http://tempuri.org/", Order=0)]
-        public RentIt.RentItServices.RateMediaRequestBody Body;
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/GetMovieCategories", ReplyAction="http://tempuri.org/IRentitService/GetMovieCategoriesResponse")]
+        RentIt.RentItServices.MovieCategory[] GetMovieCategories();
         
-        public RateMediaRequest() {
-        }
-        
-        public RateMediaRequest(RentIt.RentItServices.RateMediaRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class RateMediaRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public int mediaId;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
-        public RentIt.RentItServices.User user;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string rating;
-        
-        public RateMediaRequestBody() {
-        }
-        
-        public RateMediaRequestBody(int mediaId, RentIt.RentItServices.User user, string rating) {
-            this.mediaId = mediaId;
-            this.user = user;
-            this.rating = rating;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class RateMediaResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="RateMediaResponse", Namespace="http://tempuri.org/", Order=0)]
-        public RentIt.RentItServices.RateMediaResponseBody Body;
-        
-        public RateMediaResponse() {
-        }
-        
-        public RateMediaResponse(RentIt.RentItServices.RateMediaResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class RateMediaResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public System.Tuple<bool, string> RateMediaResult;
-        
-        public RateMediaResponseBody() {
-        }
-        
-        public RateMediaResponseBody(System.Tuple<bool, string> RateMediaResult) {
-            this.RateMediaResult = RateMediaResult;
-        }
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/GetBookCategories", ReplyAction="http://tempuri.org/IRentitService/GetBookCategoriesResponse")]
+        RentIt.RentItServices.BookCategory[] GetBookCategories();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1254,23 +1305,8 @@ namespace RentIt.RentItServices {
             return base.Channel.CommentMedia(mediaId, user, comment);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        RentIt.RentItServices.RateMediaResponse RentIt.RentItServices.IRentitService.RateMedia(RentIt.RentItServices.RateMediaRequest request) {
-            return base.Channel.RateMedia(request);
-        }
-        
-        public System.Tuple<bool, string> RateMedia(int mediaId, RentIt.RentItServices.User user, string rating) {
-            RentIt.RentItServices.RateMediaRequest inValue = new RentIt.RentItServices.RateMediaRequest();
-            inValue.Body = new RentIt.RentItServices.RateMediaRequestBody();
-            inValue.Body.mediaId = mediaId;
-            inValue.Body.user = user;
-            inValue.Body.rating = rating;
-            RentIt.RentItServices.RateMediaResponse retVal = ((RentIt.RentItServices.IRentitService)(this)).RateMedia(inValue);
-            return retVal.Body.RateMediaResult;
-        }
-        
-        public System.Tuple<bool, string> UploadMedia(RentIt.RentItServices.Media media, RentIt.RentItServices.User admin) {
-            return base.Channel.UploadMedia(media, admin);
+        public System.Tuple<bool, string> RateMedia(int mediaId, RentIt.RentItServices.User user, int rating) {
+            return base.Channel.RateMedia(mediaId, user, rating);
         }
         
         public System.Tuple<bool, string> UpdateMedia(RentIt.RentItServices.Media media) {
@@ -1307,6 +1343,14 @@ namespace RentIt.RentItServices {
         
         public RentIt.RentItServices.Country[] GetCountries() {
             return base.Channel.GetCountries();
+        }
+        
+        public RentIt.RentItServices.MovieCategory[] GetMovieCategories() {
+            return base.Channel.GetMovieCategories();
+        }
+        
+        public RentIt.RentItServices.BookCategory[] GetBookCategories() {
+            return base.Channel.GetBookCategories();
         }
     }
     

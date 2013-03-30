@@ -13,6 +13,15 @@ namespace RentIt {
     public partial class itemview_part {
         
         /// <summary>
+        /// bookmarkButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton bookmarkButton;
+        
+        /// <summary>
         /// btn_rate control.
         /// </summary>
         /// <remarks>
@@ -22,12 +31,12 @@ namespace RentIt {
         protected global::System.Web.UI.WebControls.Button btn_rate;
         
         /// <summary>
-        /// btn_comment control.
+        /// commentButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_comment;
+        protected global::System.Web.UI.WebControls.Button commentButton;
     }
 }
