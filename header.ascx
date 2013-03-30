@@ -94,10 +94,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="H3"><i class=" icon-shopping-cart"></i>&nbsp;&nbsp;&nbsp;&nbsp;Rental History</h3>
     </div>
-    <div class="modal-body">
-
-
-     
+    <div class="modal-body">     
         <ul class="media-list">
             <!--LOOP CART ITEM HERE-->      
             <% for (int i=0; i<rental_list.Length; i++) { %>      
@@ -115,8 +112,6 @@
             <% }  %>
             <!--END LOOP-->
         </ul>
-
-
     </div>
     <div class="modal-footer">
         <a href="#" data-dismiss="modal" aria-hidden="true" class="btn">Close</a>
@@ -160,7 +155,6 @@
 
 
 <!---LOGIN MODAL---->
-<form id="form" runat="server">
 <div id="login-pop" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -285,10 +279,9 @@
                         </div>
                         <div class="control-group">
                             <div class="controls">                       
-                                <asp:Button id="btn_register" class="btn-success btn" 
-                                    onclick="register_click" runat="server" text="Register" />                               
+                                <asp:Button id="btn_register" class="btn-success btn" onclick="register_click" runat="server" text="Register" />                               
                             </div>
-                        </div                                              
+                        </div>                                              
                 </td>
                 <td>
                     <h5>Or</h5>
@@ -305,7 +298,6 @@
     </div>
 
 </div>
-</form>
 
 
 

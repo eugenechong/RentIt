@@ -9,7 +9,7 @@ namespace RentIt
 {
     public partial class itemlist_part : System.Web.UI.UserControl
     {
-        public int listType = 0; //popular items = 0, music classic=1; etc
+        public int listType = 0; //popular items = 0, search = 1; etc
         public String headerText = null;
         public string keyword = null;
 

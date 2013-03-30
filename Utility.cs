@@ -9,7 +9,7 @@ namespace RentIt
     public class Utility
     {
         RentItServices.IRentitService rentItServiceClient;
-        RentItServices.IRentItFileService rentItFileServiceClient;
+        RentItServices.IRentItFileService rentItFileServiceClient;        
 
         public void loadClient()
         {
