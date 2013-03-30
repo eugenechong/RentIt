@@ -42,22 +42,23 @@ namespace RentIt
 
             //PREPARE THE NAV BAR WITH INFO
             header thisHeader = (header)LoadControl("~/header.ascx");
-
+/*
             if (userEmail != null)
             {
-                login = utility.isLoggedIn(currentUser);
+                //login = utility.isLoggedIn(currentUser);
+                login = true;
                 currentUser = utility.getUser(userEmail);
                                
                 thisHeader.login = login;
                 thisHeader.userid = currentUser.UserId;
-                //thisHeader.username = username;
+                thisHeader.username = "test"; //to change
                 thisHeader.email = currentUser.Email;
                 thisHeader.dp_url = "https://graph.facebook.com/514457901/picture?type=square"; //to change
                 thisHeader.edollar = currentUser.Credits;                
             }            
-/*
+*/
             //INSERT CODE TO GRAB USER INFO/LOGIN STATE HERE
-            login = false;
+            login = true;
             userid = 25;
             username = "Weikiat";
             email = "i@weikiat.net";
@@ -71,7 +72,7 @@ namespace RentIt
             thisHeader.email = email;
             thisHeader.dp_url = dp_url;
             thisHeader.edollar = edollar;
-*/
+
             headerBar.Controls.Add(thisHeader);
             
             //PREPARE MSG BAR

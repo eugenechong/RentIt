@@ -16,12 +16,12 @@ namespace RentIt
         public int userid = 0;
         public string dp_url = null;
         public float edollar = 0;
-
-        public string[] countries = null;
-        public RentItServices.Country[] country_list = null;
-
+               
         public Utility utility = null;
         public RentItServices.User currentUser = null;
+
+        public RentItServices.Country[] country_list = null;
+        public RentItServices.Rental[] rental_list = null;
 
         private static string URL_SPACE = "%20";
         private static string REG_FAIL = "Registration" + URL_SPACE + "Failed";
@@ -35,14 +35,13 @@ namespace RentIt
             //load webservice client
             utility = new Utility();
             utility.loadClient();
-            /*
-            //call the web service to retrieve list of country here
+            
+            //call the web service to retrieve list of country
             country_list = utility.getCountries();
-            countries = new string[country_list.Count()];
-            for (int i=0; i<country_list.Count(); i++) {
-                countries[i] = country_list.GetValue(i).ToString();
-            }
-             */
+
+            //call the web service to retrieve list of rental history
+            currentUser = utility.getUser(email);
+            rental_list = utility.getRentalHistory(currentUser);
         }
 
         protected void register_click(object sender, EventArgs e)
@@ -63,7 +62,7 @@ namespace RentIt
 
             currentUser.Age = int.Parse(this.Request.Form.Get("signup_age"));
             int country_position = int.Parse(this.Request.Form.Get("signup_country"));
-            currentUser.Country = (RentItServices.Country) country_list.GetValue(country_position);
+            currentUser.Country = country_list[country_position];
             
             if (password1.Equals("") || password2.Equals(""))
             {

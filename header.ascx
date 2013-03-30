@@ -99,20 +99,20 @@
 
      
         <ul class="media-list">
-            <!--LOOP CART ITEM HERE-->
+            <!--LOOP CART ITEM HERE-->      
+            <% for (int i=0; i<rental_list.Length; i++) { %>      
             <li class="media ">
                 <a class="pull-left" href="#">
-                    <img class="media-object" style="height: 100px;" src="http://metrojolt.com/wp-content/uploads/2011/11/Adrian-Lux-Teenage-Crime-cover-art-300x300.jpg">
+                    <img class="media-object" style="height: 100px;" src="<%=rental_list[i].Media.Thumbnail %>">
                 </a>
                 <div class="media-body">
-                    <h4 class="media-heading"><i class="icon-music"></i>&nbsp;Teenage Crime</h4>
-                    <p>Some random text here to spice up your life.<br />Rented on XX/XX/XX for $2</p>
-                    <a href="index.aspx?type=item&param=1" class="btn btn-success btn-small tip" data-placement="bottom" rel="tooltip" title="More details about this item">More</a>
-                    <a target="_blank" href="http://www.facebook.com/sharer.php?u=http://www.google.com" class="btn btn-small btn-danger tip" data-placement="bottom" rel="tooltip" title="Share on Facebook"><i class="icon-share-alt"></i>&nbsp;Share</a>
-                    
-
+                    <h4 class="media-heading"><i class="icon-music"></i>&nbsp;<%=rental_list[i].Media.Title %></h4>
+                    <p><%=rental_list[i].Media.SmallDescription %><br />Rented on <%=rental_list[i].StartDate %> for $<%=rental_list[i].Price %> </p>
+                    <a href="index.aspx?type=item&param=<%=rental_list[i].Media.MediaId %>" class="btn btn-success btn-small tip" data-placement="bottom" rel="tooltip" title="More details about this item">More</a>
+                    <a target="_blank" href="http://www.facebook.com/sharer.php?u=http://www.google.com" class="btn btn-small btn-danger tip" data-placement="bottom" rel="tooltip" title="Share on Facebook"><i class="icon-share-alt"></i>&nbsp;Share</a>                    
                 </div>
             </li>
+            <% }  %>
             <!--END LOOP-->
         </ul>
 
@@ -263,10 +263,10 @@
 
                             <div class="controls">
                                 <select id="country" name="signup_country">
-                                    <% for (int i = 0; i < countries.Length; i++)
+                                    <% for (int i = 0; i < country_list.Length; i++)
                                        {                                       
                                     %>
-                                    <option value="<%=i %>"><%=countries[i] %></option>
+                                    <option value="<%=i %>"><%=country_list[i].Name %></option>
                                     <%} %>
                                 </select>
                             </div>

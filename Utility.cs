@@ -91,6 +91,11 @@ namespace RentIt
             return rentItServiceClient.GetCountries();
         }
 
+        public RentIt.RentItServices.Rental[] getRentalHistory(RentIt.RentItServices.User user) 
+        {
+            return rentItServiceClient.GetRentalHistory(user).Item1;
+        }
+
         public static String GetTeamPath(String serverPath)
         {
             try
