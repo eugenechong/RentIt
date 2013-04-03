@@ -23,6 +23,22 @@ namespace RentIt
         public Utility utility = null;
         public RentItServices.User currentUser = null;
 
+        private RentItServices.User getUser()
+        {
+            //grabs user
+            if (Session["userEmail"] != null)
+            {
+
+                return utility.getUser(Session["userEmail"].ToString(), Session["userKey"].ToString());
+            }
+            else
+            {
+               
+                return null;
+            }
+        }
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //GET params that determine what UI to show
@@ -33,8 +49,7 @@ namespace RentIt
             String msgTitle = Request.QueryString["msgTitle"];
             String msg = Request.QueryString["msg"];
 
-            //GET params that determine if redirected with user 
-            String userEmail = Request.QueryString["user"];
+          
 
             //load webservice client
             utility = new Utility();
@@ -42,36 +57,39 @@ namespace RentIt
 
             //PREPARE THE NAV BAR WITH INFO
             header thisHeader = (header)LoadControl("~/header.ascx");
-/*
-            if (userEmail != null)
+
+            if (getUser() != null)
             {
+                
+                //login = true;
+                currentUser = getUser();
                 //login = utility.isLoggedIn(currentUser);
-                login = true;
-                currentUser = utility.getUser(userEmail);
-                               
+                login = true;  
                 thisHeader.login = login;
-                thisHeader.userid = currentUser.UserId;
-                thisHeader.username = "test"; //to change
-                thisHeader.email = currentUser.Email;
-                thisHeader.dp_url = "https://graph.facebook.com/514457901/picture?type=square"; //to change
-                thisHeader.edollar = currentUser.Credits;                
+               
+                    thisHeader.userid = currentUser.UserId;
+                    thisHeader.username = currentUser.Username;
+                    thisHeader.email = currentUser.Email;
+                    thisHeader.dp_url = currentUser.FbImageUrl;
+                    thisHeader.edollar = currentUser.Credits;
+                
             }            
-*/
+
             //INSERT CODE TO GRAB USER INFO/LOGIN STATE HERE
-            login = true;
-            userid = 25;
-            username = "Weikiat";
-            email = "i@weikiat.net";
-            edollar = 50.0F;
-            dp_url = "https://graph.facebook.com/514457901/picture?type=square";
+            //login = true;
+            //userid = 25;
+            //username = "Weikiat";
+            //email = "i@weikiat.net";
+            //edollar = 50.0F;
+            //dp_url = "https://graph.facebook.com/514457901/picture?type=square";
 
             //PREPARE THE NAV BAR WITH INFO            
-            thisHeader.login = login;
+            /*thisHeader.login = login;
             thisHeader.userid = userid;
             thisHeader.username = username;
             thisHeader.email = email;
             thisHeader.dp_url = dp_url;
-            thisHeader.edollar = edollar;
+            thisHeader.edollar = edollar; */
 
             headerBar.Controls.Add(thisHeader);
             

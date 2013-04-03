@@ -3,17 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.IO;
+using System.ServiceModel;
+using System.ServiceModel.Channels;
+using RentIt.RentItServices;
 
 namespace RentIt
 {
+    
     public class Utility
     {
         RentItServices.IRentitService rentItServiceClient;
-        RentItServices.IRentItFileService rentItFileServiceClient;        
-
+        RentItServices.IRentItFileService rentItFileServiceClient;
+        
         public void loadClient()
         {
             this.rentItServiceClient = new RentItServices.RentitServiceClient();
+            
+
         }
 
         public void loadFileService()
@@ -26,9 +32,28 @@ namespace RentIt
             return rentItServiceClient.CreateUser(email, password, gender, country, age).Item1; 
         }
 
-        public RentItServices.User getUser(String userEmail)
+        public RentItServices.User getUser(String userEmail,String userKey)
         {
-            return rentItServiceClient.GetUser(userEmail).Item1;
+            //Open the channel
+
+
+            RentitServiceClient channel = new RentitServiceClient();
+            //Open a Scope
+            using (new OperationContextScope(channel.InnerChannel))
+            {
+                //Make custom header, important that the two first parameters is Validate and Validator. 
+                //The tuple should contain, the user making the calls email and the users email
+                MessageHeader customheader = MessageHeader.CreateHeader("Validate", "Validator",
+                                                                        new Tuple<string, string>(userEmail, userKey));
+                //Add the header
+                OperationContext.Current.OutgoingMessageHeaders.Add(customheader);
+                //This method will have the header
+                var user1 = channel.GetUser(userEmail);
+                return user1.Item1;//rentItServiceClient.GetUser(userEmail).Item1;
+            }
+            //This method will not have the header, since its out of the using
+            //var user2 = channel.GetUser(userEmail);
+           // return user1.Item1;//rentItServiceClient.GetUser(userEmail).Item1;
         }
 
         public bool isLoggedIn(RentItServices.User user)
@@ -36,9 +61,21 @@ namespace RentIt
             return rentItServiceClient.IsLoggedIn(user).Item1;
         }
 
-        public bool userLogin(String userEmail, String userPwd)
+        public Tuple<bool,User,string,string> userLogin(String userEmail, String userPwd)
         {
-            return rentItServiceClient.Login(userEmail, userPwd).Item1;
+
+            var login = rentItServiceClient.Login(userEmail, userPwd) ;
+            //var details = rentItServiceClient.Login(userEmail, userPwd); 
+            /*if (login.Item1)
+            {
+                
+                userEmail = login.Item2.Email;
+                userKey = login.Item3;
+             
+            }*/
+
+            return login;
+
         }
 
         public bool userLogout(String userEmail)
@@ -51,9 +88,9 @@ namespace RentIt
             return rentItServiceClient.UpdateUser(user).Item1;
         }
 
-        public bool commentMedia(int mediaId, RentItServices.User user, String comment)
+        public bool commentMedia(int mediaId, RentItServices.User user,  String comment)
         {
-            return rentItServiceClient.CommentMedia(mediaId, user, comment).Item1;
+            return rentItServiceClient.CommentMedia(mediaId,user,"",comment).Item1;
         }
 
         public RentItServices.Media getMedia(int mediaId)
@@ -71,9 +108,14 @@ namespace RentIt
             return rentItServiceClient.SearchMediaFromTitle(title).Item1;
         }
 
-        public RentItServices.Media[] searchMediaFromCategory(String category)
+        public RentItServices.Media[] searchMusicFromCategory(String category)
         {
-            return rentItServiceClient.SearchMediaFromCategory(category).Item1;
+            return rentItServiceClient.SearchMusicFromCategory(category).Item1;
+        }
+
+        public RentItServices.Media[] searchMovieFromCategory(String category)
+        {
+            return rentItServiceClient.SearchMovieFromCategory(category).Item1;
         }
 
         public bool rentMedia(int mediaId, RentItServices.User user, int credits, double duration)

@@ -52,11 +52,17 @@
   <wsdl:message name="IRentitService_SearchMediaFromTitle_OutputMessage">
     <wsdl:part name="parameters" element="tns:SearchMediaFromTitleResponse" />
   </wsdl:message>
-  <wsdl:message name="IRentitService_SearchMediaFromCategory_InputMessage">
-    <wsdl:part name="parameters" element="tns:SearchMediaFromCategory" />
+  <wsdl:message name="IRentitService_SearchMovieFromCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchMovieFromCategory" />
   </wsdl:message>
-  <wsdl:message name="IRentitService_SearchMediaFromCategory_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SearchMediaFromCategoryResponse" />
+  <wsdl:message name="IRentitService_SearchMovieFromCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchMovieFromCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_SearchMusicFromCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchMusicFromCategory" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_SearchMusicFromCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchMusicFromCategoryResponse" />
   </wsdl:message>
   <wsdl:message name="IRentitService_GetMedia_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMedia" />
@@ -148,11 +154,29 @@
   <wsdl:message name="IRentitService_GetMovieCategories_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetMovieCategoriesResponse" />
   </wsdl:message>
-  <wsdl:message name="IRentitService_GetBookCategories_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetBookCategories" />
+  <wsdl:message name="IRentitService_GetMusicCategories_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMusicCategories" />
   </wsdl:message>
-  <wsdl:message name="IRentitService_GetBookCategories_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetBookCategoriesResponse" />
+  <wsdl:message name="IRentitService_GetMusicCategories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMusicCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_GetUserBookmarks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserBookmarks" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_GetUserBookmarks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserBookmarksResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_RemoveBookmark_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveBookmark" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_RemoveBookmark_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveBookmarkResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_GetMostPopularMedia_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMostPopularMedia" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_GetMostPopularMedia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMostPopularMediaResponse" />
   </wsdl:message>
   <wsdl:message name="UploadFileRequest">
     <wsdl:part name="parameters" element="tns:UploadFileRequest" />
@@ -201,9 +225,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/SearchMediaFromTitle" message="tns:IRentitService_SearchMediaFromTitle_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/SearchMediaFromTitleResponse" message="tns:IRentitService_SearchMediaFromTitle_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="SearchMediaFromCategory">
-      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/SearchMediaFromCategory" message="tns:IRentitService_SearchMediaFromCategory_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/SearchMediaFromCategoryResponse" message="tns:IRentitService_SearchMediaFromCategory_OutputMessage" />
+    <wsdl:operation name="SearchMovieFromCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/SearchMovieFromCategory" message="tns:IRentitService_SearchMovieFromCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/SearchMovieFromCategoryResponse" message="tns:IRentitService_SearchMovieFromCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchMusicFromCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/SearchMusicFromCategory" message="tns:IRentitService_SearchMusicFromCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/SearchMusicFromCategoryResponse" message="tns:IRentitService_SearchMusicFromCategory_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetMedia">
       <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/GetMedia" message="tns:IRentitService_GetMedia_InputMessage" />
@@ -265,9 +293,21 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/GetMovieCategories" message="tns:IRentitService_GetMovieCategories_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/GetMovieCategoriesResponse" message="tns:IRentitService_GetMovieCategories_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetBookCategories">
-      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/GetBookCategories" message="tns:IRentitService_GetBookCategories_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/GetBookCategoriesResponse" message="tns:IRentitService_GetBookCategories_OutputMessage" />
+    <wsdl:operation name="GetMusicCategories">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/GetMusicCategories" message="tns:IRentitService_GetMusicCategories_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/GetMusicCategoriesResponse" message="tns:IRentitService_GetMusicCategories_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserBookmarks">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/GetUserBookmarks" message="tns:IRentitService_GetUserBookmarks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/GetUserBookmarksResponse" message="tns:IRentitService_GetUserBookmarks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBookmark">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/RemoveBookmark" message="tns:IRentitService_RemoveBookmark_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/RemoveBookmarkResponse" message="tns:IRentitService_RemoveBookmark_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMostPopularMedia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/GetMostPopularMedia" message="tns:IRentitService_GetMostPopularMedia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/GetMostPopularMediaResponse" message="tns:IRentitService_GetMostPopularMedia_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IRentItFileService">
@@ -345,8 +385,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SearchMediaFromCategory">
-      <soap:operation soapAction="http://tempuri.org/IRentitService/SearchMediaFromCategory" style="document" />
+    <wsdl:operation name="SearchMovieFromCategory">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/SearchMovieFromCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchMusicFromCategory">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/SearchMusicFromCategory" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -489,8 +538,35 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetBookCategories">
-      <soap:operation soapAction="http://tempuri.org/IRentitService/GetBookCategories" style="document" />
+    <wsdl:operation name="GetMusicCategories">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/GetMusicCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserBookmarks">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/GetUserBookmarks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBookmark">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/RemoveBookmark" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMostPopularMedia">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/GetMostPopularMedia" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

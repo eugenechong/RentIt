@@ -101,7 +101,7 @@
     <div class="modal-body">
         <ul class="media-list">
             <!--LOOP CART ITEM HERE-->
-            <% for (int i = 0; i < rental_list.Length; i++)
+            <% for (int i = 0; i < 0; i++)//for (int i = 0; i < rental_list.Length; i++)
                { %>
             <li class="media ">
                 <a class="pull-left" href="#">

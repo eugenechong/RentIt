@@ -91,10 +91,10 @@
     <Content Include="Service References\RentItServices\RentIt.RentItServices.Rental.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\RentItServices\RentIt.RentItServices.BookCategory.datasource">
+    <Content Include="Service References\RentItServices\RentIt.RentItServices.MovieCategory.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\RentItServices\RentIt.RentItServices.MovieCategory.datasource">
+    <Content Include="Service References\RentItServices\RentIt.RentItServices.MusicCategory.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\RentItServices\RentitService1.disco" />
