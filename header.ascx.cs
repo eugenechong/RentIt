@@ -23,6 +23,7 @@ namespace RentIt
 
         public RentItServices.Country[] country_list = null;
         public RentIt.RentItServices.MovieCategory[] movie_category_list = null;
+        public RentIt.RentItServices.MusicCategory[] music_category_list = null;
         public RentItServices.Rental[] rental_list = null;
         
         private static string REG_FAIL = "Registration Failed";
@@ -40,6 +41,7 @@ namespace RentIt
 
             //call the web service to load data
             country_list = utility.getCountries();
+           music_category_list = utility.getMusicCategories();
             movie_category_list = utility.getMovieCategories();
 
             currentUser = getUser();
@@ -136,7 +138,7 @@ namespace RentIt
                 Session["userEmail"] = login.Item2.Email;
                 Session["userKey"] = login.Item3;
                 
-                Response.Redirect("~/index.aspx?user=" + login.Item2.Email + "&msg=Welcome, " + login.Item2.Username + "! Good to see you back!");
+                Response.Redirect("~/index.aspx?msg=Welcome, " + login.Item2.Username + "! Good to see you!");
                 //redirect_user(inputEmail);
             }
             else

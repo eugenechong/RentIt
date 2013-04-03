@@ -22,6 +22,7 @@ namespace RentIt
 
         public Utility utility = null;
         public RentItServices.User currentUser = null;
+   
 
         private RentItServices.User getUser()
         {
@@ -58,39 +59,43 @@ namespace RentIt
             //PREPARE THE NAV BAR WITH INFO
             header thisHeader = (header)LoadControl("~/header.ascx");
 
-            if (getUser() != null)
-            {
-                
-                //login = true;
-                currentUser = getUser();
-                //login = utility.isLoggedIn(currentUser);
-                login = true;  
-                thisHeader.login = login;
-               
+            currentUser = getUser();
+           
+                if (currentUser!=null)
+                {
+
+                    //login = true;
+                  
+                    //login = utility.isLoggedIn(currentUser);
+                    login = true;
+                    thisHeader.login = login;
+
                     thisHeader.userid = currentUser.UserId;
                     thisHeader.username = currentUser.Username;
                     thisHeader.email = currentUser.Email;
                     thisHeader.dp_url = currentUser.FbImageUrl;
                     thisHeader.edollar = currentUser.Credits;
-                
-            }            
 
-            //INSERT CODE TO GRAB USER INFO/LOGIN STATE HERE
-            //login = true;
-            //userid = 25;
-            //username = "Weikiat";
-            //email = "i@weikiat.net";
-            //edollar = 50.0F;
-            //dp_url = "https://graph.facebook.com/514457901/picture?type=square";
+                }
+           /*
 
-            //PREPARE THE NAV BAR WITH INFO            
-            /*thisHeader.login = login;
-            thisHeader.userid = userid;
-            thisHeader.username = username;
-            thisHeader.email = email;
-            thisHeader.dp_url = dp_url;
-            thisHeader.edollar = edollar; */
+                //INSERT CODE TO GRAB USER INFO/LOGIN STATE HERE
+                login = true;
+                userid = 25;
+                username = "Weikiat";
+                email = "i@weikiat.net";
+                edollar = 50.0F;
+                dp_url = "https://graph.facebook.com/514457901/picture?type=square";
 
+                //PREPARE THE NAV BAR WITH INFO            
+                thisHeader.login = login;
+                thisHeader.userid = userid;
+                thisHeader.username = username;
+                thisHeader.email = email;
+                thisHeader.dp_url = dp_url;
+                thisHeader.edollar = edollar; 
+
+            */
             headerBar.Controls.Add(thisHeader);
             
             //PREPARE MSG BAR
@@ -115,6 +120,14 @@ namespace RentIt
                     if (actionType == "popular")
                     {
                         showListUI(0);
+                    }
+                    if (actionType == "music")
+                    {
+                        showListUI(2,param);
+                    }
+                    if (actionType == "movie")
+                    {
+                        showListUI(3, param);
                     }
                     if (actionType == "search")
                     { //handle search action
@@ -163,11 +176,17 @@ namespace RentIt
         
         }
 
-        private void showListUI(int listType, String keyword = null) //HANDLES LIST VIEW UI
+        private void showListUI(int listType, String keyword = null,int categoryId=0) //HANDLES LIST VIEW UI
         {
             //attach the listing to UI
             itemlist_part listUI = (itemlist_part)LoadControl("~/itemlist_part.ascx");
             listUI.listType = listType;
+
+            if ((listType == 2) || (listType == 3))
+            {
+                listUI.categoryId = categoryId;
+            }
+          
             if (listType == 1)
             {
                 listUI.keyword = keyword;

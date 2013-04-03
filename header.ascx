@@ -38,10 +38,11 @@
                         <li class="divider"></li>
                         <li class="dropdown-submenu">
                             <a tabindex="-1" href="#"><i class="icon-music"></i>&nbsp;Music</a>
-                            <ul class="dropdown-menu">
-                                <li><a tabindex="-1" href="#">&nbsp;Country</a></li>
-                                <li><a tabindex="-1" href="#">&nbsp;Classical</a></li>
-                                <li><a tabindex="-1" href="#">&nbsp;Pop</a></li>
+                             <ul class="dropdown-menu">
+                                <% for (int i = 0; i < music_category_list.Length; i++)
+                                   { %>
+                                <li><a tabindex="-1" href="?type=music&param=<%=music_category_list[i].CategoryId %>"><%=music_category_list[i].Title %></a></li>
+                                <% } %>
                             </ul>
                         </li>
                         <li class="dropdown-submenu">
@@ -49,7 +50,7 @@
                             <ul class="dropdown-menu">
                                 <% for (int i = 0; i < movie_category_list.Length; i++)
                                    { %>
-                                <li><a tabindex="-1" href="#"><%=movie_category_list[i].Title %></a></li>
+                                <li><a tabindex="-1" href="?type=movie&param=<%=movie_category_list[i].CategoryId %>"><%=movie_category_list[i].Title %></a></li>
                                 <% } %>
                             </ul>
                         </li>

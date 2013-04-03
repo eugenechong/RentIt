@@ -4,7 +4,7 @@
     <h2><%=headerText %></h2>
     <ul class="thumbnails span12 ">
 
-        <li class="span3 well" style="background-color: #3cb9c6; border: 1px solid #32a1ac;">
+       <!-- <li class="span3 well" style="background-color: #3cb9c6; border: 1px solid #32a1ac;">
             <div class="thumbnail">
                 <a href="index.aspx?type=item&param=1">
                     <img src="http://metrojolt.com/wp-content/uploads/2011/11/Adrian-Lux-Teenage-Crime-cover-art-300x300.jpg" alt="">
@@ -37,21 +37,29 @@
                 <a href="#" class="btn btn-warning tip" data-placement="bottom" rel="tooltip" title="Add to bookmark"><i class="icon-bookmark"></i></a>
                 <i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i>
             </div>
-        </li>
-        <!--LOOP SEARCH MEDIA HERE-->         
-        <%    if (keyword != null) {                 
+        </li>-->
+        <!--LOOP MEDIA HERE-->         
+        <%                
                 for (int i = 0; i < media_list.Length; i++) { %>                                               
                 <li class="span3 well">
                     <a href="index.aspx?type=item&param=<%=media_list[i].MediaId %>">
-                        <img src="<%=media_list[i].Thumbnail %>" alt=""></a>
-                    <h4><i class="icon-facetime-video"></i>&nbsp;<%=media_list[i].Title %></h4>
+                      <img src="<%=media_list[i].Thumbnail %>" />
+                        </a>
+                    <h4>
+                        <i class="icon-facetime-video"></i>&nbsp;<%=media_list[i].Title %></h4>
                     <p><%=media_list[i].SmallDescription %></p>
                     <a href="?type=item&param=<%=media_list[i].MediaId %>" class="btn btn-success tip" data-placement="bottom" rel="tooltip" title="Click for more details or rent">More</a>
                     <a href="#" class="btn btn-warning tip" data-placement="bottom" rel="tooltip" title="Add to bookmark"><i class="icon-bookmark"></i></a>
-                    <i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i>
+                    
+                    <% for (int j=0;j<media_list[i].AverageRating;j++){ %>
+                        <i class="icon-star"></i>
+                    <%} %>
+                    <% for (int j=0;j<5-media_list[i].AverageRating;j++){ %>
+                        <i class="icon-star-empty"></i>
+                    <%} %>
                 </li>
         <%      } 
-            } %>         
+             %>         
         <!--END LOOP-->
     </ul>
 

@@ -6,6 +6,8 @@ using System.IO;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using RentIt.RentItServices;
+using System.Drawing;
+
 
 namespace RentIt
 {
@@ -76,6 +78,53 @@ namespace RentIt
 
             return login;
 
+        
+        }
+
+
+        public Image byteArrayToImage(byte[] byteArrayIn)
+        {
+            MemoryStream ms = new MemoryStream(byteArrayIn);
+            Image returnImage = Image.FromStream(ms);
+            return returnImage;
+        }
+
+
+
+         public RentIt.RentItServices.MusicCategory getMusicCatFromID(int id){
+          RentIt.RentItServices.MusicCategory[] cats = getMusicCategories();
+          for (int i = 0; i < cats.Length; i++)
+          {
+              if (cats[i].CategoryId == id)
+              {
+                  return cats[i];
+              }
+
+          }
+          return null;
+
+        }
+
+
+
+        public RentIt.RentItServices.MovieCategory getMovieCatFromID(int id){
+          RentIt.RentItServices.MovieCategory[] cats = getMovieCategories();
+          for (int i = 0; i < cats.Length; i++)
+          {
+              if (cats[i].CategoryId == id)
+              {
+                  return cats[i];
+              }
+
+          }
+          return null;
+
+        }
+
+
+        public Tuple<Media[], string> getPopularList()
+        {
+            return rentItServiceClient.GetMostPopularMedia(20);
         }
 
         public bool userLogout(String userEmail)
@@ -137,6 +186,10 @@ namespace RentIt
         public RentIt.RentItServices.MovieCategory[] getMovieCategories()
         {
             return rentItServiceClient.GetMovieCategories();
+        }
+        public RentIt.RentItServices.MusicCategory[] getMusicCategories()
+        {
+            return rentItServiceClient.GetMusicCategories();
         }
 
         public bool bookmarkMedia(int mediaId, RentIt.RentItServices.User user)
