@@ -169,11 +169,8 @@
         <h3 id="myModalLabel">RentIt Login</h3>
     </div>
     <div class="modal-body">
-        <table cellpadding="4px" width="100%" height="100%">
-            <tr>
-                <td>
-                    <div class="well">
-                        <h4>Classic Login</h4>
+       
+                      
                         <div class="control-group">
 
                             <div class="controls">
@@ -194,21 +191,8 @@
                             </div>
                         </div>
                     </div>
-                </td>
-                <td>
-                    <h5>Or</h5>
-
-                </td>
-                <td>
-                    <div class="well">
-                        <h4>Login with Facebook</h4>
-                        <a class="btn-primary btn">Login With Facebook</a>
-                    </div>
-                </td>
-            </tr>
-
-        </table>
-    </div>
+               
+    
 
 </div>
 <!--REGISTRATION MODAL---->
@@ -217,11 +201,9 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="H1">RentIt Signup</h3>
     </div>
-    <div class="modal-body">
-        <table cellpadding="4px" width="100%" height="100%">
-            <tr>
-                <td>
-                    <div class="well">
+    <div class="modal-body well">
+        
+                    
                         <h4>Classic Signup</h4>
                         <div class="control-group">
 
@@ -290,19 +272,7 @@
                                 <asp:Button ID="btn_register" class="btn-success btn" OnClick="register_click" runat="server" Text="Register" />
                             </div>
                         </div>
-                </td>
-                <td>
-                    <h5>Or</h5>
-                </td>
-                <td>
-                    <div class="well">
-                        <h4>Signup with Facebook</h4>
-                        <a class="btn-primary btn">Signup With Facebook</a>
-                    </div>
-                </td>
-            </tr>
-
-        </table>
+              
     </div>
 
 </div>
