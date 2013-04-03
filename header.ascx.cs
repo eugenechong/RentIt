@@ -46,7 +46,7 @@ namespace RentIt
             if (currentUser != null)
             {
                 //if user is not null, load his history
-                //rental_list = utility.getRentalHistory(currentUser);
+                rental_list = utility.getRentalHistory(currentUser);
             }
         }
 

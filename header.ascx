@@ -47,8 +47,9 @@
                         <li class="dropdown-submenu">
                             <a tabindex="-1" href="#"><i class="icon-facetime-video"></i>&nbsp;Movies</a>
                             <ul class="dropdown-menu">
-                                <% for (int i=0; i<movie_category_list.Length; i++) { %>
-                                <li><a tabindex="-1" href="#"><%=movie_category_list[i].Title %></a></li>                                
+                                <% for (int i = 0; i < movie_category_list.Length; i++)
+                                   { %>
+                                <li><a tabindex="-1" href="#"><%=movie_category_list[i].Title %></a></li>
                                 <% } %>
                             </ul>
                         </li>
@@ -57,12 +58,13 @@
                 </li>
             </ul>
             <ul class="nav">
-                <div style="padding-top:8px;">
-            <form class="navbar-search "  method="get">
-                <input name="param" type="text" class="search-query" placeholder="Search" />
-                <input name="type" type="hidden" value="search" />
-            </form></div>
-                </ul>
+                <div style="padding-top: 8px;">
+                    <form class="navbar-search " method="get">
+                        <input name="param" type="text" class="search-query" placeholder="Search" />
+                        <input name="type" type="hidden" value="search" />
+                    </form>
+                </div>
+            </ul>
             <ul class="nav pull-right">
                 <li class="divider-vertical"></li>
                 <li class="dropdown"><a href="#" id="drop2" class="dropdown-toggle" data-toggle="dropdown">
@@ -72,8 +74,9 @@
                         <li class="disabled"><a tabindex="-1" href="#" style="color: black;"><i class="icon-money"></i>&nbsp;Balance: $<%=edollar %></a></li>
                         <li class="divider"></li>
                         <li><a tabindex="-1" href="#"><i class="icon-cog"></i>&nbsp;Account Settings</a></li>
-                        
-                        <li><asp:LinkButton ID="logoutButton" runat="server" OnClick="logoutButton_Click"><i class="icon-signout"></i>&nbsp;Logout</asp:LinkButton></li>
+
+                        <li>
+                            <asp:LinkButton ID="logoutButton" runat="server" OnClick="logoutButton_Click"><i class="icon-signout"></i>&nbsp;Logout</asp:LinkButton></li>
                     </ul>
                 </li>
                 <li class="divider-vertical"></li>
@@ -90,7 +93,8 @@
 <% } %>
 
 
-
+<%if (login)
+  { %>
 <!--  -------------POP UPS DIALOGS ARE HERE ------------------------>
 <!---CART MODAL---->
 <div id="cart-pop" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -101,7 +105,7 @@
     <div class="modal-body">
         <ul class="media-list">
             <!--LOOP CART ITEM HERE-->
-            <% for (int i = 0; i < 0; i++)//for (int i = 0; i < rental_list.Length; i++)
+            <% for (int i = 0; i < rental_list.Length; i++)//for (int i = 0; i < 0; i++)
                { %>
             <li class="media ">
                 <a class="pull-left" href="#">
@@ -117,7 +121,7 @@
                     <a target="_blank" href="http://www.facebook.com/sharer.php?u=http://www.google.com" class="btn btn-small btn-danger tip" data-placement="bottom" rel="tooltip" title="Share on Facebook"><i class="icon-share-alt"></i>&nbsp;Share</a>
                 </div>
             </li>
-                <% }  %>
+            <% }  %>
             <!--END LOOP-->
         </ul>
     </div>
@@ -161,7 +165,7 @@
     </div>
 </div>
 
-
+<% } %>
 <!---LOGIN MODAL---->
 <div id="login-pop" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
@@ -169,110 +173,139 @@
         <h3 id="myModalLabel">RentIt Login</h3>
     </div>
     <div class="modal-body">
-       
-                      
-                        <div class="control-group">
+        <table style="background:white;width:100%;">
+            <tr>
+                <td>
+                    <h3>Login</h3>
+                    <div class="control-group ">
 
-                            <div class="controls">
-                                <input type="text" id="inputEmail" name="inputEmail" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="control-group">
-
-                            <div class="controls">
-                                <input type="password" id="inputPassword" name="inputPassword" placeholder="Password">
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <div class="controls">
-
-                                <asp:Button ID="btn_login" class="btn-success btn"
-                                    OnClick="login_click" runat="server" Text="Login" />
-                            </div>
+                        <div class="controls">
+                            <input type="text" id="inputEmail" name="inputEmail" placeholder="Email">
                         </div>
                     </div>
-               
+                    <div class="control-group">
+
+                        <div class="controls">
+                            <input type="password" id="inputPassword" name="inputPassword" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+
+                            <asp:Button ID="btn_login" class="btn-success btn"
+                                OnClick="login_click" runat="server" Text="Login" />
+                        </div>
+                    </div>
     
+    </td><td valign="top" width="300px">
+
+
+        <div class="well" style="background-color:#e1e1e1">
+            <h4>Don't have email or password?</h4>
+            <p>Register for a new account! You get 100 credits free!</p>
+            <br />
+            <a href="#signup-pop" data-dismiss="modal" data-toggle="modal" class="btn btn-primary">Register</a>
+           
+        </div>
+    </td>
+    </tr>
+    </table>       
+    </div>
 
 </div>
 <!--REGISTRATION MODAL---->
 <div id="signup-pop" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="H1">RentIt Signup</h3>
+        <h3 id="H1">Signup</h3>
     </div>
-    <div class="modal-body well">
-        
-                    
-                        <h4>Classic Signup</h4>
-                        <div class="control-group">
+    <div class="modal-body">
 
-                            <div class="controls">
-                                <input type="text" id="email" name="signup_email" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="control-group">
+          <table style="background:white;width:100%;">
+            <tr>
+                <td>
+        <h3>Classic Signup</h3>
+        <div class="control-group">
 
-                            <div class="controls">
-                                <input type="text" id="username" name="signup_username" placeholder="Username">
-                            </div>
-                        </div>
-                        <div class="control-group">
+            <div class="controls">
+                <input type="text" id="email" name="signup_email" placeholder="Email">
+            </div>
+        </div>
+        <div class="control-group">
 
-                            <div class="controls">
-                                <input type="password" id="Password1" name="signup_password1" placeholder="Password">
-                            </div>
-                        </div>
-                        <div class="control-group">
+            <div class="controls">
+                <input type="text" id="username" name="signup_username" placeholder="Username">
+            </div>
+        </div>
+        <div class="control-group">
 
-                            <div class="controls">
-                                <input type="password" id="Password2" name="signup_password2" placeholder="Password Again">
-                            </div>
-                        </div>
+            <div class="controls">
+                <input type="password" id="Password1" name="signup_password1" placeholder="Password">
+            </div>
+        </div>
+        <div class="control-group">
 
-                        <div class="control-group">
+            <div class="controls">
+                <input type="password" id="Password2" name="signup_password2" placeholder="Password Again">
+            </div>
+        </div>
 
-                            <div class="controls">
-                                <select id="gender" name="signup_gender">
+        <div class="control-group">
 
-                                    <option value="Male">Male</option>
+            <div class="controls">
+                <select id="gender" name="signup_gender">
 
-                                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
 
-                                </select>
-                            </div>
-                        </div>
+                    <option value="Female">Female</option>
 
-                        <div class="control-group">
+                </select>
+            </div>
+        </div>
 
-                            <div class="controls">
-                                <select id="country" name="signup_country">
-                                    <% for (int i = 0; i < country_list.Length; i++)
-                                       {                                       
-                                    %>
-                                    <option value="<%=i %>"><%=country_list[i].Name %></option>
-                                    <%} %>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="control-group">
+        <div class="control-group">
 
-                            <div class="controls">
-                                <select id="age" name="signup_age">
-                                    <% for (int i = 18; i < 99; i++)
-                                       {                                       
-                                    %>
-                                    <option value="<%=i %>"><%=i+" years old" %></option>
-                                    <%} %>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <div class="controls">
-                                <asp:Button ID="btn_register" class="btn-success btn" OnClick="register_click" runat="server" Text="Register" />
-                            </div>
-                        </div>
-              
+            <div class="controls">
+                <select id="country" name="signup_country">
+                    <% for (int i = 0; i < country_list.Length; i++)
+                       {                                       
+                    %>
+                    <option value="<%=i %>"><%=country_list[i].Name %></option>
+                    <%} %>
+                </select>
+            </div>
+        </div>
+        <div class="control-group">
+
+            <div class="controls">
+                <select id="age" name="signup_age">
+                    <% for (int i = 18; i < 99; i++)
+                       {                                       
+                    %>
+                    <option value="<%=i %>"><%=i+" years old" %></option>
+                    <%} %>
+                </select>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <asp:Button ID="btn_register" class="btn-success btn" OnClick="register_click" runat="server" Text="Register" />
+            </div>
+        </div>
+                    </td><td valign="top" width="280px">
+
+
+        <div class="well" style="background-color:#e1e1e1">
+            <h4>Already have email or password?</h4>
+            <p>Access your rental and bookmarks by logging in!</p>
+            <br />
+            <a href="#login-pop" data-dismiss="modal" data-toggle="modal" class="btn btn-primary">Login</a>
+           
+        </div>
+    </td>
+    </tr>
+    </table>     
+
     </div>
 
 </div>
