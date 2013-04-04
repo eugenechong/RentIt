@@ -13,11 +13,28 @@ namespace RentIt
         public String username = null;
         public String email = null;
         public int userid = 0;
-
-
-
+        
         public String msg = null;
         public String msgTitle = null;
+
+        public Utility utility = null;
+        public RentItServices.User currentUser = null;
+        
+        private RentItServices.User getUser()
+        {
+            //grabs user
+            if (Session["userEmail"] != null)
+            {
+
+                return utility.getUser(Session["userEmail"].ToString(), Session["userKey"].ToString());
+            }
+            else
+            {
+
+                return null;
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //GET params that determine what UI to show
@@ -27,22 +44,18 @@ namespace RentIt
             //GET params that determine if a msg need to be displayed
             String msgTitle = Request.QueryString["msgTitle"];
             String msg = Request.QueryString["msg"];
-            /*
-            //LOAD WEBSERVICE CLIENT
+
+            //load webservice client
             utility = new Utility();
             utility.loadClient();
-            */
+            
             //INSERT CODE TO GRAB USER INFO/LOGIN STATE HERE
             login = true;
             userid = 25;
             username = "Weikiat";
             email = "i@weikiat.net";
 
-
-            /*login = utility.isLoggedIn(currentUser);
-            currentUser = utility.getUser(email);
-            */
-
+            //currentUser = getUser();
 
             //PREPARE THE NAV BAR WITH INFO
             admin_header thisHeader = (admin_header)LoadControl("~/admin_header.ascx");

@@ -19,9 +19,7 @@ namespace RentIt
         
         public void loadClient()
         {
-            this.rentItServiceClient = new RentItServices.RentitServiceClient();
-            
-
+            this.rentItServiceClient = new RentItServices.RentitServiceClient();            
         }
 
         public bool deleteBookMark(User user, int mediaId)
@@ -39,8 +37,7 @@ namespace RentIt
         {
             return this.rentItServiceClient.IsRented(mediaId, user).Item1;
         }
-
-
+        
         public bool rateMedia(int mediaId, User user, int rating)
         {
             return this.rentItServiceClient.RateMedia(mediaId, user, rating).Item1;
@@ -49,6 +46,11 @@ namespace RentIt
         public void loadFileService()
         {
             this.rentItFileServiceClient = new RentItServices.RentItFileServiceClient();
+        }
+
+        public UploadFileResult uploadFile(RentIt.RentItServices.UploadFileRequest request)
+        {
+           return rentItFileServiceClient.UploadFile(request);
         }
 
         public bool createUser(String email, String password, RentIt.RentItServices.Gender gender, RentIt.RentItServices.Country country, int age)
@@ -113,22 +115,16 @@ namespace RentIt
             return returnImage;
         }
 
-
-
-         public RentIt.RentItServices.MusicCategory getMusicCatFromID(int id){
-             RentIt.RentItServices.MusicCategory cats = getMusicCategories()[id -1];
-             return cats;
-
+        public RentIt.RentItServices.MusicCategory getMusicCatFromID(int id){
+            RentIt.RentItServices.MusicCategory cats = getMusicCategories()[id -1];
+            return cats;
         }
-
-
-
-         public RentIt.RentItServices.MovieCategory getMovieCatFromID(int id)
-         {
-             RentIt.RentItServices.MovieCategory cats = getMovieCategories()[id -1];
-             return cats;
-
-         }
+                
+        public RentIt.RentItServices.MovieCategory getMovieCatFromID(int id)
+        {
+            RentIt.RentItServices.MovieCategory cats = getMovieCategories()[id -1];
+            return cats;
+        }
 
         public Tuple<Media[], string> getPopularList()
         {
@@ -158,6 +154,11 @@ namespace RentIt
         public bool updateMedia(RentItServices.Media media)
         {
             return rentItServiceClient.UpdateMedia(media).Item1;
+        }
+
+        public bool deleteMedia(int mediaId)
+        {
+            return rentItServiceClient.DeleteMedia(mediaId).Item1;
         }
 
         public RentItServices.Media[] searchMediaFromTitle(String title)
@@ -195,6 +196,7 @@ namespace RentIt
         {
             return rentItServiceClient.GetMovieCategories();
         }
+
         public RentIt.RentItServices.MusicCategory[] getMusicCategories()
         {
             return rentItServiceClient.GetMusicCategories();

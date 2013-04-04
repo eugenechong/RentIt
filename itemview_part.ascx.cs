@@ -39,12 +39,21 @@ namespace RentIt
         {            
             utility = new Utility();
             utility.loadClient();
-             user = getUser();   
+            user = getUser();   
+            
             //call the web service to retrieve media data
             media = utility.getMedia(itemID);
             isRented = utility.isRented(media.MediaId, user);       
             comment_list = media.Comments;
-           
+
+            //preload media for viewing if rented
+            if (isRented)
+            {
+                utility.loadFileService();
+                Tuple<string, RentItServices.Media, RentItServices.User> tuple = 
+                    new Tuple<string, RentItServices.Media, RentItServices.User>(user.SharedKey, media, user);
+
+            }
         }
 
         protected void rate_click(object sender, EventArgs e)

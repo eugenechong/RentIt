@@ -23,7 +23,6 @@ namespace RentIt
         public Utility utility = null;
         public RentItServices.User currentUser = null;
    
-
         private RentItServices.User getUser()
         {
             //grabs user
@@ -38,8 +37,7 @@ namespace RentIt
                 return null;
             }
         }
-
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             //GET params that determine what UI to show
@@ -50,8 +48,6 @@ namespace RentIt
             //GET params that determine if a msg need to be displayed
             String msgTitle = Request.QueryString["msgTitle"];
             String msg = Request.QueryString["msg"];
-
-          
 
             //load webservice client
             utility = new Utility();
@@ -65,8 +61,7 @@ namespace RentIt
                 if (currentUser!=null)
                 {
 
-                    //login = true;
-                  
+                    //login = true;                  
                     //login = utility.isLoggedIn(currentUser);
                     login = true;
                     thisHeader.login = login;

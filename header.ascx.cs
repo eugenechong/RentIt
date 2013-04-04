@@ -42,7 +42,7 @@ namespace RentIt
 
             //call the web service to load data
             country_list = utility.getCountries();
-           music_category_list = utility.getMusicCategories();
+            music_category_list = utility.getMusicCategories();
             movie_category_list = utility.getMovieCategories();
 
             currentUser = getUser();

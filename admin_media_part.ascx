@@ -24,7 +24,7 @@
             </tr>
         </thead>
         <tbody>
-            <!--Loop user here-->
+            <!--Loop media here-->
             <tr>
                 <td>1</td>
                 <td>
@@ -124,65 +124,72 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="H1">Add new Media</h3>
     </div>
-    <div class="modal-body">
-
-
-
-        <form>
+    <div class="modal-body">       
 
         <div class="control-group">
-
             <div class="controls">
-                <input class="input-xlarge" type="text" id="title" placeholder="Media Title">
+                <input type="radio" id="media_type" name="media_type" value="Music">Music                
+                <input type="radio" id="media_type" name="media_type" value="Movie">Movie
+            </div>
+        </div>
+        <div class="control-group">
+
+        <div class="control-group">
+            <div class="controls">
+                <input class="input-xlarge" type="text" id="add-title" name="add-title" placeholder="Media Title">
             </div>
         </div>
         <div class="control-group">
 
             <div class="controls">
-                <input class="input-xlarge"  type="text" id="shortdescription" placeholder="Short Description">
+                <input class="input-xlarge"  type="text" id="add-shortdescription" name="add-shortdescription" placeholder="Short Description">
             </div>
         </div>
         <div class="control-group">
 
             <div class="controls">
-                <textarea class="input-xlarge"  id="description" rows="5" placeholder="Long Description"></textarea>
+                <textarea class="input-xlarge"  id="add-longdescription" name="add-longdescription" rows="5" placeholder="Long Description"></textarea>
             </div>
         </div>
         <div class="control-group">
 
             <div class="controls">
-                <select class="input-xlarge"  id="category">
-                    <option value="1">Movie - Thriller</option>
-                    <option value="2">Movie - Comedy</option>
-                    <option value="3">Music - Jazz</option>
-                    <option value="4">Music - Classical</option>
-                    <option value="5">Music - Pop</option>
+                <select class="input-xlarge" id="add_category_list" name="add-add_category_list">
+                    <% for (int i=0; i<movie_category_list.Length; i++) { %>
+                        <option value="movie-<%= movie_category_list[i].Title %>">Movie - <%= movie_category_list[i].Title %></option>
+                    <% } %>
+                    <% for (int i=0; i<music_category_list.Length; i++) { %>
+                        <option value="music-<%= movie_category_list[i].Title %>">Music - <%= music_category_list[i].Title %></option>
+                    <% } %>
                 </select>
             </div>
         </div>
 
         <div class="control-group">
             <div class="controls">
-               <input class="input-xlarge"  type="text" id="thumbnail" placeholder="Thumbnail URL">
+               <input class="input-xlarge"  type="text" id="add-rental-price" name="add-rental-price" placeholder="Rental Price">
             </div>
         </div>
 
-                    <div class="control-group">
+        <div class="control-group">
             <div class="controls">
-               <input class="input-xlarge"  type="text" id="media" placeholder="Media URL">
+               <input class="input-xlarge"  type="text" id="add-thumbnail-url" name="add-thumbnail-url" placeholder="Thumbnail URL">
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+               <input class="input-xlarge"  type="text" id="add-media-url" name="add-media-url" placeholder="Media URL">
             </div>
         </div>
 
 
         <div class="control-group">
             <div class="controls">
-
-                <button type="submit" class="btn-success btn">Add Media</button>
+                 <asp:Button ID="btn_add" class="btn-success btn" OnClick="add_click" runat="server" Text="Add Media" />
             </div>
         </div>
-        </form>
-                       
-             
+        
     </div>
 
 </div>

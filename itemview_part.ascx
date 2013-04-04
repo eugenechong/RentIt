@@ -74,12 +74,19 @@
             <!------PUT THE STREAMING UI HERE-------------->
             <div class="span8 well" style="background-color: #4dccd9;">
                 <h3>View Your Media</h3>
-
-
-
-                
-
-
+                <object width="400" height="280" classid="CLSID:22d6f312-b0f6-11d0-94ab-0080c74c7e95" id="media_player">                    
+                    <param name="AutoStart" value="True">
+                    <param name="ShowControls" value="True">
+                    <param name="ShowStatusBar" value="False">
+                    <param name="ShowDisplay" value="False">
+                    <param name="AutoRewind" value="True">
+                    <embed type="application/x-mplayer2"
+                        pluginspage="http://www.microsoft.com/Windows/Downloads/Contents/MediaPlayer/"
+                        width="400" height="280" src="" <!------http://www.2atoms.com/video/haha/fighting_cats4.wmv-------------->
+                        autostart="True" showcontrols="True" showstatusbar="False" showdisplay="False" autorewind="True">
+                </embed> 
+                </object>
+                                
             </div>
             <!------END OF STREAMING UI------------------>
             <% }  %>

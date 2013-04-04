@@ -40,7 +40,7 @@
                 <li ><a href="admin.aspx">Home</a></li>
                 <li ><a href="admin.aspx?type=media">Media</a></li>
                 <li ><a href="admin.aspx?type=user">Users</a></li>
-                <li ><a href="#">Analyatics</a></li>
+                <li ><a href="#">Analytics</a></li>
                 <li class="divider-vertical"></li>
                 <li class="dropdown"><a href="#" id="drop2" class="dropdown-toggle" data-toggle="dropdown">
 

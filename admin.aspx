@@ -12,7 +12,7 @@
 <% Response.WriteFile("includes.aspx"); %>
 
 <body>
-
+<form id="form" runat="server">
     <!--HEADER-->
     <asp:PlaceHolder runat="server" ID="headerBar" />
     <!--END HEADER-->
@@ -26,6 +26,7 @@
     <!--END BODY-->
 
     <foot:footer ID="footer1" runat="server" />
+</form>
 <script type="text/javascript">
     $('.tip').tooltip(
 

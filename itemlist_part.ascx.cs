@@ -25,7 +25,6 @@ namespace RentIt
             utility.loadClient();  
           
            
-
             switch (listType)
             {
                 case 0:
