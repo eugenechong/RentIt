@@ -157,6 +157,13 @@ namespace RentIt
             Response.Redirect("~/index.aspx?msg=You have logged out successfully!");
         }
 
+        protected void search_click(object sender, EventArgs e)
+        {
+            String actionType = this.Request.Form.Get("type");
+            String param = this.Request.Form.Get("param");
+            Response.Redirect("~/index.aspx?type=" + actionType + "&param=" + param);
+        }
+
 
 
 

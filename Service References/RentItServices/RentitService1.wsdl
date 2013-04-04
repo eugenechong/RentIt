@@ -40,12 +40,6 @@
   <wsdl:message name="IRentitService_Logout_OutputMessage">
     <wsdl:part name="parameters" element="tns:LogoutResponse" />
   </wsdl:message>
-  <wsdl:message name="IRentitService_IsLoggedIn_InputMessage">
-    <wsdl:part name="parameters" element="tns:IsLoggedIn" />
-  </wsdl:message>
-  <wsdl:message name="IRentitService_IsLoggedIn_OutputMessage">
-    <wsdl:part name="parameters" element="tns:IsLoggedInResponse" />
-  </wsdl:message>
   <wsdl:message name="IRentitService_SearchMediaFromTitle_InputMessage">
     <wsdl:part name="parameters" element="tns:SearchMediaFromTitle" />
   </wsdl:message>
@@ -217,10 +211,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/Logout" message="tns:IRentitService_Logout_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/LogoutResponse" message="tns:IRentitService_Logout_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="IsLoggedIn">
-      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/IsLoggedIn" message="tns:IRentitService_IsLoggedIn_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/IsLoggedInResponse" message="tns:IRentitService_IsLoggedIn_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="SearchMediaFromTitle">
       <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/SearchMediaFromTitle" message="tns:IRentitService_SearchMediaFromTitle_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/SearchMediaFromTitleResponse" message="tns:IRentitService_SearchMediaFromTitle_OutputMessage" />
@@ -360,15 +350,6 @@
     </wsdl:operation>
     <wsdl:operation name="Logout">
       <soap:operation soapAction="http://tempuri.org/IRentitService/Logout" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="IsLoggedIn">
-      <soap:operation soapAction="http://tempuri.org/IRentitService/IsLoggedIn" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

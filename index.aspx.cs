@@ -104,7 +104,7 @@ namespace RentIt
                 showMsg(msgTitle, msg);
             }
 
-
+            login = true;
             //PREPARE MAIN BODY UI
             if (login)
             {
@@ -123,18 +123,18 @@ namespace RentIt
                     }
                     if (actionType == "music")
                     {
-                        showListUI(2,param);
+                        showListUI(2,null, Convert.ToInt32(param));
                     }
                     if (actionType == "movie")
                     {
-                        showListUI(3, param);
+                        showListUI(3, null, Convert.ToInt32(param));
                     }
                     if (actionType == "search")
                     { //handle search action
                         if (param != null)
                         {
                             //if a keyword is provided, trigger show search UI
-                            showListUI(1, param);
+                            showListUI(1, param,0);
                         }
                         else
                         {

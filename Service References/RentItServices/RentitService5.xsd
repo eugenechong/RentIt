@@ -77,7 +77,7 @@
       <xs:element minOccurs="0" name="RentalPrice" type="xs:double" />
       <xs:element minOccurs="0" name="SmallDescription" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Source" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Thumbnail" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="Thumbnail" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="UploadedBy" nillable="true" type="tns:User" />
     </xs:sequence>

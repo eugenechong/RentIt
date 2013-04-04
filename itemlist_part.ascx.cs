@@ -15,6 +15,7 @@ namespace RentIt
         public int categoryId = 0;
         public Utility utility = null;
         public RentItServices.Media[] media_list = null;
+        public bool noContent = false;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -55,6 +56,12 @@ namespace RentIt
                     Response.Redirect("?msg=Error figuring out which category you are trying to view!");
                     break;
 
+            }
+
+            if ((media_list == null)||(media_list.Length==0))
+
+            {
+                noContent = true;
             }
         }
       

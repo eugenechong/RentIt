@@ -541,7 +541,7 @@ namespace RentIt.RentItServices {
         private string SourceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte[] ThumbnailField;
+        private string ThumbnailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TitleField;
@@ -703,7 +703,7 @@ namespace RentIt.RentItServices {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public byte[] Thumbnail {
+        public string Thumbnail {
             get {
                 return this.ThumbnailField;
             }
@@ -1188,9 +1188,6 @@ namespace RentIt.RentItServices {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/Logout", ReplyAction="http://tempuri.org/IRentitService/LogoutResponse")]
         System.Tuple<bool, string> Logout(string email);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/IsLoggedIn", ReplyAction="http://tempuri.org/IRentitService/IsLoggedInResponse")]
-        System.Tuple<bool, string> IsLoggedIn(RentIt.RentItServices.User user);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/SearchMediaFromTitle", ReplyAction="http://tempuri.org/IRentitService/SearchMediaFromTitleResponse")]
         System.Tuple<RentIt.RentItServices.Media[], string> SearchMediaFromTitle(string title);
         
@@ -1303,10 +1300,6 @@ namespace RentIt.RentItServices {
         
         public System.Tuple<bool, string> Logout(string email) {
             return base.Channel.Logout(email);
-        }
-        
-        public System.Tuple<bool, string> IsLoggedIn(RentIt.RentItServices.User user) {
-            return base.Channel.IsLoggedIn(user);
         }
         
         public System.Tuple<RentIt.RentItServices.Media[], string> SearchMediaFromTitle(string title) {

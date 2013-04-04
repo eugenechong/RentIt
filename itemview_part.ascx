@@ -8,8 +8,8 @@
                     <img src="<%=media.Thumbnail %>" alt="">
                 </p>
                 <asp:LinkButton ID="bookmarkButton" runat="server" class="btn btn-warning tip" OnClick="bookmarkButton_Click" data-placement="bottom" rel="tooltip" title="Add to bookmark"><i class="icon-bookmark"></i></asp:LinkButton>
-                <a target="_blank" href="http://www.facebook.com/sharer.php?u=http://www.google.com" class="btn btn-danger tip" data-placement="bottom" rel="tooltip" title="Share on Facebook"><i class="icon-share-alt"></i></a>
-                <a  href="#confirmRent" role="button"  data-toggle="modal" class="btn btn-success tip" data-placement="bottom" rel="tooltip" title="Add media to rental cart"><i class="icon-shopping-cart"></i>&nbsp;Rent for $2</a>
+                <a target="_blank" href="http://www.facebook.com/sharer.php?u=http://green.smu.edu.sg/gspm2013/team09/index.aspx?type=item&param=<%=media.MediaId %>" class="btn btn-danger tip" data-placement="bottom" rel="tooltip" title="Share on Facebook"><i class="icon-share-alt"></i></a>
+                <a  href="#confirmRent" role="button"  data-toggle="modal" class="btn btn-success tip" data-placement="bottom" rel="tooltip" title="Rent this"><i class="icon-shopping-cart"></i>&nbsp;Rent for $<%=media.RentalPrice %></a>
                  <br /><br />
                 <form class="form-inline well">
                 <h3>Rate This Media</h3><select class="input-small">
@@ -24,9 +24,16 @@
                 
             </div>
             <div class="span8 well" style="background-color: #4dccd9;">
-                <h2><i class="icon-facetime-video"></i>&nbsp;&nbsp;&nbsp;&nbsp;<%=media.Title %> (ItemID: <%=itemID %>)</h2>
+                <h2><i class="icon-facetime-video"></i>&nbsp;&nbsp;&nbsp;&nbsp;<%=media.Title %> </h2>
                 <h4><%=media.SmallDescription %></h4>
-                <i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i>
+                <% for (int j = 0; j < media.AverageRating; j++)
+               { %>
+            <i class="icon-star"></i>
+            <%} %>
+            <% for (int j = 0; j < 5 - media.AverageRating; j++)
+               { %>
+            <i class="icon-star-empty"></i>
+            <%} %>
                 <br />
                 <p>
                     <%=media.Description %>

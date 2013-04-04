@@ -60,7 +60,9 @@ namespace RentIt
 
         public bool isLoggedIn(RentItServices.User user)
         {
-            return rentItServiceClient.IsLoggedIn(user).Item1;
+            return true;
+
+            // return rentItServiceClient.IsLoggedIn(user).Item1;
         }
 
         public Tuple<bool,User,string,string> userLogin(String userEmail, String userPwd)
@@ -92,35 +94,19 @@ namespace RentIt
 
 
          public RentIt.RentItServices.MusicCategory getMusicCatFromID(int id){
-          RentIt.RentItServices.MusicCategory[] cats = getMusicCategories();
-          for (int i = 0; i < cats.Length; i++)
-          {
-              if (cats[i].CategoryId == id)
-              {
-                  return cats[i];
-              }
-
-          }
-          return null;
+             RentIt.RentItServices.MusicCategory cats = getMusicCategories()[id -1];
+             return cats;
 
         }
 
 
 
-        public RentIt.RentItServices.MovieCategory getMovieCatFromID(int id){
-          RentIt.RentItServices.MovieCategory[] cats = getMovieCategories();
-          for (int i = 0; i < cats.Length; i++)
-          {
-              if (cats[i].CategoryId == id)
-              {
-                  return cats[i];
-              }
+         public RentIt.RentItServices.MovieCategory getMovieCatFromID(int id)
+         {
+             RentIt.RentItServices.MovieCategory cats = getMovieCategories()[id -1];
+             return cats;
 
-          }
-          return null;
-
-        }
-
+         }
 
         public Tuple<Media[], string> getPopularList()
         {
