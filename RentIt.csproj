@@ -80,6 +80,7 @@
     <Content Include="Service References\RentItServices\RentIt.RentItServices.User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="support_actions.aspx" />
     <None Include="Service References\RentItServices\configuration91.svcinfo" />
     <None Include="Service References\RentItServices\configuration.svcinfo" />
     <None Include="Service References\RentItServices\Reference.svcmap">
@@ -207,6 +208,13 @@
     </Compile>
     <Compile Include="splash_carousel.ascx.designer.cs">
       <DependentUpon>splash_carousel.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="support_actions.aspx.cs">
+      <DependentUpon>support_actions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="support_actions.aspx.designer.cs">
+      <DependentUpon>support_actions.aspx</DependentUpon>
     </Compile>
     <Compile Include="Utility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

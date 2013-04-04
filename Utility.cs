@@ -24,6 +24,28 @@ namespace RentIt
 
         }
 
+        public bool deleteBookMark(User user, int mediaId)
+        {
+            Media tempMedia= this.rentItServiceClient.GetMedia(mediaId).Item1;
+            return this.rentItServiceClient.RemoveBookmark(user.Email, tempMedia).Item1;
+        }
+
+        public Media[] getUserBookmarks(User user)
+        {
+            return this.rentItServiceClient.GetUserBookmarks(user.Email).Item1;
+        }
+
+        public bool isRented(int mediaId,User user)
+        {
+            return this.rentItServiceClient.IsRented(mediaId, user).Item1;
+        }
+
+
+        public bool rateMedia(int mediaId, User user, int rating)
+        {
+            return this.rentItServiceClient.RateMedia(mediaId, user, rating).Item1;
+        }
+
         public void loadFileService()
         {
             this.rentItFileServiceClient = new RentItServices.RentItFileServiceClient();
@@ -153,9 +175,9 @@ namespace RentIt
             return rentItServiceClient.SearchMovieFromCategory(category).Item1;
         }
 
-        public bool rentMedia(int mediaId, RentItServices.User user, int credits, double duration)
+        public Tuple<bool,string> rentMedia(int mediaId, RentItServices.User user, int credits, double duration)
         {
-            return rentItServiceClient.RentMedia(mediaId, user, credits, duration).Item1;
+            return rentItServiceClient.RentMedia(mediaId, user, credits, duration);
         }
 
         public RentIt.RentItServices.Country[] getCountries()

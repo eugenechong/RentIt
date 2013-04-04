@@ -25,6 +25,7 @@ namespace RentIt
         public RentIt.RentItServices.MovieCategory[] movie_category_list = null;
         public RentIt.RentItServices.MusicCategory[] music_category_list = null;
         public RentItServices.Rental[] rental_list = null;
+        public RentItServices.Media[] bookmark_list = null;
         
         private static string REG_FAIL = "Registration Failed";
         private static string REG_AGAIN = "Please register again.";
@@ -48,6 +49,7 @@ namespace RentIt
             if (currentUser != null)
             {
                 //if user is not null, load his history
+                bookmark_list = utility.getUserBookmarks(currentUser);
                 rental_list = utility.getRentalHistory(currentUser);
             }
         }

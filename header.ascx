@@ -158,20 +158,32 @@
     <ul class="modal-body">
         <ul class="media-list">
             <!--LOOP BOOKMARKs HERE-->
+            <% if (login){ 
+                   for (int i=0;i<bookmark_list.Length;i++){
+                   %>
             <li class="media ">
                 <a class="pull-left" href="#">
-                    <img class="media-object" style="height: 100px;" src="http://metrojolt.com/wp-content/uploads/2011/11/Adrian-Lux-Teenage-Crime-cover-art-300x300.jpg">
+                    <img class="media-object" style="height: 100px;" src="<%=bookmark_list[i].Thumbnail %>">
                 </a>
                 <div class="media-body">
-                    <h4 class="media-heading"><i class="icon-music"></i>&nbsp;Teenage Crime</h4>
-                    <p>Some random text here to spice up your life.</p>
-                    <a href="index.aspx?type=item&param=1" class="btn btn-success btn-small tip" data-placement="right" rel="tooltip" title="More details about this item">More</a>
-                    <a target="_blank" href="http://www.facebook.com/sharer.php?u=http://www.google.com" class="btn btn-small btn-danger tip" data-placement="right" rel="tooltip" title="Share on Facebook"><i class="icon-share-alt"></i>&nbsp;Share</a>
+                    <h4 class="media-heading">  <% if (bookmark_list[i].GetType().Name == "Movie")
+                       { %>
+                    <i class="icon-facetime-video"></i>
+                    <% }
+                       else
+                       { %>
+                    <i class="icon-music"></i>
+                    <% } %>&nbsp;<%=bookmark_list[i].Title %></h4>
+                    <p><%=bookmark_list[i].SmallDescription %></p>
+                    <a href="index.aspx?item=<%=bookmark_list[i].MediaId %>" class="btn btn-success btn-small tip" data-placement="right" rel="tooltip" title="View this item">View</a>
+                   
 
-                    <a href="#" class="btn btn-warning btn-small tip" data-placement="right" rel="tooltip" title="Remove this item from bookmark"><i class="icon-remove"></i>&nbsp;Remove</a>
+                    <a href="support_actions.aspx?deleteBookmark=<%=bookmark_list[i].MediaId %>" class="btn btn-warning btn-small tip" data-placement="right" rel="tooltip" title="Remove this item from bookmark"><i class="icon-remove"></i>&nbsp;Remove</a>
 
                 </div>
             </li>
+            <% } }
+                %>
             <!--END OF BOOKMARK LOOP-->
         </ul>
     </ul>
@@ -198,13 +210,13 @@
                     <div class="control-group ">
 
                         <div class="controls">
-                            <input type="text" id="inputEmail" name="inputEmail" placeholder="Email">
+                            <input type="text" id="inputEmail" name="inputEmail" placeholder="Email" value="i@weikiat.net"/>
                         </div>
                     </div>
                     <div class="control-group">
 
                         <div class="controls">
-                            <input type="password" id="inputPassword" name="inputPassword" placeholder="Password">
+                            <input type="password" id="inputPassword" name="inputPassword" placeholder="Password"  value="weikiat"/>
                         </div>
                     </div>
                     <div class="control-group">

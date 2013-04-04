@@ -14,7 +14,7 @@
             </a>
             <div style="max-height: 70px; min-height: 70px;">
                 <h4>
-                    <% if (media_list[i].GetType().ToString() == "Movie")
+                    <% if (media_list[i].GetType().Name == "Movie")
                        { %>
                     <i class="icon-facetime-video"></i>
                     <% }
@@ -27,8 +27,8 @@
                         &nbsp;<%=media_list[i].Title %></h4>
                 <p><%=media_list[i].SmallDescription %></p>
             </div>
-            <a href="?item=<%=media_list[i].MediaId %>" class="btn btn-success tip" data-placement="bottom" rel="tooltip" title="Click for more details or rent">More</a>
-            <a href="#" class="btn btn-warning tip" data-placement="bottom" rel="tooltip" title="Add to bookmark"><i class="icon-bookmark"></i></a>
+            <a href="?item=<%=media_list[i].MediaId %>" class="btn btn-success tip" data-placement="bottom" rel="tooltip" title="Click for more details or rent">View this</a>
+            
 
             <% for (int j = 0; j < media_list[i].AverageRating; j++)
                { %>
