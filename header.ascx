@@ -107,7 +107,9 @@
     <div class="modal-body">
         <ul class="media-list">
             <!--LOOP CART ITEM HERE-->
-            <% for (int i = 0; i < rental_list.Length; i++)//for (int i = 0; i < 0; i++)
+            <%
+            string cart_share_url = "";
+                for (int i = 0; i < rental_list.Length; i++)//for (int i = 0; i < 0; i++)
                { %>
             <li class="media ">
                 <a class="pull-left" href="#">
@@ -117,10 +119,23 @@
                     <h4 class="media-heading"><i class="icon-music"></i>&nbsp;<%=rental_list[i].Media.Title %></h4>
                     <p>
                         <%=rental_list[i].Media.SmallDescription %><br />
-                        Rented on <%=rental_list[i].StartDate %>for $<%=rental_list[i].Price %>
+                        <span class="label">Rented on <%=rental_list[i].StartDate %> for $<%=rental_list[i].Price %></span>
                     </p>
-                    <a href="index.aspx?type=item&param=<%=rental_list[i].Media.MediaId %>" class="btn btn-success btn-small tip" data-placement="bottom" rel="tooltip" title="More details about this item">More</a>
-                    <a target="_blank" href="http://www.facebook.com/sharer.php?u=http://www.google.com" class="btn btn-small btn-danger tip" data-placement="bottom" rel="tooltip" title="Share on Facebook"><i class="icon-share-alt"></i>&nbsp;Share</a>
+                     <%
+                    //generate the fb share link
+
+                   cart_share_url = "https://www.facebook.com/dialog/feed?app_id=103996706365313&link=http://green.smu.edu.sg/gspm2013/team09/index.aspx?item=" + rental_list[i].Media.MediaId + "&" +
+                              "picture=" + rental_list[i].Media.Thumbnail + "&" +
+                              "name=" + rental_list[i].Media.Title + "&" +
+                              "caption=RentIt Team 9&" +
+                              "description=" + rental_list[i].Media.SmallDescription + "&" +
+                              "redirect_uri=http://green.smu.edu.sg/gspm2013/team09/close.aspx";
+                          
+                    
+                     %>
+
+                    <a href="index.aspx?item=<%=rental_list[i].Media.MediaId %>" class="btn btn-success btn-small tip" data-placement="bottom" rel="tooltip" title="View or find out more about this media item">View</a>
+                    <a target="_blank" href="<%=cart_share_url %>" class="btn btn-small btn-danger tip" data-placement="bottom" rel="tooltip" title="Share on Facebook"><i class="icon-share-alt"></i>&nbsp;Share</a>
                 </div>
             </li>
             <% }  %>

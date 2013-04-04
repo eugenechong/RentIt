@@ -45,6 +45,7 @@ namespace RentIt
             //GET params that determine what UI to show
             String actionType = Request.QueryString["type"];
             String param = Request.QueryString["param"];
+            String item = Request.QueryString["item"];
 
             //GET params that determine if a msg need to be displayed
             String msgTitle = Request.QueryString["msgTitle"];
@@ -104,15 +105,28 @@ namespace RentIt
                 showMsg(msgTitle, msg);
             }
 
-            login = true;
+            //login = true;
             //PREPARE MAIN BODY UI
             if (login)
             {
                 if (actionType == null)
                 {
                     //if user is loggedin, default to most popular UI
-                    showListUI(0);
+
+                    if (item != null)
+                    { //handle ITEM VIEW
+
+                        //if a param is provided, proceed to do ITEM VIEW
+                        showItemUI(Convert.ToInt32(item));
+
+                    }
+                    else
+                    {
+                        showListUI(0);
+                    }
+
                 }
+
                 else
                 {
                     actionType = actionType.ToLower();
@@ -142,19 +156,7 @@ namespace RentIt
                             showListUI(0);
                         }
                     }
-                    if (actionType == "item")
-                    { //handle ITEM VIEW
-                        if (param != null)
-                        {
-                            //if a param is provided, proceed to do ITEM VIEW
-                            showItemUI(Convert.ToInt32(param));
-                        }
-                        else
-                        {
-                            //NO ITEM ID PROVIDED, default to most popular UI
-                            showListUI(0);
-                        }
-                    }
+                   
                 }
             }
             else

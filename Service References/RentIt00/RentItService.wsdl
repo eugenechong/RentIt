@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="RentItService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://rentit.itu.dk/RentIt00/RentIt.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://rentit.itu.dk/RentIt00/RentIt.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://rentit.itu.dk/RentIt00/RentIt.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RentItServices" />
+      <xsd:import schemaLocation="http://rentit.itu.dk/RentIt00/RentIt.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xsd:import schemaLocation="http://rentit.itu.dk/RentIt00/RentIt.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/Message" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IRentIt_Echo_InputMessage">
+    <wsdl:part name="parameters" element="tns:Echo" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_Echo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EchoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_HelloWorld_InputMessage">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_HelloWorld_OutputMessage">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_Add_InputMessage">
+    <wsdl:part name="parameters" element="tns:Add" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_Add_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_ListNames_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListNames" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_ListNames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListNamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_ListNames_CustomExpMsgFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/RentItServices" name="detail" element="q1:CustomExpMsg" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_ListNamesAsString_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListNamesAsString" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_ListNamesAsString_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListNamesAsStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_ListNamesAsString_CustomExpMsgFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/RentItServices" name="detail" element="q2:CustomExpMsg" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_ListNamesLinq_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListNamesLinq" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_ListNamesLinq_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListNamesLinqResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_ListNamesLinq_CustomExpMsgFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/RentItServices" name="detail" element="q3:CustomExpMsg" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_ListNamesLinqEF_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListNamesLinqEF" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_ListNamesLinqEF_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListNamesLinqEFResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_ListNamesLinqEF_CustomExpMsgFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/RentItServices" name="detail" element="q4:CustomExpMsg" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_insertNameLinq_InputMessage">
+    <wsdl:part name="parameters" element="tns:insertNameLinq" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_insertNameLinq_OutputMessage">
+    <wsdl:part name="parameters" element="tns:insertNameLinqResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_insertNameLinq_CustomExpMsgFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/RentItServices" name="detail" element="q5:CustomExpMsg" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_insertNameLinqEF_InputMessage">
+    <wsdl:part name="parameters" element="tns:insertNameLinqEF" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_insertNameLinqEF_OutputMessage">
+    <wsdl:part name="parameters" element="tns:insertNameLinqEFResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_insertNameLinqEF_CustomExpMsgFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/RentItServices" name="detail" element="q6:CustomExpMsg" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_deleteNameLinq_InputMessage">
+    <wsdl:part name="parameters" element="tns:deleteNameLinq" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_deleteNameLinq_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteNameLinqResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_deleteNameLinq_CustomExpMsgFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/RentItServices" name="detail" element="q7:CustomExpMsg" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_deleteNameLinqEF_InputMessage">
+    <wsdl:part name="parameters" element="tns:deleteNameLinqEF" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_deleteNameLinqEF_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteNameLinqEFResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_deleteNameLinqEF_CustomExpMsgFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/RentItServices" name="detail" element="q8:CustomExpMsg" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_sendEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:sendEmail" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_sendEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sendEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_GetStructuredData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStructuredData" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_GetStructuredData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStructuredDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_GetStructuredData_CustomExpMsgFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/RentItServices" name="detail" element="q9:CustomExpMsg" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_GetStructuredData_ArgumentNullExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/System" name="detail" element="q10:ArgumentNullException" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_GenFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenFile" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_GenFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_GenFile_CustomExpMsgFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/RentItServices" name="detail" element="q11:CustomExpMsg" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_GetFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFile" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_GetFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_GetFile_CustomExpMsgFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/RentItServices" name="detail" element="q12:CustomExpMsg" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_UploadFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadFile" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_UploadFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_UploadFile_CustomExpMsgFault_FaultMessage">
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/RentItServices" name="detail" element="q13:CustomExpMsg" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_UploadVideo_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadVideo" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_UploadVideo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadVideoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_UploadVideo_CustomExpMsgFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/RentItServices" name="detail" element="q14:CustomExpMsg" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_GetVideo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVideo" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_GetVideo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVideoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentIt_GetVideo_CustomExpMsgFault_FaultMessage">
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/RentItServices" name="detail" element="q15:CustomExpMsg" />
+  </wsdl:message>
+  <wsdl:portType name="IRentIt">
+    <wsdl:operation name="Echo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentIt/Echo" message="tns:IRentIt_Echo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentIt/EchoResponse" message="tns:IRentIt_Echo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentIt/HelloWorld" message="tns:IRentIt_HelloWorld_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentIt/HelloWorldResponse" message="tns:IRentIt_HelloWorld_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Add">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentIt/Add" message="tns:IRentIt_Add_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentIt/AddResponse" message="tns:IRentIt_Add_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListNames">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentIt/ListNames" message="tns:IRentIt_ListNames_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentIt/ListNamesResponse" message="tns:IRentIt_ListNames_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRentIt/ListNamesCustomExpMsgFault" name="CustomExpMsgFault" message="tns:IRentIt_ListNames_CustomExpMsgFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListNamesAsString">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentIt/ListNamesAsString" message="tns:IRentIt_ListNamesAsString_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentIt/ListNamesAsStringResponse" message="tns:IRentIt_ListNamesAsString_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRentIt/ListNamesAsStringCustomExpMsgFault" name="CustomExpMsgFault" message="tns:IRentIt_ListNamesAsString_CustomExpMsgFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListNamesLinq">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentIt/ListNamesLinq" message="tns:IRentIt_ListNamesLinq_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentIt/ListNamesLinqResponse" message="tns:IRentIt_ListNamesLinq_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRentIt/ListNamesLinqCustomExpMsgFault" name="CustomExpMsgFault" message="tns:IRentIt_ListNamesLinq_CustomExpMsgFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListNamesLinqEF">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentIt/ListNamesLinqEF" message="tns:IRentIt_ListNamesLinqEF_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentIt/ListNamesLinqEFResponse" message="tns:IRentIt_ListNamesLinqEF_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRentIt/ListNamesLinqEFCustomExpMsgFault" name="CustomExpMsgFault" message="tns:IRentIt_ListNamesLinqEF_CustomExpMsgFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="insertNameLinq">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentIt/insertNameLinq" message="tns:IRentIt_insertNameLinq_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentIt/insertNameLinqResponse" message="tns:IRentIt_insertNameLinq_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRentIt/insertNameLinqCustomExpMsgFault" name="CustomExpMsgFault" message="tns:IRentIt_insertNameLinq_CustomExpMsgFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="insertNameLinqEF">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentIt/insertNameLinqEF" message="tns:IRentIt_insertNameLinqEF_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentIt/insertNameLinqEFResponse" message="tns:IRentIt_insertNameLinqEF_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRentIt/insertNameLinqEFCustomExpMsgFault" name="CustomExpMsgFault" message="tns:IRentIt_insertNameLinqEF_CustomExpMsgFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteNameLinq">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentIt/deleteNameLinq" message="tns:IRentIt_deleteNameLinq_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentIt/deleteNameLinqResponse" message="tns:IRentIt_deleteNameLinq_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRentIt/deleteNameLinqCustomExpMsgFault" name="CustomExpMsgFault" message="tns:IRentIt_deleteNameLinq_CustomExpMsgFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteNameLinqEF">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentIt/deleteNameLinqEF" message="tns:IRentIt_deleteNameLinqEF_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentIt/deleteNameLinqEFResponse" message="tns:IRentIt_deleteNameLinqEF_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRentIt/deleteNameLinqEFCustomExpMsgFault" name="CustomExpMsgFault" message="tns:IRentIt_deleteNameLinqEF_CustomExpMsgFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sendEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentIt/sendEmail" message="tns:IRentIt_sendEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentIt/sendEmailResponse" message="tns:IRentIt_sendEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStructuredData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentIt/GetStructuredData" message="tns:IRentIt_GetStructuredData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentIt/GetStructuredDataResponse" message="tns:IRentIt_GetStructuredData_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRentIt/GetStructuredDataCustomExpMsgFault" name="CustomExpMsgFault" message="tns:IRentIt_GetStructuredData_CustomExpMsgFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRentIt/GetStructuredDataArgumentNullExceptionFault" name="ArgumentNullExceptionFault" message="tns:IRentIt_GetStructuredData_ArgumentNullExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentIt/GenFile" message="tns:IRentIt_GenFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentIt/GenFileResponse" message="tns:IRentIt_GenFile_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRentIt/GenFileCustomExpMsgFault" name="CustomExpMsgFault" message="tns:IRentIt_GenFile_CustomExpMsgFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentIt/GetFile" message="tns:IRentIt_GetFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentIt/GetFileResponse" message="tns:IRentIt_GetFile_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRentIt/GetFileCustomExpMsgFault" name="CustomExpMsgFault" message="tns:IRentIt_GetFile_CustomExpMsgFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentIt/UploadFile" message="tns:IRentIt_UploadFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentIt/UploadFileResponse" message="tns:IRentIt_UploadFile_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRentIt/UploadFileCustomExpMsgFault" name="CustomExpMsgFault" message="tns:IRentIt_UploadFile_CustomExpMsgFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadVideo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentIt/UploadVideo" message="tns:IRentIt_UploadVideo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentIt/UploadVideoResponse" message="tns:IRentIt_UploadVideo_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRentIt/UploadVideoCustomExpMsgFault" name="CustomExpMsgFault" message="tns:IRentIt_UploadVideo_CustomExpMsgFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVideo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentIt/GetVideo" message="tns:IRentIt_GetVideo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentIt/GetVideoResponse" message="tns:IRentIt_GetVideo_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRentIt/GetVideoCustomExpMsgFault" name="CustomExpMsgFault" message="tns:IRentIt_GetVideo_CustomExpMsgFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IRentIt" type="tns:IRentIt">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Echo">
+      <soap:operation soapAction="http://tempuri.org/IRentIt/Echo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/IRentIt/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add">
+      <soap:operation soapAction="http://tempuri.org/IRentIt/Add" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListNames">
+      <soap:operation soapAction="http://tempuri.org/IRentIt/ListNames" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomExpMsgFault">
+        <soap:fault use="literal" name="CustomExpMsgFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ListNamesAsString">
+      <soap:operation soapAction="http://tempuri.org/IRentIt/ListNamesAsString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomExpMsgFault">
+        <soap:fault use="literal" name="CustomExpMsgFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ListNamesLinq">
+      <soap:operation soapAction="http://tempuri.org/IRentIt/ListNamesLinq" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomExpMsgFault">
+        <soap:fault use="literal" name="CustomExpMsgFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ListNamesLinqEF">
+      <soap:operation soapAction="http://tempuri.org/IRentIt/ListNamesLinqEF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomExpMsgFault">
+        <soap:fault use="literal" name="CustomExpMsgFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="insertNameLinq">
+      <soap:operation soapAction="http://tempuri.org/IRentIt/insertNameLinq" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomExpMsgFault">
+        <soap:fault use="literal" name="CustomExpMsgFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="insertNameLinqEF">
+      <soap:operation soapAction="http://tempuri.org/IRentIt/insertNameLinqEF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomExpMsgFault">
+        <soap:fault use="literal" name="CustomExpMsgFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteNameLinq">
+      <soap:operation soapAction="http://tempuri.org/IRentIt/deleteNameLinq" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomExpMsgFault">
+        <soap:fault use="literal" name="CustomExpMsgFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteNameLinqEF">
+      <soap:operation soapAction="http://tempuri.org/IRentIt/deleteNameLinqEF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomExpMsgFault">
+        <soap:fault use="literal" name="CustomExpMsgFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="sendEmail">
+      <soap:operation soapAction="http://tempuri.org/IRentIt/sendEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStructuredData">
+      <soap:operation soapAction="http://tempuri.org/IRentIt/GetStructuredData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomExpMsgFault">
+        <soap:fault use="literal" name="CustomExpMsgFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ArgumentNullExceptionFault">
+        <soap:fault use="literal" name="ArgumentNullExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GenFile">
+      <soap:operation soapAction="http://tempuri.org/IRentIt/GenFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomExpMsgFault">
+        <soap:fault use="literal" name="CustomExpMsgFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFile">
+      <soap:operation soapAction="http://tempuri.org/IRentIt/GetFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomExpMsgFault">
+        <soap:fault use="literal" name="CustomExpMsgFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <soap:operation soapAction="http://tempuri.org/IRentIt/UploadFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomExpMsgFault">
+        <soap:fault use="literal" name="CustomExpMsgFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UploadVideo">
+      <soap:operation soapAction="http://tempuri.org/IRentIt/UploadVideo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomExpMsgFault">
+        <soap:fault use="literal" name="CustomExpMsgFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetVideo">
+      <soap:operation soapAction="http://tempuri.org/IRentIt/GetVideo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CustomExpMsgFault">
+        <soap:fault use="literal" name="CustomExpMsgFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RentItService">
+    <wsdl:port name="BasicHttpBinding_IRentIt" binding="tns:BasicHttpBinding_IRentIt">
+      <soap:address location="http://rentit.itu.dk/RentIt00/RentIt.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

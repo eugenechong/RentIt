@@ -64,6 +64,7 @@
     <Content Include="admin_header.ascx" />
     <Content Include="admin_media_part.ascx" />
     <Content Include="admin_user_part.ascx" />
+    <Content Include="close.aspx" />
     <Content Include="footer.ascx" />
     <Content Include="header.ascx" />
     <Content Include="includes.aspx" />
@@ -138,6 +139,13 @@
     </Compile>
     <Compile Include="admin_user_part.ascx.designer.cs">
       <DependentUpon>admin_user_part.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="close.aspx.cs">
+      <DependentUpon>close.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="close.aspx.designer.cs">
+      <DependentUpon>close.aspx</DependentUpon>
     </Compile>
     <Compile Include="footer.ascx.cs">
       <DependentUpon>footer.ascx</DependentUpon>
@@ -256,9 +264,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>6451</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:1107/</IISUrl>
+          <IISUrl>http://localhost:1108/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -9,7 +9,7 @@
            for (int i = 0; i < media_list.Length; i++)
            { %>
         <li class="span3 well" style="max-height: 350px; min-height: 350px;">
-            <a href="index.aspx?type=item&param=<%=media_list[i].MediaId %>">
+            <a href="index.aspx?item=<%=media_list[i].MediaId %>">
                 <img src="<%=media_list[i].Thumbnail %>" />
             </a>
             <div style="max-height: 70px; min-height: 70px;">
@@ -27,7 +27,7 @@
                         &nbsp;<%=media_list[i].Title %></h4>
                 <p><%=media_list[i].SmallDescription %></p>
             </div>
-            <a href="?type=item&param=<%=media_list[i].MediaId %>" class="btn btn-success tip" data-placement="bottom" rel="tooltip" title="Click for more details or rent">More</a>
+            <a href="?item=<%=media_list[i].MediaId %>" class="btn btn-success tip" data-placement="bottom" rel="tooltip" title="Click for more details or rent">More</a>
             <a href="#" class="btn btn-warning tip" data-placement="bottom" rel="tooltip" title="Add to bookmark"><i class="icon-bookmark"></i></a>
 
             <% for (int j = 0; j < media_list[i].AverageRating; j++)
