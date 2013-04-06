@@ -10,15 +10,12 @@
 
                 <%
                     //generate the fb share link
-
                     string url = "https://www.facebook.com/dialog/feed?app_id=103996706365313&link=http://green.smu.edu.sg/gspm2013/team09/index.aspx?item=" + media.MediaId + "&" +
                               "picture=" + media.Thumbnail + "&" +
                               "name=" + media.Title + "&" +
                               "caption=RentIt Team 9&" +
                               "description=" + media.SmallDescription + "&" +
-                              "redirect_uri=http://green.smu.edu.sg/gspm2013/team09/index.aspx?item=" + media.MediaId + "&";
-                          
-                    
+                              "redirect_uri=http://green.smu.edu.sg/gspm2013/team09/index.aspx?item=" + media.MediaId + "&";                                              
                 %>
                 <asp:LinkButton ID="bookmarkButton" runat="server" class="btn btn-warning tip" OnClick="bookmarkButton_Click" data-placement="bottom" rel="tooltip" title="Add to bookmark"><i class="icon-bookmark"></i></asp:LinkButton>
                 <a href="<%=url %>" class="btn btn-danger tip" data-placement="bottom" rel="tooltip" title="Share on Facebook"><i class="icon-share-alt"></i></a>

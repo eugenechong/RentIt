@@ -54,8 +54,7 @@
                 <td><%= media_list[i].Description %></td>
                 <td><%= media_list[i].RentalPrice %></td>
                 <td>
-                    <a  href="#edit-media-pop" data-toggle="modal"  class="btn btn-block btn-small btn-warning tip" data-placement="bottom" rel="tooltip" title="Update media information">Update</a>
-                    <a  href="#confirm-delete-pop" data-toggle="modal" class="btn btn-block btn-small btn-primary tip" data-placement="bottom" rel="tooltip" title="Delete this media forever">Delete </a>
+                    <a href="?item=<%=media_list[i].MediaId %>" class="btn btn-success tip" data-placement="bottom" rel="tooltip" title="Edit media information">Edit media</a>
                 </td>
             </tr>
             <% } %>
@@ -63,75 +62,6 @@
         </tbody>
     </table>
 </div>
-
-
-<!--ADD EDIT MEDIA MODAL---->
-<div id="edit-media-pop" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="H2">Update Media</h3>
-    </div>
-    <div class="modal-body">
-        
-        <form>
-
-        <div class="control-group">
-
-            <div class="controls">
-                <input class="input-xlarge" type="text" id="Text1" placeholder="Media Title">
-            </div>
-        </div>
-        <div class="control-group">
-
-            <div class="controls">
-                <input class="input-xlarge"  type="text" id="Text2" placeholder="Short Description">
-            </div>
-        </div>
-        <div class="control-group">
-
-            <div class="controls">
-                <textarea class="input-xlarge"  id="Textarea1" rows="5" placeholder="Long Description"></textarea>
-            </div>
-        </div>
-        <div class="control-group">
-
-            <div class="controls">
-                <select class="input-xlarge" id="Select1" name="add-add_category_list">
-                    <% for (int i=0; i<movie_category_list.Length; i++) { %>
-                        <option value="movie-<%= movie_category_list[i].Title %>">Movie - <%= movie_category_list[i].Title %></option>
-                    <% } %>
-                    <% for (int i=0; i<music_category_list.Length; i++) { %>
-                        <option value="music-<%= movie_category_list[i].Title %>">Music - <%= music_category_list[i].Title %></option>
-                    <% } %>
-                </select>
-            </div>
-        </div>
-
-        <div class="control-group">
-            <div class="controls">
-               <input class="input-xlarge"  type="text" id="Text3" placeholder="Thumbnail URL">
-            </div>
-        </div>
-
-                    <div class="control-group">
-            <div class="controls">
-               <input class="input-xlarge"  type="text" id="Text4" placeholder="Media URL">
-            </div>
-        </div>
-
-
-        <div class="control-group">
-            <div class="controls">
-
-                <button type="submit" class="btn-success btn">Update</button>
-            </div>
-        </div>                           
-             
-    </div>
-
-</div>
-
-
 
 <!--ADD NEW MEDIA MODAL---->
 <div id="media-pop" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -208,20 +138,3 @@
 </div>
 
 
-
-<!--- Confirm delete POP HERE--->
-
-<div id="confirm-delete-pop" class="modal hide fade">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3>Are you sure you want to delete?</h3>
-  </div>
-  <div class="modal-body">
-   This will permanently delete Iron Man 2. Think twice. 
-
-  </div>
-  <div class="modal-footer">
-    <a href="#" data-dismiss="modal" aria-hidden="true" class="btn">Close</a>
-    <a href="admin.aspx?type=media&msg=You have successfully deleted Iron Man 2! Enjoy!&msgTitle=Media Deleted" class="btn btn-warning">Delete</a>
-  </div>
-</div>

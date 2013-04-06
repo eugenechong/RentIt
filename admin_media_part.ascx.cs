@@ -47,9 +47,7 @@ namespace RentIt
         }
 
         protected void add_click(object sender, EventArgs e)
-        {
-            utility.loadFileService();            
-                           
+        {                                           
             RentIt.RentItServices.Music newMusic = null;
             RentIt.RentItServices.Movie newMovie = null;
 
@@ -117,15 +115,6 @@ namespace RentIt
 
         }
 
-        protected void update_click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void delete_click(object sender, EventArgs e)
-        {
-            
-        }
         
     }
 

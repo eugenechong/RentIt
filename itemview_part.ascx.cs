@@ -46,14 +46,14 @@ namespace RentIt
             isRented = utility.isRented(media.MediaId, user);       
             comment_list = media.Comments;
             media_url = utility.getMediaUrl(media.MediaId);
+
             //preload media for viewing if rented
             if (isRented)
             {
-                utility.loadFileService();
-                /*
+                utility.loadFileService();               
                 Tuple<string, RentItServices.Media, RentItServices.User> tuple = 
                     new Tuple<string, RentItServices.Media, RentItServices.User>(user.SharedKey, media, user);
-                */
+                
             }
         }
 

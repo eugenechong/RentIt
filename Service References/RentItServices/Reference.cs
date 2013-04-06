@@ -251,10 +251,16 @@ namespace RentIt.RentItServices {
         private bool IsSuspendedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Collections.Generic.Dictionary<RentIt.RentItServices.Media, int> RatingsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private RentIt.RentItServices.Rental[] RentalsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SharedKeyField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int UserIdField;
@@ -403,6 +409,19 @@ namespace RentIt.RentItServices {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Password {
+            get {
+                return this.PasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Collections.Generic.Dictionary<RentIt.RentItServices.Media, int> Ratings {
             get {
                 return this.RatingsField;
@@ -424,6 +443,19 @@ namespace RentIt.RentItServices {
                 if ((object.ReferenceEquals(this.RentalsField, value) != true)) {
                     this.RentalsField = value;
                     this.RaisePropertyChanged("Rentals");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SharedKey {
+            get {
+                return this.SharedKeyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SharedKeyField, value) != true)) {
+                    this.SharedKeyField = value;
+                    this.RaisePropertyChanged("SharedKey");
                 }
             }
         }

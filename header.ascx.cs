@@ -87,33 +87,33 @@ namespace RentIt
             currentUser.Age = int.Parse(this.Request.Form.Get("signup_age"));
             int country_position = int.Parse(this.Request.Form.Get("signup_country"));
             currentUser.Country = country_list[country_position];
-            /*
-                        if (password1.Equals("") || password2.Equals(""))
-                        {
-                            redirect_error(REG_FAIL, PWD_AGAIN);
-                        }
-                        else
-                        {
-                            if (password1.Equals(password2))
-                            {
-                                currentUser.Password = password1;
-                            }
-                            else
-                            {
-                                redirect_error(REG_FAIL, PWD_AGAIN);
-                            }
-                        }
+            
+                if (password1.Equals("") || password2.Equals(""))
+                {
+                    redirect_error(REG_FAIL, PWD_AGAIN);
+                }
+                else
+                {
+                    if (password1.Equals(password2))
+                    {
+                        currentUser.Password = password1;
+                    }
+                    else
+                    {
+                        redirect_error(REG_FAIL, PWD_AGAIN);
+                    }
+                }
 
-                        if (utility.createUser(currentUser.Email, currentUser.Password, currentUser.Gender, currentUser.Country, currentUser.Age))
-                        {
+                if (utility.createUser(currentUser.Email, currentUser.Password, currentUser.Gender, currentUser.Country, currentUser.Age))
+                {
 
-                            doLogin(currentUser.Email, currentUser.Password);
-                        }
-                        else
-                        {
-                            redirect_error(REG_FAIL, REG_AGAIN);
-                        }
-            */
+                    doLogin(currentUser.Email, currentUser.Password);
+                }
+                else
+                {
+                    redirect_error(REG_FAIL, REG_AGAIN);
+                }
+            
         }
 
         private void redirect_error(String msgTitle, String msg)
@@ -164,10 +164,6 @@ namespace RentIt
             String param = this.Request.Form.Get("param");
             Response.Redirect("~/index.aspx?type=" + actionType + "&param=" + param);
         }
-
-
-
-
       
     }
 

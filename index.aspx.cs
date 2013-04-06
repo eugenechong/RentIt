@@ -73,25 +73,7 @@ namespace RentIt
                     thisHeader.edollar = currentUser.Credits;
 
                 }
-           /*
 
-                //INSERT CODE TO GRAB USER INFO/LOGIN STATE HERE
-                login = true;
-                userid = 25;
-                username = "Weikiat";
-                email = "i@weikiat.net";
-                edollar = 50.0F;
-                dp_url = "https://graph.facebook.com/514457901/picture?type=square";
-
-                //PREPARE THE NAV BAR WITH INFO            
-                thisHeader.login = login;
-                thisHeader.userid = userid;
-                thisHeader.username = username;
-                thisHeader.email = email;
-                thisHeader.dp_url = dp_url;
-                thisHeader.edollar = edollar; 
-
-            */
             headerBar.Controls.Add(thisHeader);
             
             //PREPARE MSG BAR

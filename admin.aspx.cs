@@ -40,6 +40,7 @@ namespace RentIt
             //GET params that determine what UI to show
             String actionType = Request.QueryString["type"];
             String param = Request.QueryString["param"];
+            String item = Request.QueryString["item"];
 
             //GET params that determine if a msg need to be displayed
             String msgTitle = Request.QueryString["msgTitle"];
@@ -63,8 +64,7 @@ namespace RentIt
             thisHeader.userid = userid;
             thisHeader.username = username;
             thisHeader.email = email;
-
-
+            
             headerBar.Controls.Add(thisHeader);
 
             //PREPARE MSG BAR
@@ -82,7 +82,14 @@ namespace RentIt
                 }
                 if (actionType == "media")
                 {
-                    showMediaUI();
+                    showListMediaUI();
+                }
+
+                if (item != null)
+                { //handle ITEM VIEW
+
+                    //if a param is provided, proceed to do ITEM VIEW
+                    showMediaItemUI(Convert.ToInt32(item));
                 }
 
             }
@@ -92,16 +99,25 @@ namespace RentIt
             }
         }
 
-        private void showMediaUI()
+        private void showListMediaUI()
         {
             admin_media_part adminMedia = (admin_media_part)LoadControl("~/admin_media_part.ascx");
             mainBody.Controls.Add(adminMedia);
+        }
+
+        private void showMediaItemUI(int itemID) //HANDLES ITEM VIEW UI
+        {
+            //attach the listing to UI
+            admin_media_itemview_part viewUI = (admin_media_itemview_part)LoadControl("~/admin_media_itemview_part.ascx");
+            viewUI.itemID = itemID;
+            mainBody.Controls.Add(viewUI);
         }
 
         private void showUserUI(){
             admin_user_part adminUser = (admin_user_part)LoadControl("~/admin_user_part.ascx");
             mainBody.Controls.Add(adminUser);
         }
+
         private void showMsg(string msgTitle, string msg)
         {
             //attach the msgbar to UI
