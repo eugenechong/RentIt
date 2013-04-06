@@ -245,22 +245,16 @@ namespace RentIt.RentItServices {
         private RentIt.RentItServices.Gender GenderField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool IsAdminField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool IsFacebookField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PasswordField;
+        private bool IsSuspendedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Collections.Generic.Dictionary<RentIt.RentItServices.Media, int> RatingsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private RentIt.RentItServices.Rental[] RentalsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SharedKeyField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int UserIdField;
@@ -383,19 +377,6 @@ namespace RentIt.RentItServices {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsAdmin {
-            get {
-                return this.IsAdminField;
-            }
-            set {
-                if ((this.IsAdminField.Equals(value) != true)) {
-                    this.IsAdminField = value;
-                    this.RaisePropertyChanged("IsAdmin");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public bool IsFacebook {
             get {
                 return this.IsFacebookField;
@@ -409,14 +390,14 @@ namespace RentIt.RentItServices {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Password {
+        public bool IsSuspended {
             get {
-                return this.PasswordField;
+                return this.IsSuspendedField;
             }
             set {
-                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
-                    this.PasswordField = value;
-                    this.RaisePropertyChanged("Password");
+                if ((this.IsSuspendedField.Equals(value) != true)) {
+                    this.IsSuspendedField = value;
+                    this.RaisePropertyChanged("IsSuspended");
                 }
             }
         }
@@ -443,19 +424,6 @@ namespace RentIt.RentItServices {
                 if ((object.ReferenceEquals(this.RentalsField, value) != true)) {
                     this.RentalsField = value;
                     this.RaisePropertyChanged("Rentals");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SharedKey {
-            get {
-                return this.SharedKeyField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SharedKeyField, value) != true)) {
-                    this.SharedKeyField = value;
-                    this.RaisePropertyChanged("SharedKey");
                 }
             }
         }
@@ -509,9 +477,6 @@ namespace RentIt.RentItServices {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int AverageRatingField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private RentIt.RentItServices.MusicCategory[] CategoriesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private RentIt.RentItServices.Comment[] CommentsField;
@@ -568,19 +533,6 @@ namespace RentIt.RentItServices {
                 if ((this.AverageRatingField.Equals(value) != true)) {
                     this.AverageRatingField = value;
                     this.RaisePropertyChanged("AverageRating");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public RentIt.RentItServices.MusicCategory[] Categories {
-            get {
-                return this.CategoriesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CategoriesField, value) != true)) {
-                    this.CategoriesField = value;
-                    this.RaisePropertyChanged("Categories");
                 }
             }
         }
@@ -1049,9 +1001,9 @@ namespace RentIt.RentItServices {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="MusicCategory", Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain", IsReference=true)]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MovieCategory", Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain", IsReference=true)]
     [System.SerializableAttribute()]
-    public partial class MusicCategory : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class MovieCategory : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -1110,9 +1062,9 @@ namespace RentIt.RentItServices {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="MovieCategory", Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain", IsReference=true)]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MusicCategory", Namespace="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain", IsReference=true)]
     [System.SerializableAttribute()]
-    public partial class MovieCategory : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class MusicCategory : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -1201,7 +1153,7 @@ namespace RentIt.RentItServices {
         System.Tuple<RentIt.RentItServices.Media, string> GetMedia(int mediaID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/RentMedia", ReplyAction="http://tempuri.org/IRentitService/RentMediaResponse")]
-        System.Tuple<bool, string> RentMedia(int mediaID, RentIt.RentItServices.User user, int credits, double duration);
+        System.Tuple<bool, string> RentMedia(int mediaID, RentIt.RentItServices.User user, double duration);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/BookmarkMedia", ReplyAction="http://tempuri.org/IRentitService/BookmarkMediaResponse")]
         System.Tuple<bool, string> BookmarkMedia(int mediaId, RentIt.RentItServices.User user);
@@ -1253,6 +1205,21 @@ namespace RentIt.RentItServices {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/GetMostPopularMedia", ReplyAction="http://tempuri.org/IRentitService/GetMostPopularMediaResponse")]
         System.Tuple<RentIt.RentItServices.Media[], string> GetMostPopularMedia(int amountOfResults);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/GetAllUsers", ReplyAction="http://tempuri.org/IRentitService/GetAllUsersResponse")]
+        System.Tuple<RentIt.RentItServices.User[], string> GetAllUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/GetAllMedia", ReplyAction="http://tempuri.org/IRentitService/GetAllMediaResponse")]
+        System.Tuple<RentIt.RentItServices.Media[], string> GetAllMedia();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/UploadByUrl", ReplyAction="http://tempuri.org/IRentitService/UploadByUrlResponse")]
+        System.Tuple<bool, string> UploadByUrl(RentIt.RentItServices.Media media);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/GetMediaUrl", ReplyAction="http://tempuri.org/IRentitService/GetMediaUrlResponse")]
+        System.Tuple<string, string> GetMediaUrl(int mediaId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentitService/SuspendUser", ReplyAction="http://tempuri.org/IRentitService/SuspendUserResponse")]
+        System.Tuple<bool, string> SuspendUser(string UserEmail);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1318,8 +1285,8 @@ namespace RentIt.RentItServices {
             return base.Channel.GetMedia(mediaID);
         }
         
-        public System.Tuple<bool, string> RentMedia(int mediaID, RentIt.RentItServices.User user, int credits, double duration) {
-            return base.Channel.RentMedia(mediaID, user, credits, duration);
+        public System.Tuple<bool, string> RentMedia(int mediaID, RentIt.RentItServices.User user, double duration) {
+            return base.Channel.RentMedia(mediaID, user, duration);
         }
         
         public System.Tuple<bool, string> BookmarkMedia(int mediaId, RentIt.RentItServices.User user) {
@@ -1388,6 +1355,26 @@ namespace RentIt.RentItServices {
         
         public System.Tuple<RentIt.RentItServices.Media[], string> GetMostPopularMedia(int amountOfResults) {
             return base.Channel.GetMostPopularMedia(amountOfResults);
+        }
+        
+        public System.Tuple<RentIt.RentItServices.User[], string> GetAllUsers() {
+            return base.Channel.GetAllUsers();
+        }
+        
+        public System.Tuple<RentIt.RentItServices.Media[], string> GetAllMedia() {
+            return base.Channel.GetAllMedia();
+        }
+        
+        public System.Tuple<bool, string> UploadByUrl(RentIt.RentItServices.Media media) {
+            return base.Channel.UploadByUrl(media);
+        }
+        
+        public System.Tuple<string, string> GetMediaUrl(int mediaId) {
+            return base.Channel.GetMediaUrl(mediaId);
+        }
+        
+        public System.Tuple<bool, string> SuspendUser(string UserEmail) {
+            return base.Channel.SuspendUser(UserEmail);
         }
     }
     

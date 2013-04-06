@@ -172,6 +172,36 @@
   <wsdl:message name="IRentitService_GetMostPopularMedia_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetMostPopularMediaResponse" />
   </wsdl:message>
+  <wsdl:message name="IRentitService_GetAllUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsers" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_GetAllUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_GetAllMedia_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMedia" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_GetAllMedia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMediaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_UploadByUrl_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadByUrl" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_UploadByUrl_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadByUrlResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_GetMediaUrl_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMediaUrl" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_GetMediaUrl_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMediaUrlResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_SuspendUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:SuspendUser" />
+  </wsdl:message>
+  <wsdl:message name="IRentitService_SuspendUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SuspendUserResponse" />
+  </wsdl:message>
   <wsdl:message name="UploadFileRequest">
     <wsdl:part name="parameters" element="tns:UploadFileRequest" />
   </wsdl:message>
@@ -298,6 +328,26 @@
     <wsdl:operation name="GetMostPopularMedia">
       <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/GetMostPopularMedia" message="tns:IRentitService_GetMostPopularMedia_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/GetMostPopularMediaResponse" message="tns:IRentitService_GetMostPopularMedia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/GetAllUsers" message="tns:IRentitService_GetAllUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/GetAllUsersResponse" message="tns:IRentitService_GetAllUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMedia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/GetAllMedia" message="tns:IRentitService_GetAllMedia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/GetAllMediaResponse" message="tns:IRentitService_GetAllMedia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadByUrl">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/UploadByUrl" message="tns:IRentitService_UploadByUrl_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/UploadByUrlResponse" message="tns:IRentitService_UploadByUrl_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMediaUrl">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/GetMediaUrl" message="tns:IRentitService_GetMediaUrl_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/GetMediaUrlResponse" message="tns:IRentitService_GetMediaUrl_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SuspendUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentitService/SuspendUser" message="tns:IRentitService_SuspendUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentitService/SuspendUserResponse" message="tns:IRentitService_SuspendUser_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IRentItFileService">
@@ -548,6 +598,51 @@
     </wsdl:operation>
     <wsdl:operation name="GetMostPopularMedia">
       <soap:operation soapAction="http://tempuri.org/IRentitService/GetMostPopularMedia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsers">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/GetAllUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMedia">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/GetAllMedia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadByUrl">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/UploadByUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMediaUrl">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/GetMediaUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SuspendUser">
+      <soap:operation soapAction="http://tempuri.org/IRentitService/SuspendUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

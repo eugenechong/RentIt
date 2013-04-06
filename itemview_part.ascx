@@ -82,7 +82,7 @@
                     <param name="AutoRewind" value="True">
                     <embed type="application/x-mplayer2"
                         pluginspage="http://www.microsoft.com/Windows/Downloads/Contents/MediaPlayer/"
-                        width="400" height="280" src="" <!------http://www.2atoms.com/video/haha/fighting_cats4.wmv-------------->
+                        width="400" height="280" src="<%= media_url %>"
                         autostart="True" showcontrols="True" showstatusbar="False" showdisplay="False" autorewind="True">
                 </embed> 
                 </object>

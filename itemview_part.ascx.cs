@@ -18,7 +18,7 @@ namespace RentIt
         public RentItServices.Comment[] comment_list = null;
 
         public bool isRented = false;
-
+        public string media_url = null;
 
         private RentItServices.User getUser()
         {
@@ -45,14 +45,15 @@ namespace RentIt
             media = utility.getMedia(itemID);
             isRented = utility.isRented(media.MediaId, user);       
             comment_list = media.Comments;
-
+            media_url = utility.getMediaUrl(media.MediaId);
             //preload media for viewing if rented
             if (isRented)
             {
                 utility.loadFileService();
+                /*
                 Tuple<string, RentItServices.Media, RentItServices.User> tuple = 
                     new Tuple<string, RentItServices.Media, RentItServices.User>(user.SharedKey, media, user);
-
+                */
             }
         }
 
@@ -99,7 +100,7 @@ namespace RentIt
 
         protected void rent_click(object sender, EventArgs e)
         {
-            Tuple <bool,string> rentStatus = utility.rentMedia(media.MediaId, user, Convert.ToInt32(user.Credits), 7);
+            Tuple <bool,string> rentStatus = utility.rentMedia(media.MediaId, user, 7);
             if (rentStatus.Item1)
             {
                 Response.Redirect("~/index.aspx?msgTitle=Successfully rented "+ media.Title+ ":)&msg=You can now have access to stream this item!&item=" + itemID);

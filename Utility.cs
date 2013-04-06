@@ -176,15 +176,29 @@ namespace RentIt
             return rentItServiceClient.SearchMovieFromCategory(category).Item1;
         }
 
-        public Tuple<bool,string> rentMedia(int mediaId, RentItServices.User user, int credits, double duration)
+        public Tuple<bool,string> rentMedia(int mediaId, RentItServices.User user, double duration)
         {
-            return rentItServiceClient.RentMedia(mediaId, user, credits, duration);
+            return rentItServiceClient.RentMedia(mediaId, user, duration);
+        }
+
+        public RentIt.RentItServices.User[] getAllUsers()
+        {
+            return rentItServiceClient.GetAllUsers().Item1;
+        }
+
+        public RentIt.RentItServices.Media[] getAllMedia()
+        {
+            return rentItServiceClient.GetAllMedia().Item1;
         }
 
         public RentIt.RentItServices.Country[] getCountries()
-        {
-            
+        {            
             return rentItServiceClient.GetCountries();
+        }
+
+        public string getMediaUrl(int mediaId)
+        {
+            return rentItServiceClient.GetMediaUrl(mediaId).Item1;
         }
 
         public RentIt.RentItServices.Rental[] getRentalHistory(RentIt.RentItServices.User user) 
@@ -205,6 +219,11 @@ namespace RentIt
         public bool bookmarkMedia(int mediaId, RentIt.RentItServices.User user)
         {
             return rentItServiceClient.BookmarkMedia(mediaId, user).Item1;
+        }
+
+        public bool uploadMedia(RentIt.RentItServices.Media media)
+        {
+            return rentItServiceClient.UploadByUrl(media).Item1;
         }
 
         public static String GetTeamPath(String serverPath)

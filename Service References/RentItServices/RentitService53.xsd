@@ -139,7 +139,6 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="mediaID" type="xs:int" />
         <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" minOccurs="0" name="user" nillable="true" type="q13:User" />
-        <xs:element minOccurs="0" name="credits" type="xs:int" />
         <xs:element minOccurs="0" name="duration" type="xs:double" />
       </xs:sequence>
     </xs:complexType>
@@ -391,14 +390,80 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="UploadFileRequest">
+  <xs:element name="GetAllUsers">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllUsersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q42="http://schemas.microsoft.com/Message" name="FileStream" type="q42:StreamBody" />
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="GetAllUsersResult" nillable="true" type="q42:TupleOfArrayOfUserstringyhomVriE" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/System" name="MediaLoginAndUserTuple" nillable="true" type="q43:TupleOfstringMediaUserVjFLLhCb" />
+  <xs:element name="GetAllMedia">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllMediaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="GetAllMediaResult" nillable="true" type="q43:TupleOfArrayOfMediastringyhomVriE" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadByUrl">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/PersistenceLayerHibernate.Domain" minOccurs="0" name="media" nillable="true" type="q44:Media" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadByUrlResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="UploadByUrlResult" nillable="true" type="q45:TupleOfbooleanstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMediaUrl">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="mediaId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMediaUrlResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="GetMediaUrlResult" nillable="true" type="q46:TupleOfstringstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SuspendUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserEmail" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SuspendUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="SuspendUserResult" nillable="true" type="q47:TupleOfbooleanstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadFileRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.microsoft.com/Message" name="FileStream" type="q48:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/System" name="MediaLoginAndUserTuple" nillable="true" type="q49:TupleOfstringMediaUserVjFLLhCb" />
   <xs:element name="UploadFileResult">
     <xs:complexType>
       <xs:sequence>
@@ -415,7 +480,7 @@
   <xs:element name="DownloadFileResult">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q44="http://schemas.microsoft.com/Message" name="FileDownload" type="q44:StreamBody" />
+        <xs:element xmlns:q50="http://schemas.microsoft.com/Message" name="FileDownload" type="q50:StreamBody" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

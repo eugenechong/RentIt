@@ -45,12 +45,10 @@
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FbImageUrl" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Gender" type="tns:Gender" />
-      <xs:element minOccurs="0" name="IsAdmin" type="xs:boolean" />
       <xs:element minOccurs="0" name="IsFacebook" type="xs:boolean" />
-      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsSuspended" type="xs:boolean" />
       <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Ratings" nillable="true" type="q1:ArrayOfKeyValueOfMediaintyhomVriE" />
       <xs:element minOccurs="0" name="Rentals" nillable="true" type="tns:ArrayOfRental" />
-      <xs:element minOccurs="0" name="SharedKey" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="UserId" type="xs:int" />
       <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
     </xs:sequence>
@@ -67,7 +65,6 @@
   <xs:complexType name="Media">
     <xs:sequence>
       <xs:element minOccurs="0" name="AverageRating" type="xs:int" />
-      <xs:element minOccurs="0" name="Categories" nillable="true" type="tns:ArrayOfMusicCategory" />
       <xs:element minOccurs="0" name="Comments" nillable="true" type="tns:ArrayOfComment" />
       <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Extension" nillable="true" type="xs:string" />
@@ -85,21 +82,6 @@
     <xs:attribute ref="ser:Ref" />
   </xs:complexType>
   <xs:element name="Media" nillable="true" type="tns:Media" />
-  <xs:complexType name="ArrayOfMusicCategory">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="MusicCategory" nillable="true" type="tns:MusicCategory" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfMusicCategory" nillable="true" type="tns:ArrayOfMusicCategory" />
-  <xs:complexType name="MusicCategory">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CategoryId" type="xs:int" />
-      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
-    </xs:sequence>
-    <xs:attribute ref="ser:Id" />
-    <xs:attribute ref="ser:Ref" />
-  </xs:complexType>
-  <xs:element name="MusicCategory" nillable="true" type="tns:MusicCategory" />
   <xs:complexType name="ArrayOfComment">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Comment" nillable="true" type="tns:Comment" />
@@ -148,6 +130,15 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Music" nillable="true" type="tns:Music" />
+  <xs:complexType name="MusicCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CategoryId" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="MusicCategory" nillable="true" type="tns:MusicCategory" />
   <xs:complexType name="ArrayOfRental">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Rental" nillable="true" type="tns:Rental" />
@@ -179,4 +170,16 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfMovieCategory" nillable="true" type="tns:ArrayOfMovieCategory" />
+  <xs:complexType name="ArrayOfMusicCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MusicCategory" nillable="true" type="tns:MusicCategory" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMusicCategory" nillable="true" type="tns:ArrayOfMusicCategory" />
+  <xs:complexType name="ArrayOfUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUser" nillable="true" type="tns:ArrayOfUser" />
 </xs:schema>

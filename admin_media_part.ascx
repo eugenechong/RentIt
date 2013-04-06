@@ -15,8 +15,8 @@
                 <th>Mediaid</th>
                 <th>Thumbnail</th>
                 <th>Type</th>
-                <th>Title</th>
                 <th>Category</th>
+                <th>Title</th>                
                 <th>Short Description</th>
                 <th>Description</th>
                 <th>Rental Cost</th>
@@ -25,22 +25,40 @@
         </thead>
         <tbody>
             <!--Loop media here-->
+            <% for (int i=0; i<media_list.Length; i++) { %>
             <tr>
-                <td>1</td>
+                <td><%= media_list[i].MediaId %></td>
                 <td>
-                    <img src="http://moviemusicuk.files.wordpress.com/2010/10/ironman2cover.jpg" width="100px" /></td>
-                <td><i class="icon-facetime-video"></i></td>
-                <td>Iron Man 2</td>
-                <td>Movie - Thriller</td>
-                <td>Here's a short description</td>
-                <td>here's a really really long description.. Long leh.</td>
-                <td>$2</td>
-
+                    <img src="<%= media_list[i].Thumbnail %>" width="100px"/>                    
+                </td>
+                <td>
+                    <% 
+                       if (media_list[i].GetType().Name == "Movie")
+                       { 
+                        movie = (RentIt.RentItServices.Movie) media_list[i]; %>
+                        <i class="icon-facetime-video"></i>
+                </td>
+                <td>
+                        <%= movie.Category.Title %>
+                </td>
+                    <% } else { 
+                        music = (RentIt.RentItServices.Music) media_list[i]; %>
+                        <i class="icon-music"></i>
+                </td>
+                <td>
+                        <%= music.Category.Title %>
+                </td>
+                    <% } %>                
+                <td><%= media_list[i].Title %></td>                
+                <td><%= media_list[i].SmallDescription %></td>
+                <td><%= media_list[i].Description %></td>
+                <td><%= media_list[i].RentalPrice %></td>
                 <td>
                     <a  href="#edit-media-pop" data-toggle="modal"  class="btn btn-block btn-small btn-warning tip" data-placement="bottom" rel="tooltip" title="Update media information">Update</a>
                     <a  href="#confirm-delete-pop" data-toggle="modal" class="btn btn-block btn-small btn-primary tip" data-placement="bottom" rel="tooltip" title="Delete this media forever">Delete </a>
                 </td>
             </tr>
+            <% } %>
             <!-- end of loop---->
         </tbody>
     </table>
@@ -54,9 +72,7 @@
         <h3 id="H2">Update Media</h3>
     </div>
     <div class="modal-body">
-
-
-
+        
         <form>
 
         <div class="control-group">
@@ -80,12 +96,13 @@
         <div class="control-group">
 
             <div class="controls">
-                <select class="input-xlarge"  id="Select1">
-                    <option value="1">Movie - Thriller</option>
-                    <option value="2">Movie - Comedy</option>
-                    <option value="3">Music - Jazz</option>
-                    <option value="4">Music - Classical</option>
-                    <option value="5">Music - Pop</option>
+                <select class="input-xlarge" id="Select1" name="add-add_category_list">
+                    <% for (int i=0; i<movie_category_list.Length; i++) { %>
+                        <option value="movie-<%= movie_category_list[i].Title %>">Movie - <%= movie_category_list[i].Title %></option>
+                    <% } %>
+                    <% for (int i=0; i<music_category_list.Length; i++) { %>
+                        <option value="music-<%= movie_category_list[i].Title %>">Music - <%= music_category_list[i].Title %></option>
+                    <% } %>
                 </select>
             </div>
         </div>
@@ -108,9 +125,7 @@
 
                 <button type="submit" class="btn-success btn">Update</button>
             </div>
-        </div>
-        </form>
-                       
+        </div>                           
              
     </div>
 
@@ -124,37 +139,36 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="H1">Add new Media</h3>
     </div>
-    <div class="modal-body">       
 
+    <div class="modal-body">       
         <div class="control-group">
             <div class="controls">
                 <input type="radio" id="media_type" name="media_type" value="Music">Music                
                 <input type="radio" id="media_type" name="media_type" value="Movie">Movie
             </div>
         </div>
-        <div class="control-group">
-
+        
         <div class="control-group">
             <div class="controls">
                 <input class="input-xlarge" type="text" id="add-title" name="add-title" placeholder="Media Title">
             </div>
         </div>
-        <div class="control-group">
 
+        <div class="control-group">
             <div class="controls">
                 <input class="input-xlarge"  type="text" id="add-shortdescription" name="add-shortdescription" placeholder="Short Description">
             </div>
         </div>
-        <div class="control-group">
 
+        <div class="control-group">
             <div class="controls">
                 <textarea class="input-xlarge"  id="add-longdescription" name="add-longdescription" rows="5" placeholder="Long Description"></textarea>
             </div>
         </div>
-        <div class="control-group">
 
+        <div class="control-group">
             <div class="controls">
-                <select class="input-xlarge" id="add_category_list" name="add-add_category_list">
+                <select class="input-xlarge" id="add_category_list" name="add_category_list">
                     <% for (int i=0; i<movie_category_list.Length; i++) { %>
                         <option value="movie-<%= movie_category_list[i].Title %>">Movie - <%= movie_category_list[i].Title %></option>
                     <% } %>
@@ -182,8 +196,7 @@
                <input class="input-xlarge"  type="text" id="add-media-url" name="add-media-url" placeholder="Media URL">
             </div>
         </div>
-
-
+        
         <div class="control-group">
             <div class="controls">
                  <asp:Button ID="btn_add" class="btn-success btn" OnClick="add_click" runat="server" Text="Add Media" />

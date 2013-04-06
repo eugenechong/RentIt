@@ -12,6 +12,9 @@ namespace RentIt
         public Utility utility = null;
 
         public RentIt.RentItServices.User currentUser = null;
+        public RentIt.RentItServices.Media[] media_list = null;
+        public RentIt.RentItServices.Movie movie = null; 
+        public RentIt.RentItServices.Music music = null; 
         public RentIt.RentItServices.MovieCategory[] movie_category_list = null;
         public RentIt.RentItServices.MusicCategory[] music_category_list = null;
 
@@ -37,7 +40,8 @@ namespace RentIt
             utility.loadClient();
 
             currentUser = getUser();
-
+            
+            media_list = utility.getAllMedia();            
             music_category_list = utility.getMusicCategories();
             movie_category_list = utility.getMovieCategories();
         }
@@ -74,6 +78,7 @@ namespace RentIt
                 newMusic.RentalPrice = rentalPrice;
                 newMusic.Thumbnail = thumbnail_url;
                 newMusic.Source = media_url;
+                //newMusic.UploadedBy = currentUser; //to change
             } else {
                 newMovie = new RentIt.RentItServices.Movie();
                 newMovie.Title = title;
@@ -90,18 +95,17 @@ namespace RentIt
                 newMovie.RentalPrice = rentalPrice;
                 newMovie.Thumbnail = thumbnail_url;
                 newMovie.Source = media_url;
+                //newMovie.UploadedBy = currentUser; //to change
             }
 
-            RentIt.RentItServices.UploadFileRequest uploadRequest = new RentItServices.UploadFileRequest();
+            RentIt.RentItServices.Media media = null;
             if (newMusic != null) {
-                uploadRequest.MediaLoginAndUserTuple = new Tuple<string, RentItServices.Media, RentItServices.User>(currentUser.SharedKey, newMusic, currentUser);
+                media = newMusic;
             } else {
-                uploadRequest.MediaLoginAndUserTuple = new Tuple<string, RentItServices.Media, RentItServices.User>(currentUser.SharedKey, newMovie, currentUser);
-            }
-            RentIt.RentItServices.UploadFileResult uploadResult = new RentItServices.UploadFileResult(false, "");
-            uploadResult = utility.uploadFile(uploadRequest);
+                media = newMovie;
+            }            
             
-            if (uploadResult.Success)
+            if (utility.uploadMedia(media))
             {
                 Response.Redirect("admin.aspx?type=media&msg=You have successfully uploaded " + title + "!&msgTitle=Media Uploaded");
             }
@@ -113,7 +117,6 @@ namespace RentIt
 
         }
 
-/*
         protected void update_click(object sender, EventArgs e)
         {
 
@@ -121,10 +124,9 @@ namespace RentIt
 
         protected void delete_click(object sender, EventArgs e)
         {
-            utility.DeleteMedia();
+            
         }
-*/
         
-
     }
+
 }
