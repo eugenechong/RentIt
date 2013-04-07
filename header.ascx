@@ -75,8 +75,7 @@
                     <ul class="dropdown-menu" aria-labelledby="drop2">
                         <li class="disabled"><a tabindex="-1" href="#" style="color: black;"><i class="icon-money"></i>&nbsp;Balance: $<%=edollar %></a></li>
                         <li class="divider"></li>
-                        <li><a tabindex="-1" href="#"><i class="icon-cog"></i>&nbsp;Account Settings</a></li>
-
+                        
                         <li>
                             <asp:LinkButton ID="logoutButton" runat="server" OnClick="logoutButton_Click"><i class="icon-signout"></i>&nbsp;Logout</asp:LinkButton></li>
                     </ul>
@@ -109,14 +108,23 @@
             <!--LOOP CART ITEM HERE-->
             <%
             string cart_share_url = "";
-                for (int i = 0; i < rental_list.Length; i++)//for (int i = 0; i < 0; i++)
+                for (int i = 0; i < rental_list.Length; i++)
+                
+                //for (int i = 0; i < 0; i++)
                { %>
             <li class="media ">
                 <a class="pull-left" href="#">
                     <img class="media-object" style="height: 100px;" src="<%=rental_list[i].Media.Thumbnail %>">
                 </a>
                 <div class="media-body">
-                    <h4 class="media-heading"><i class="icon-music"></i>&nbsp;<%=rental_list[i].Media.Title %></h4>
+                    <h4 class="media-heading"><% if (rental_list[i].GetType().Name == "Movie")
+                       { %>
+                    <i class="icon-facetime-video"></i>
+                    <% }
+                       else
+                       { %>
+                    <i class="icon-music"></i>
+                    <% } %>&nbsp;<%=rental_list[i].Media.Title %></h4>
                     <p>
                         <%=rental_list[i].Media.SmallDescription %><br />
                         <span class="label">Rented on <%=rental_list[i].StartDate %> for $<%=rental_list[i].Price %></span>

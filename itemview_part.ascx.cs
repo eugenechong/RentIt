@@ -103,7 +103,7 @@ namespace RentIt
             Tuple <bool,string> rentStatus = utility.rentMedia(media.MediaId, user, 7);
             if (rentStatus.Item1)
             {
-                Response.Redirect("~/index.aspx?msgTitle=Successfully rented "+ media.Title+ ":)&msg=You can now have access to stream this item!&item=" + itemID);
+                Response.Redirect("~/index.aspx?msgTitle=Successfully rented "+ media.Title+ " :)&msg=You can now stream this item!&item=" + itemID);
             }
             else
             {

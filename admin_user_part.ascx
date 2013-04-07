@@ -26,7 +26,11 @@
                 <td><%=user_list[i].Age %></td>
                 <td><%=user_list[i].Country.Name %></td>                
                 <td>
-                    <a href="#confirm-suspend-pop" class="btn btn-small btn-warning tip" data-placement="bottom" rel="tooltip" title="Suspend this user. User won't be able to login.">Suspend</a>
+                    <% if (user_list[i].IsSuspended==false ){ %>
+                    <a href="support_actions.aspx?suspend=<%=user_list[i].Email %>" class="btn btn-small btn-warning tip" data-placement="bottom" rel="tooltip" title="Suspend this user. User won't be able to login.">Suspend</a>
+                    <% }else{ %>
+                     <a href="support_actions.aspx?unsuspend=<%=user_list[i].Email %>" class="btn btn-small btn-success tip" data-placement="bottom" rel="tooltip" title="Unsuspend this user. User will be able to login.">Unsuspend</a>
+                    <%} %>
                 </td>
             </tr>
             <% } %>
@@ -35,19 +39,3 @@
     </table>
 </div>
 
-<!--- Confirm suspend POP HERE--->
-
-<div id="confirm-suspend-pop" class="modal hide fade">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3>Are you sure you want to suspend?</h3>
-  </div>
-  <div class="modal-body">
-   This will permanently suspend Weikiat. Think twice. 
-
-  </div>
-  <div class="modal-footer">
-    <a href="#" data-dismiss="modal" aria-hidden="true" class="btn">Close</a>
-    <a href="admin.aspx?type=media&msg=You have successfully suspended Weikiat!" class="btn btn-warning">Suspend</a>
-  </div>
-</div>

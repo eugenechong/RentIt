@@ -109,6 +109,6 @@
   </div>
   <div class="modal-footer">
     <a href="#" data-dismiss="modal" aria-hidden="true" class="btn">Close</a>    
-    <asp:Button ID="btn_delete" class="btn btn-block btn-small btn-warning tip" data-placement="bottom" rel="tooltip" title="Delete media" OnClick="delete_click" runat="server" Text="Delete" />
+    <asp:Button ID="btn_delete" class="btn   btn-warning tip" data-placement="bottom" rel="tooltip" title="Delete media" OnClick="delete_click" runat="server" Text="Delete" />
   </div>
 </div>

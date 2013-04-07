@@ -89,7 +89,7 @@
             <% }  %>
 
 
-            <div class="span8 well" style="background-color: #4dccd9;">
+            <div class="span8 well pull-right" style="background-color: #4dccd9;">
                 <h3>Comments</h3>
                 <div class="media">
                     <!--LOOP INDIVIDUAL COMMENTS HERE--->
@@ -176,6 +176,6 @@
     </div>
     <div class="modal-footer">
         <a href="#" data-dismiss="modal"   class="btn">Close</a>
-        <asp:Button ID="btn_rent"  class="btn btn-primary" OnClick="rent_click" runat="server" Text="Confirm Rent"/>
+        <asp:LinkButton ID="btn_rent2"  class="btn btn-primary" OnClick="rent_click" runat="server" Text="Confirm Rent"/>
     </div>
 </div>

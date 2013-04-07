@@ -51,20 +51,32 @@ namespace RentIt
             utility.loadClient();
             
             //INSERT CODE TO GRAB USER INFO/LOGIN STATE HERE
-            login = true;
-            userid = 25;
-            username = "Weikiat";
-            email = "i@weikiat.net";
+           // login = false;
+            //userid = 25;
+            //username = "Weikiat";
+            //email = "i@weikiat.net";
 
             //currentUser = getUser();
 
             //PREPARE THE NAV BAR WITH INFO
             admin_header thisHeader = (admin_header)LoadControl("~/admin_header.ascx");
-            thisHeader.login = login;
-            thisHeader.userid = userid;
-            thisHeader.username = username;
-            thisHeader.email = email;
-            
+            currentUser = getUser();
+
+            if (currentUser != null)
+            {
+
+                //login = true;                  
+                //login = utility.isLoggedIn(currentUser);
+                login = true;
+                thisHeader.login = login;
+
+                thisHeader.userid = currentUser.UserId;
+                thisHeader.username = currentUser.Username;
+                thisHeader.email = currentUser.Email;
+               
+
+            }
+
             headerBar.Controls.Add(thisHeader);
 
             //PREPARE MSG BAR
@@ -73,9 +85,15 @@ namespace RentIt
                 showMsg(msgTitle, msg);
             }
 
+          
+
 
             if (login)
             {
+                if (actionType == "analytics")
+                {
+                    showAnalytics();
+                }
                 if (actionType == "user")
                 {
                     showUserUI();
@@ -97,6 +115,12 @@ namespace RentIt
             {
 
             }
+        }
+
+        private void showAnalytics()
+        {
+            admin_analyatics_part adminA = (admin_analyatics_part)LoadControl("~/admin_analyatics_part.ascx");
+            mainBody.Controls.Add(adminA);
         }
 
         private void showListMediaUI()

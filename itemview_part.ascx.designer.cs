@@ -40,12 +40,12 @@ namespace RentIt {
         protected global::System.Web.UI.WebControls.Button commentButton;
         
         /// <summary>
-        /// btn_rent control.
+        /// btn_rent2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_rent;
+        protected global::System.Web.UI.WebControls.LinkButton btn_rent2;
     }
 }

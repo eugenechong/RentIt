@@ -128,7 +128,7 @@ namespace RentIt
 
         public Tuple<Media[], string> getPopularList()
         {
-            return rentItServiceClient.GetMostPopularMedia(20);
+            return rentItServiceClient.GetMostPopularMedia(5);
         }
 
         public bool userLogout(String userEmail)

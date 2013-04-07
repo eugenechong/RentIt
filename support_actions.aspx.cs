@@ -30,11 +30,85 @@ namespace RentIt
             if (deleteBookmark != null)
             {
                 doDeleteBookmark(Convert.ToInt32(deleteBookmark));
+                return;
+            }
+
+            //determine if suspend action
+            String suspendUser = Request.QueryString["suspend"];
+            if (suspendUser != null)
+            {
+                doSuspend(suspendUser);
+                return;
+            }
+
+            //determine if unsuspend action
+            String unsuspendUser = Request.QueryString["unsuspend"];
+            if (unsuspendUser != null)
+            {
+                doUnSuspend(unsuspendUser);
+                return;
             }
 
 
 
         }
+
+        private void doUnSuspend(string email)
+        {
+            //can add code here to check if user is admin
+
+            RentItServices.User[] users = utility.getAllUsers();
+            int toChange = 0;
+            for (int i = 0; i < users.Length; i++)
+            {
+                if (users[i].Email.Equals(email))
+                {
+                    toChange = i;
+                    i = users.Length;
+                }
+            }
+
+            users[toChange].IsSuspended = false;
+            if (utility.updateUser(users[toChange]))
+            {
+                Response.Redirect("~/admin.aspx?type=user&msg=User " + users[toChange].Username+ " unsuspended!");
+            }
+            else
+            {
+                Response.Redirect("~/admin.aspx?type=user&msg=Error unsuspending user!");
+            }
+
+
+        }
+
+        private void doSuspend(string email)
+        {
+            //can add code here to check if user is admin
+
+            RentItServices.User[] users = utility.getAllUsers();
+            int toChange = 0;
+            for (int i = 0; i < users.Length; i++)
+            {
+                if (users[i].Email.Equals(email))
+                {
+                    toChange = i;
+                    i = users.Length;
+                }
+            }
+            
+            users[toChange].IsSuspended = true;
+            if (utility.updateUser(users[toChange]))
+            {
+                Response.Redirect("~/admin.aspx?type=user&msg=User "+users[toChange].Username +" suspended!");
+            }
+            else
+            {
+                Response.Redirect("~/admin.aspx?type=user&msg=Error suspending user!");
+            }
+
+
+        }
+
 
         private void doDeleteBookmark(int mediaId)
         {
