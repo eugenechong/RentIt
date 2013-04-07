@@ -16,7 +16,7 @@
         <div>
             <div class="span5 well" style="background-color: #4dccd9;">
                 <p>
-                    <img src="<%=media.Thumbnail %>" alt="">
+                    <img src="<%=media.Thumbnail %>" width="250px">
                 </p>
         
                 <% if (media.GetType().Name == "Movie")
@@ -80,7 +80,7 @@
                 <div class="control-group">
                     <h4>Media URL</h4>
                     <div class="controls">
-                       <input class="input-xlarge"  type="text" id="edit-media-url" name="edit-media-url" value="<%=media.RentalPrice %>" />
+                       <input class="input-xlarge"  type="text" id="edit-media-url" name="edit-media-url" value="<%=media.Source %>" />
                     </div>
                 </div>
 

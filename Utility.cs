@@ -107,6 +107,10 @@ namespace RentIt
         
         }
 
+        public double getGenderAnalytics(RentIt.RentItServices.Media media)
+        {
+            return rentItServiceClient.GetGenderAnalytics(media).Item1;
+        }
 
         public Image byteArrayToImage(byte[] byteArrayIn)
         {

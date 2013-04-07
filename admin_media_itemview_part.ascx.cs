@@ -27,7 +27,7 @@ namespace RentIt
             //call the web service to retrieve media data
             media = utility.getMedia(itemID);                        
             media_url = utility.getMediaUrl(media.MediaId);
-
+            
             music_category_list = utility.getMusicCategories();
             movie_category_list = utility.getMovieCategories();
         }
@@ -42,13 +42,13 @@ namespace RentIt
             String longdesc = this.Request.Form.Get("edit-longdescription");
             String category = this.Request.Form.Get("edit_category_list");
             category = category.Substring(category.IndexOf('-') + 1);
-            double rentalPrice = Convert.ToDouble(this.Request.Form.Get("edit-rental-price"));
+            double rentalPrice = Convert.ToDouble(this.Request.Form.Get("edit-rental"));
             String thumbnail_url = this.Request.Form.Get("edit-thumbnail-url");
             String media_url = this.Request.Form.Get("edit-media-url");
-
+         
             if (media.GetType().Name.Equals("Music"))
             {
-                editMusic = new RentIt.RentItServices.Music();
+                editMusic = (RentIt.RentItServices.Music) media;
                 editMusic.Title = title;
                 editMusic.SmallDescription = shortdesc;
                 editMusic.Description = longdesc;
@@ -57,19 +57,18 @@ namespace RentIt
                 {
                     if (music_category_list[i].Title.Equals(category))
                     {
-                        editMusic.Category = music_category_list[i];
+                        editMusic.Category = music_category_list[i];                        
                         break;
                     }
                 }
 
                 editMusic.RentalPrice = rentalPrice;
                 editMusic.Thumbnail = thumbnail_url;
-                editMusic.Source = media_url;
-                //editMusic.UploadedBy = currentUser; //to change
+                editMusic.Source = media_url;               
             }
             else
             {
-                editMovie = new RentIt.RentItServices.Movie();
+                editMovie = (RentIt.RentItServices.Movie)media;
                 editMovie.Title = title;
                 editMovie.SmallDescription = shortdesc;
                 editMovie.Description = longdesc;
@@ -85,10 +84,9 @@ namespace RentIt
 
                 editMovie.RentalPrice = rentalPrice;
                 editMovie.Thumbnail = thumbnail_url;
-                editMovie.Source = media_url;
-                //editMovie.UploadedBy = currentUser; //to change
+                editMovie.Source = media_url;                
             }
-
+            
             media = null;
             if (editMusic != null)
             {
@@ -97,9 +95,10 @@ namespace RentIt
             else
             {
                 media = editMovie;
-            }              
+            }
 
-            if (utility.updateMedia(media))
+            bool success = utility.updateMedia(media);
+            if (success)
             {
                 Response.Redirect("admin.aspx?type=media&msg=You have successfully updated media information for " + title);
             }
