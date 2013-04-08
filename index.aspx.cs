@@ -22,7 +22,7 @@ namespace RentIt
 
         public Utility utility = null;
         public RentItServices.User currentUser = null;
-   
+
         private RentItServices.User getUser()
         {
             //grabs user
@@ -33,11 +33,11 @@ namespace RentIt
             }
             else
             {
-               
+
                 return null;
             }
         }
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //GET params that determine what UI to show
@@ -57,31 +57,33 @@ namespace RentIt
             header thisHeader = (header)LoadControl("~/header.ascx");
 
             currentUser = getUser();
-           
-                if (currentUser!=null)
-                {
 
-                    //login = true;                  
-                    //login = utility.isLoggedIn(currentUser);
-                    login = true;
-                    thisHeader.login = login;
+            if (currentUser != null)
+            {
 
-                    thisHeader.userid = currentUser.UserId;
-                    thisHeader.username = currentUser.Username;
-                    thisHeader.email = currentUser.Email;
-                    thisHeader.dp_url = currentUser.FbImageUrl;
-                    thisHeader.edollar = currentUser.Credits;
+                //login = true;                  
+                //login = utility.isLoggedIn(currentUser);
+                login = true;
+                thisHeader.login = login;
 
-                }
+                thisHeader.userid = currentUser.UserId;
+                thisHeader.username = currentUser.Username;
+                thisHeader.email = currentUser.Email;
+                thisHeader.dp_url = currentUser.FbImageUrl;
+                thisHeader.edollar = currentUser.Credits;
+
+            }
 
             headerBar.Controls.Add(thisHeader);
-            
+
             //PREPARE MSG BAR
             if (msg != null)
             {
                 showMsg(msgTitle, msg);
             }
+            //OLD LOGIN
 
+            /*
             //login = true;
             //PREPARE MAIN BODY UI
             if (login)
@@ -142,9 +144,73 @@ namespace RentIt
                 splash_carousel splasher = (splash_carousel)LoadControl("~/splash_carousel.ascx");
                 mainBody.Controls.Add(splasher);
             }
+             * */
 
 
+            if (actionType == null)
+            {
+                //if user is loggedin, default to most popular UI
+
+                if (item != null)
+                { //handle ITEM VIEW
+
+                    //if a param is provided, proceed to do ITEM VIEW
+                    showItemUI(Convert.ToInt32(item));
+
+                }
+                else
+                {
+                    if (currentUser==null)
+                    {
+                        //SINCE NOT LOGIN, add the splash
+                        splash_carousel splasher = (splash_carousel)LoadControl("~/splash_carousel.ascx");
+                        mainBody.Controls.Add(splasher);
+                    }
+                    else
+                    {
+                        showListUI(0);
+                    }
+                }
+
+            }
+
+            else
+            {
+                actionType = actionType.ToLower();
+                //determine which UI to show base on action type
+                if (actionType == "popular")
+                {
+                    showListUI(0);
+                }
+                if (actionType == "book")
+                {
+                    showListUI(4, null, 0);
+                }
+                if (actionType == "music")
+                {
+                    showListUI(2, null, Convert.ToInt32(param));
+                }
+                if (actionType == "movie")
+                {
+                    showListUI(3, null, Convert.ToInt32(param));
+                }
+                if (actionType == "search")
+                { //handle search action
+                    if (param != null)
+                    {
+                        //if a keyword is provided, trigger show search UI
+                        showListUI(1, param, 0);
+                    }
+                    else
+                    {
+                        //no keyword provided, default the most popular UI
+                        showListUI(0);
+                    }
+                }
+
+            }
         }
+
 
         private void showItemUI(int itemID) //HANDLES ITEM VIEW UI
         {
@@ -152,10 +218,10 @@ namespace RentIt
             itemview_part viewUI = (itemview_part)LoadControl("~/itemview_part.ascx");
             viewUI.itemID = itemID;
             mainBody.Controls.Add(viewUI);
-        
+
         }
 
-        private void showListUI(int listType, String keyword = null,int categoryId=0) //HANDLES LIST VIEW UI
+        private void showListUI(int listType, String keyword = null, int categoryId = 0) //HANDLES LIST VIEW UI
         {
             //attach the listing to UI
             itemlist_part listUI = (itemlist_part)LoadControl("~/itemlist_part.ascx");
@@ -165,7 +231,7 @@ namespace RentIt
             {
                 listUI.categoryId = categoryId;
             }
-          
+
             if (listType == 1)
             {
                 listUI.keyword = keyword;
@@ -182,7 +248,7 @@ namespace RentIt
             mainBody.Controls.Add(msgBar);
         }
 
-        
+
 
     }
 }

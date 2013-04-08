@@ -5,12 +5,13 @@
     <% if (!noContent)
        { %><ul class="thumbnails span12 ">
         <!--LOOP MEDIA HERE-->
-        <%                
+        <% if (!foreignItems){ %>
+        <% //ITEMS HERE COME FROM OUR OWN WEB SERVICE               
            for (int i = 0; i < media_list.Length; i++)
            { %>
         <li class="span3 well" style="max-height: 350px; min-height: 350px;">
             <a href="index.aspx?item=<%=media_list[i].MediaId %>">
-                <img src="<%=media_list[i].Thumbnail %>" />
+                <img src="<%=media_list[i].Thumbnail %>" style="height: 220px;"/>
             </a>
             <div style="max-height: 70px; min-height: 70px;">
                 <h4>
@@ -27,7 +28,7 @@
                         &nbsp;<%=media_list[i].Title %></h4>
                 <p><%=media_list[i].SmallDescription %></p>
             </div>
-            <a href="?item=<%=media_list[i].MediaId %>" class="btn btn-success tip" data-placement="bottom" rel="tooltip" title="Click for more details or rent">View this</a>
+            <a href="?item=<%=media_list[i].MediaId %>" class="btn btn-success tip" data-placement="bottom" rel="tooltip" title="Click for more details or rent">View Media</a>
             
 
             <% for (int j = 0; j < media_list[i].AverageRating; j++)
@@ -42,7 +43,37 @@
 
         <%      } 
         %>
-    </ul>
+   
+    <%}else{ %>
+             <% //ITEMS HERE COME FROM TEAM 1 WEB SERVICE               
+           for (int i = 0; i < book_list.Length; i++)
+           { %>
+        <li class="span3 well" style="max-height: 450px; min-height: 450px;">
+            <a target="_blank" href="http://green.smu.edu.sg/gspm2013/team01/bookPage.aspx?id=<%=book_list[i].Id %>">
+                <img src="ImageHandler.ashx/?id=<%=book_list[i].Id %>" style="height: 320px;"/>
+            </a>
+            <div style="max-height: 70px; min-height: 70px;">
+                <h4>
+                   
+                    <i class="icon-book"></i>
+                    
+                        
+                        &nbsp;<%=book_list[i].Title %></h4>
+                <p><%=book_list[i].Author %></p>
+            </div>
+            <a target="_blank" href="http://green.smu.edu.sg/gspm2013/team01/bookPage.aspx?id=<%=book_list[i].Id %>" class="btn btn-success tip" data-placement="bottom" rel="tooltip" title="You will be taken to Team 01's Rentit">View Book</a>
+            
+
+              &nbsp;  &nbsp;$<% =book_list[i].Price%>
+        </li>
+
+        <%      } 
+        %>
+   
+
+
+    <% } %>
+            </ul>
     <!--END LOOP-->
     <% }
        else

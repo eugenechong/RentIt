@@ -9,7 +9,45 @@
     <div class="navbar ">
         <div class="navbar-inner">
             <a class="brand" href="index.aspx"><i class=" icon-film"></i>&nbsp;&nbsp; RentIt</a>
+             <ul class="nav">
+                <li class="dropdown">
+                    <a id="A1" href="#" class="dropdown-toggle" data-toggle="dropdown">Browse <b class="caret"></b></a>
+                    <ul class="dropdown-menu" aria-labelledby="drop1">
+                        <li><a tabindex="-1" href="index.aspx?type=popular"><i class="icon-thumbs-up"></i>Most Popular</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="#"><i class="icon-music"></i>&nbsp;Music</a>
+                            <ul class="dropdown-menu">
+                                <% for (int i = 0; i < music_category_list.Length; i++)
+                                   { %>
+                                <li><a tabindex="-1" href="?type=music&param=<%=music_category_list[i].CategoryId %>"><%=music_category_list[i].Title %></a></li>
+                                <% } %>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="#"><i class="icon-facetime-video"></i>&nbsp;Movies</a>
+                            <ul class="dropdown-menu">
+                                <% for (int i = 0; i < movie_category_list.Length; i++)
+                                   { %>
+                                <li><a tabindex="-1" href="?type=movie&param=<%=movie_category_list[i].CategoryId %>"><%=movie_category_list[i].Title %></a></li>
+                                <% } %>
+                            </ul>
+                        </li>
+                          <li class="dropdown"><a href="?msg=You are browsing books from Team01 Rentit. Viewing any item will bring you to Team 01.&type=book"><i class="icon-book"></i>&nbsp;Books from Team 01</a></li>
 
+
+                    </ul>
+                </li>
+            </ul>
+             <ul class="nav">
+                <div style="padding-top: 11px;">
+                              <input name="type" type="hidden" value="search" />
+
+                    <input name="param" type="text" class=" span2  search-query" placeholder="Search" />
+                    <asp:Button ID="Button1" type="submit" class="btn" Style="position: absolute; height: 0px; width: 0px; border: none; padding: 0px;"
+                        hidefocus="true" TabIndex="-1" OnClick="search_click" runat="server" />
+                </div>
+            </ul>
             <ul class="nav pull-right">
 
 
@@ -54,6 +92,7 @@
                                 <% } %>
                             </ul>
                         </li>
+                        <li class="dropdown"><a href="?msg=You are browsing books from Team01 Rentit. Viewing any item will bring you to Team 01.&type=book"><i class="icon-book"></i>&nbsp;Books from Team 01</a></li>
 
                     </ul>
                 </li>

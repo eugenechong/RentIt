@@ -86,8 +86,8 @@
 
                 <div>
                     <div class="controls">
-                        <asp:Button ID="btn_edit" class="btn btn-block btn-small btn-warning tip" data-placement="bottom" rel="tooltip" title="Update media information" OnClick="update_click" runat="server" Text="Update"></asp:Button>
-                        <a  href="#confirm-delete-pop" data-toggle="modal" class="btn btn-block btn-small btn-primary tip" data-placement="bottom" rel="tooltip" title="Delete this media forever">Delete </a>
+                        <asp:Button ID="btn_edit" class="btn   btn-warning tip" data-placement="bottom" rel="tooltip" title="Update media information" OnClick="update_click" runat="server" Text="Update"></asp:Button>
+                        <a  href="#confirm-delete-pop" data-toggle="modal" class="btn  btn-primary tip" data-placement="bottom" rel="tooltip" title="Delete this media forever">Delete </a>
                     </div>
                 </div>  
 

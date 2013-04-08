@@ -82,7 +82,24 @@
     <Content Include="Service References\RentItServices\RentIt.RentItServices.User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\Team01Rentit\RentIt.Team01Rentit.Book.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\Team01Rentit\RentIt.Team01Rentit.Rental.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\Team01Rentit\RentIt.Team01Rentit.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\Team01Rentit\SMURentItService.disco" />
+    <Content Include="Service References\Team01Rentit\configuration91.svcinfo" />
+    <Content Include="Service References\Team01Rentit\configuration.svcinfo" />
+    <Content Include="Service References\Team01Rentit\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
     <Content Include="support_actions.aspx" />
+    <Content Include="ImageHandler.ashx" />
     <None Include="Service References\RentItServices\configuration91.svcinfo" />
     <None Include="Service References\RentItServices\configuration.svcinfo" />
     <None Include="Service References\RentItServices\Reference.svcmap">
@@ -178,6 +195,9 @@
     <Compile Include="header.ascx.designer.cs">
       <DependentUpon>header.ascx</DependentUpon>
     </Compile>
+    <Compile Include="ImageHandler.ashx.cs">
+      <DependentUpon>ImageHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="includes.aspx.cs">
       <DependentUpon>includes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -214,6 +234,11 @@
       <DependentUpon>msgbar_part.ascx</DependentUpon>
     </Compile>
     <Compile Include="Service References\RentItServices\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Team01Rentit\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -262,6 +287,22 @@
     <None Include="Service References\RentItServices\RentitService56.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Service References\Team01Rentit\SMURentItService.wsdl" />
+    <None Include="Service References\Team01Rentit\SMURentItService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Team01Rentit\SMURentItService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Team01Rentit\SMURentItService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Team01Rentit\SMURentItService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Team01Rentit\SMURentItService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -274,6 +315,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\RentItServices\" />
+    <WCFMetadataStorage Include="Service References\Team01Rentit\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

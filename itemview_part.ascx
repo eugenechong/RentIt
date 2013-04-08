@@ -17,14 +17,21 @@
                               "description=" + media.SmallDescription + "&" +
                               "redirect_uri=http://green.smu.edu.sg/gspm2013/team09/index.aspx?item=" + media.MediaId + "&";                                              
                 %>
+               <% if(user==null){ %>
+                <a href="#" class="btn btn-warning tip disabled"  data-placement="bottom" rel="tooltip" title="You need to login to bookmark."><i class="icon-bookmark"></i></a>
+                <% }else{ %>
                 <asp:LinkButton ID="bookmarkButton" runat="server" class="btn btn-warning tip" OnClick="bookmarkButton_Click" data-placement="bottom" rel="tooltip" title="Add to bookmark"><i class="icon-bookmark"></i></asp:LinkButton>
-                <a href="<%=url %>" class="btn btn-danger tip" data-placement="bottom" rel="tooltip" title="Share on Facebook"><i class="icon-share-alt"></i></a>
+                <%} %>
                 
+                <a href="<%=url %>" class="btn btn-danger tip" data-placement="bottom" rel="tooltip" title="Share on Facebook"><i class="icon-share-alt"></i></a>
+                <% if(user==null){ %>
+                <a href="#" role="button"  class="btn btn-success tip disabled" data-placement="bottom" rel="tooltip" title="You need to login to rent."><i class="icon-shopping-cart"></i>&nbsp;Rented</a>
+                 <% }else{ %>
                 <%if (!isRented){ %>
                 <a href="#confirmRent" role="button" data-toggle="modal" class="btn btn-success tip" data-placement="bottom" rel="tooltip" title="Rent this"><i class="icon-shopping-cart"></i>&nbsp;Rent for $<%=media.RentalPrice %></a>
                 <% }else{ %>
                  <a href="#" role="button"  class="btn btn-success tip disabled" data-placement="bottom" rel="tooltip" title="You have already rented this item"><i class="icon-shopping-cart"></i>&nbsp;Rented</a>
-                
+                <%} %>
 
                 <% } %>
                 <br />
@@ -38,7 +45,11 @@
                         <option value="2">2 Stars</option>
                         <option value="1">1 Star</option>
                     </select>
-                    <asp:Button ID="btn_rate" class="btn btn-small btn-info tip" OnClick="rate_click" runat="server" data-placement="bottom" rel="tooltip" title="Rate this media" Text="Rate this" />
+                    <% if(user==null){ %>
+                <a href="#" class="btn btn-small btn-info tip disabled"  data-placement="bottom" rel="tooltip" title="You need to login to rate this media"  >Rate this</a>
+                <%}else{ %>
+                        <asp:Button ID="btn_rate" class="btn btn-small btn-info tip" OnClick="rate_click" runat="server" data-placement="bottom" rel="tooltip" title="Rate this media" Text="Rate this" />
+                <%} %>
                 </form>
 
             </div>
@@ -93,7 +104,7 @@
                 <h3>Comments</h3>
                 <div class="media">
                     <!--LOOP INDIVIDUAL COMMENTS HERE--->
-                    <% if ((comment_list != null) || (comment_list.Length > 0))
+                    <% if ((comment_list != null)&& (comment_list.Length > 0))
                        {
                            for (int i = 0; i < comment_list.Length; i++)
                            { %>
@@ -119,6 +130,7 @@
                     <% } %>
                     <!-------END OF LOOP----->
                 </div>
+                 <% if(user!=null){ %>
                 <h4>Leave My Comment</h4>
                 <div class="form-horizontal">
 
@@ -134,6 +146,7 @@
                         </div>
                     </div>
                 </div>
+                   <% } %>
 
 
             </div>

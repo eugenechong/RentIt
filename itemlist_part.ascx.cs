@@ -16,7 +16,8 @@ namespace RentIt
         public Utility utility = null;
         public RentItServices.Media[] media_list = null;
         public bool noContent = false;
-
+        public bool foreignItems = false;
+        public Team01Rentit.Book[] book_list = null;
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -49,6 +50,14 @@ namespace RentIt
                     headerText = "Browsing " + thisCat2.Title + " Category";
                     media_list = utility.searchMovieFromCategory(thisCat2.Title);
                     break;
+                case 4:
+                    //deals with book categories
+                    Team01Rentit.ISMURentItService team01_ws = new Team01Rentit.SMURentItServiceClient();
+                    book_list= team01_ws.GetAllBooks();
+                    headerText = "Browsing books from Team 01";
+                    foreignItems = true;
+                    //media_list.add = null;//utility.searchMovieFromCategory(thisCat2.Title);
+                    break;
 
 
                 default:
@@ -57,7 +66,19 @@ namespace RentIt
 
             }
 
-            if ((media_list == null)||(media_list.Length==0))
+            bool emptyBook = true;
+            bool emptyMedia = true;
+            if ((media_list != null) && (media_list.Length > 0))
+            {
+                emptyMedia = false;
+            }
+            if ((book_list != null) && (book_list.Length > 0))
+            {
+                emptyBook = false;
+            }
+
+
+            if ((emptyMedia)&&(emptyBook))
 
             {
                 noContent = true;
