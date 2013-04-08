@@ -62,7 +62,7 @@ namespace RentIt
             admin_header thisHeader = (admin_header)LoadControl("~/admin_header.ascx");
             currentUser = getUser();
 
-            if (currentUser != null)
+            if ((currentUser != null)&&(currentUser.IsAdmin))
             {
 
                 //login = true;                  
@@ -76,6 +76,8 @@ namespace RentIt
                
 
             }
+
+            
 
             headerBar.Controls.Add(thisHeader);
 

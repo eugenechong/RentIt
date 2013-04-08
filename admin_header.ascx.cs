@@ -51,7 +51,7 @@ namespace RentIt
         {
             //execute login code for user login, stores session key if successful
             var login = utility.userLogin(inputEmail, inputPassword);
-            if (login.Item1)
+            if ((login.Item1)&&(login.Item2.IsAdmin))
             {
                 //TO BE IMPLEMENTED, USE BOOLEAN TO CHECK FOR ADMIN
                 //store email and key in session

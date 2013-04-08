@@ -45,6 +45,7 @@
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FbImageUrl" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Gender" type="tns:Gender" />
+      <xs:element minOccurs="0" name="IsAdmin" type="xs:boolean" />
       <xs:element minOccurs="0" name="IsFacebook" type="xs:boolean" />
       <xs:element minOccurs="0" name="IsSuspended" type="xs:boolean" />
       <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />

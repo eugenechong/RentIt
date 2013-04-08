@@ -55,7 +55,14 @@ namespace RentIt
 
         private void doUnSuspend(string email)
         {
-            //can add code here to check if user is admin
+
+
+            if (!currentUser.IsAdmin)
+            {
+                Response.Redirect("~/admin.aspx?type=user&msg=You have no authority to unsuspend users!");
+                return;
+            }
+ 
 
             RentItServices.User[] users = utility.getAllUsers();
             int toChange = 0;
@@ -84,6 +91,12 @@ namespace RentIt
         private void doSuspend(string email)
         {
             //can add code here to check if user is admin
+
+            if (!currentUser.IsAdmin)
+            {
+                Response.Redirect("~/admin.aspx?type=user&msg=You have no authority to suspend users!");
+                return;
+            }
 
             RentItServices.User[] users = utility.getAllUsers();
             int toChange = 0;
