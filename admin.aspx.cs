@@ -121,7 +121,7 @@ namespace RentIt
 
         private void showAnalytics()
         {
-            admin_analyatics_part adminA = (admin_analyatics_part)LoadControl("~/admin_analyatics_part.ascx");
+            admin_analytics_part adminA = (admin_analytics_part)LoadControl("~/admin_analytics_part.ascx");
             mainBody.Controls.Add(adminA);
         }
 

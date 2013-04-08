@@ -61,7 +61,7 @@
   <ItemGroup>
     <Content Include="about.aspx" />
     <Content Include="admin.aspx" />
-    <Content Include="admin_analyatics_part.ascx" />
+    <Content Include="admin_analytics_part.ascx" />
     <Content Include="admin_header.ascx" />
     <Content Include="admin_media_itemview_part.ascx" />
     <Content Include="admin_media_part.ascx" />
@@ -139,12 +139,12 @@
     <Compile Include="admin.aspx.designer.cs">
       <DependentUpon>admin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin_analyatics_part.ascx.cs">
-      <DependentUpon>admin_analyatics_part.ascx</DependentUpon>
+    <Compile Include="admin_analytics_part.ascx.cs">
+      <DependentUpon>admin_analytics_part.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin_analyatics_part.ascx.designer.cs">
-      <DependentUpon>admin_analyatics_part.ascx</DependentUpon>
+    <Compile Include="admin_analytics_part.ascx.designer.cs">
+      <DependentUpon>admin_analytics_part.ascx</DependentUpon>
     </Compile>
     <Compile Include="admin_header.ascx.cs">
       <DependentUpon>admin_header.ascx</DependentUpon>

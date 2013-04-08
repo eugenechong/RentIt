@@ -35,4 +35,3 @@ C:\Users\Eugene\Documents\GitHub\RentIt\bin\RentIt.dll
 C:\Users\Eugene\Documents\GitHub\RentIt\bin\RentIt.pdb
 C:\Users\Eugene\Documents\GitHub\RentIt\obj\Debug\RentIt.dll
 C:\Users\Eugene\Documents\GitHub\RentIt\obj\Debug\RentIt.pdb
-C:\Users\Eugene\Documents\GitHub\RentIt\obj\Debug\RentIt.csprojResolveAssemblyReference.cache

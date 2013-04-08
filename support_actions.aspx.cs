@@ -49,6 +49,91 @@ namespace RentIt
                 return;
             }
 
+            //determine if make admin action
+            String makeAdmin = Request.QueryString["make_admin"];
+            if (makeAdmin != null)
+            {
+                doMakeAdmin(makeAdmin);
+                return;
+            }
+
+            //determine if revoke admin action
+            String revokeAdmin = Request.QueryString["revoke_admin"];
+            if (revokeAdmin != null)
+            {
+                doRevokeAdmin(revokeAdmin);
+                return;
+            }           
+
+
+        }
+
+        private void doRevokeAdmin(string email)
+        {
+
+
+            if (!currentUser.IsAdmin)
+            {
+                Response.Redirect("~/admin.aspx?type=user&msg=You have no authority to revoke admin users!");
+                return;
+            }
+
+
+            RentItServices.User[] users = utility.getAllUsers();
+            int toChange = 0;
+            for (int i = 0; i < users.Length; i++)
+            {
+                if (users[i].Email.Equals(email))
+                {
+                    toChange = i;
+                    i = users.Length;
+                }
+            }
+
+            users[toChange].IsAdmin = false;
+            if (utility.updateUser(users[toChange]))
+            {
+                Response.Redirect("~/admin.aspx?type=user&msg=User " + users[toChange].Username + " is no longer an administrator!");
+            }
+            else
+            {
+                Response.Redirect("~/admin.aspx?type=user&msg=Error revoking user as administrator!");
+            }
+
+
+        }
+
+        private void doMakeAdmin(string email)
+        {
+
+
+            if (!currentUser.IsAdmin)
+            {
+                Response.Redirect("~/admin.aspx?type=user&msg=You have no authority to create admin users!");
+                return;
+            }
+
+
+            RentItServices.User[] users = utility.getAllUsers();
+            int toChange = 0;
+            for (int i = 0; i < users.Length; i++)
+            {
+                if (users[i].Email.Equals(email))
+                {
+                    toChange = i;
+                    i = users.Length;
+                }
+            }
+
+            users[toChange].IsAdmin = true;
+            if (utility.updateUser(users[toChange]))
+            {
+                Response.Redirect("~/admin.aspx?type=user&msg=User " + users[toChange].Username + " is now an administrator!");
+            }
+            else
+            {
+                Response.Redirect("~/admin.aspx?type=user&msg=Error making user as administrator!");
+            }
 
 
         }

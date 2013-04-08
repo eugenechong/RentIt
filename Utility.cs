@@ -43,6 +43,11 @@ namespace RentIt
             return this.rentItServiceClient.RateMedia(mediaId, user, rating).Item1;
         }
 
+        public RentIt.RentItServices.Country[] getAllCountries()
+        {
+            return this.rentItServiceClient.GetCountries();
+        }
+
         public void loadFileService()
         {
             this.rentItFileServiceClient = new RentItServices.RentItFileServiceClient();
