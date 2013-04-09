@@ -75,7 +75,8 @@ namespace RentIt
 
                 newMusic.RentalPrice = rentalPrice;
                 newMusic.Thumbnail = thumbnail_url;
-                newMusic.Source = media_url;                
+                newMusic.Source = media_url;
+                newMusic.UploadedBy = currentUser;
             } else {
                 newMovie = new RentIt.RentItServices.Movie();
                 newMovie.Title = title;
@@ -91,7 +92,8 @@ namespace RentIt
 
                 newMovie.RentalPrice = rentalPrice;
                 newMovie.Thumbnail = thumbnail_url;
-                newMovie.Source = media_url;                
+                newMovie.Source = media_url;
+                newMovie.UploadedBy = currentUser;
             }
 
             RentIt.RentItServices.Media media = null;

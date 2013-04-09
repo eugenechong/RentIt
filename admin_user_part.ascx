@@ -12,8 +12,8 @@
                 <th>Gender</th>
                 <th>Age</th>
                 <th>Country</th>                
-                <th>Suspend/Unsuspend</th>
-                <th>Make Admin</th>
+                <th>Actions</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -32,12 +32,11 @@
                     <% }else{ %>
                      <a href="support_actions.aspx?unsuspend=<%=user_list[i].Email %>" class="btn btn-small btn-success tip" data-placement="bottom" rel="tooltip" title="Unsuspend this user. User will be able to login.">Unsuspend</a>
                     <%} %>                   
-                </td>
-                <td>
+                
                     <% if (user_list[i].IsAdmin == false){ %>
-                    <a href="support_actions.aspx?make_admin=<%=user_list[i].Email %>" class="btn btn-small btn-warning tip" data-placement="bottom" rel="tooltip" title="Make user as Admin.">Make Admin</a>
+                    <a href="support_actions.aspx?make_admin=<%=user_list[i].Email %>" class="btn btn-small btn-success tip" data-placement="bottom" rel="tooltip" title="Make user as Admin.">Make Admin</a>
                     <% }else{ %>
-                    <a href="support_actions.aspx?revoke_admin=<%=user_list[i].Email %>" class="btn btn-small btn-success tip" data-placement="bottom" rel="tooltip" title="Make user as Admin.">Revoke Admin</a>
+                    <a href="support_actions.aspx?revoke_admin=<%=user_list[i].Email %>" class="btn btn-small btn-warning tip" data-placement="bottom" rel="tooltip" title="Make user as Admin.">Revoke Admin</a>
                     <%} %>
                 </td>
             </tr>

@@ -105,7 +105,7 @@
 
     </script>
 
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
     <script type="text/javascript">
         google.load("visualization", "1", { packages: ["corechart"] });
         google.setOnLoadCallback(drawChart);
@@ -164,8 +164,8 @@
                 <div class="span5" id="country_chart_div" style="height:400px;"></div>                 
             </div>
             <div class="tab-pane fade" id="media">
-                <div class="span6" id="frequent_rental_div" style="width: 500px; height:400px;"></div>
-                <div class="span5" id="frequent_comment_div" style="height:400px;"></div>                    
+                <div class="span5" id="frequent_rental_div" style="width: 500px; height:550px;"></div>
+                <div class="span5" id="frequent_comment_div" style="height:550px;"></div>                    
             </div>            
     </div>
 </div>

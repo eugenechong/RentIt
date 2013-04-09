@@ -104,13 +104,17 @@
                 <h3>Comments</h3>
                 <div class="media">
                     <!--LOOP INDIVIDUAL COMMENTS HERE--->
+                   
                     <% if ((comment_list != null)&& (comment_list.Length > 0))
                        {
                            for (int i = 0; i < comment_list.Length; i++)
-                           { %>
+                           { 
+                               if (comment_list[i] !=null){
+                               
+                               %>
                     <div class="well">
                         <a class="pull-left" href="#">
-                            <img class="media-object" src="<%=comment_list[i].User.FbImageUrl %>">
+                            <img class="media-object" src="<%=comment_list[i].User.FbImageUrl %>" style="padding-right:12px;">
                         </a>
                         <h4><%=comment_list[i].User.Username %> said,</h4>
                         <div class="media-body">
@@ -119,7 +123,8 @@
                             <label class="label-success label">on <%=comment_list[i].DateCreated %></label>
                         </div>
                     </div>
-                    <%  }
+                    <%  } 
+                        }
                        }
                        else
                        { %>

@@ -65,7 +65,7 @@
                         <option value="movie-<%= movie_category_list[i].Title %>">Movie - <%= movie_category_list[i].Title %></option>
                         <% } %>
                         <% for (int i=0; i<music_category_list.Length; i++) { %>
-                        <option value="music-<%= movie_category_list[i].Title %>">Music - <%= music_category_list[i].Title %></option>
+                        <option value="music-<%= music_category_list[i].Title %>">Music - <%= music_category_list[i].Title %></option>
                         <% } %>
                     </select>
                 </div>

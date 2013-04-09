@@ -43,9 +43,14 @@ namespace RentIt
             
             //call the web service to retrieve media data
             media = utility.getMedia(itemID);
-            isRented = utility.isRented(media.MediaId, user);       
             comment_list = media.Comments;
             media_url = utility.getMediaUrl(media.MediaId);
+            
+            if (user != null)
+            {
+
+                isRented = utility.isRented(media.MediaId, user);
+            }
 
             //preload media for viewing if rented
             if (isRented)
