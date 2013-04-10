@@ -13,8 +13,8 @@
             <ul class="nav pull-right">
                 <li>
                 <form class="form-inline ">
-                    <input type="text" class="input-small" id="inputEmail" name="inputEmail" placeholder="Email" style="margin-top:10px;" value="i@weikiat.net"/>
-                    <input type="password" class="input-small" id="inputPassword" name="inputPassword" placeholder="Password" style="margin-top:10px;" value="weikiat" />
+                    <input type="text" class="input-small" id="inputEmail" name="inputEmail" placeholder="Email" style="margin-top:10px;" />
+                    <input type="password" class="input-small" id="inputPassword" name="inputPassword" placeholder="Password" style="margin-top:10px;" />
                      <asp:Button ID="btn_login" class="btn-success btn"
                                 OnClick="login_click" runat="server" Text="Login"  style="margin-top:0px;"/>
                     

@@ -258,13 +258,13 @@
                     <div class="control-group ">
 
                         <div class="controls">
-                            <input type="text" id="inputEmail" name="inputEmail" placeholder="Email" value="i@weikiat.net"/>
+                            <input type="text" id="inputEmail" name="inputEmail" placeholder="Email" />
                         </div>
                     </div>
                     <div class="control-group">
 
                         <div class="controls">
-                            <input type="password" id="inputPassword" name="inputPassword" placeholder="Password"  value="weikiat"/>
+                            <input type="password" id="inputPassword" name="inputPassword" placeholder="Password" />
                         </div>
                     </div>
                     <div class="control-group">
