@@ -85,6 +85,8 @@
 
 <div class="container">
     <div id="media">
+        <h2>Media Analytics Panel</h2>
+        <p>Review media analytics of RentIt</p>
         <div class="span5" id="frequent_rental_div" style="width: 500px; height: 450px;"></div>
         <div class="span5" id="frequent_comment_div" style="width: 400px; height: 450px;"></div>
     </div>

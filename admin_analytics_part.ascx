@@ -80,8 +80,9 @@
 
 
 <div class="container">
-
     <div id="users">
+        <h2>User Analytics Panel</h2>
+        <p>Review user analytics of RentIt</p>
         <div class="span5" id="chart_div" style="height:400px;"></div>
         <div class="span5" id="country_chart_div" style="height:400px;"></div>                 
     </div>
