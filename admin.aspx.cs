@@ -49,14 +49,6 @@ namespace RentIt
             //load webservice client
             utility = new Utility();
             utility.loadClient();
-            
-            //INSERT CODE TO GRAB USER INFO/LOGIN STATE HERE
-           // login = false;
-            //userid = 25;
-            //username = "Weikiat";
-            //email = "i@weikiat.net";
-
-            //currentUser = getUser();
 
             //PREPARE THE NAV BAR WITH INFO
             admin_header thisHeader = (admin_header)LoadControl("~/admin_header.ascx");
@@ -74,7 +66,6 @@ namespace RentIt
                 thisHeader.username = currentUser.Username;
                 thisHeader.email = currentUser.Email;
                
-
             }
 
             
@@ -92,9 +83,13 @@ namespace RentIt
 
             if (login)
             {
-                if (actionType == "analytics")
+                if (actionType == "user_analytics")
                 {
-                    showAnalytics();
+                    showUserAnalytics();
+                }
+                if (actionType == "media_analytics")
+                {
+                    showMediaAnalytics();
                 }
                 if (actionType == "user")
                 {
@@ -119,9 +114,15 @@ namespace RentIt
             }
         }
 
-        private void showAnalytics()
+        private void showUserAnalytics()
         {
             admin_analytics_part adminA = (admin_analytics_part)LoadControl("~/admin_analytics_part.ascx");
+            mainBody.Controls.Add(adminA);
+        }
+
+        private void showMediaAnalytics()
+        {
+            admin_media_analytics_part adminA = (admin_media_analytics_part)LoadControl("~/admin_media_analytics_part.ascx");
             mainBody.Controls.Add(adminA);
         }
 

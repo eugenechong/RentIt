@@ -1,5 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="header.ascx.cs" Inherits="RentIt.header" %>
 
+
 <!------------------ BARS ARE HERE------------>
 
 <% if (!login)
@@ -243,7 +244,7 @@
 
 <% } %>
 <!---LOGIN MODAL---->
-<div id="login-pop" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="login-pop" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" onkeypress="Enter()">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="myModalLabel">RentIt Login</h3>
@@ -253,7 +254,7 @@
             <tr>
                 <td>
                     <h3>Login</h3>
-
+                    
                     <div class="control-group ">
 
                         <div class="controls">
@@ -268,12 +269,13 @@
                     </div>
                     <div class="control-group">
                         <div class="controls">
-
+                            
                             <asp:Button ID="btn_login" class="btn-success btn"
                                 OnClick="login_click" runat="server" Text="Login" />
+                            
                         </div>
                     </div>
-
+                    
                 </td>
                 <td valign="top" width="300px">
 

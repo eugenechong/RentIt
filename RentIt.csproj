@@ -63,6 +63,7 @@
     <Content Include="admin.aspx" />
     <Content Include="admin_analytics_part.ascx" />
     <Content Include="admin_header.ascx" />
+    <Content Include="admin_media_analytics_part.ascx" />
     <Content Include="admin_media_itemview_part.ascx" />
     <Content Include="admin_media_part.ascx" />
     <Content Include="admin_user_part.ascx" />
@@ -75,7 +76,6 @@
     <Content Include="itemview_part.ascx" />
     <Content Include="msgbar_part.ascx" />
     <Content Include="rent.aspx" />
-    <Content Include="ClassDiagram1.cd" />
     <Content Include="Service References\RentItServices\RentIt.RentItServices.Media.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -152,6 +152,13 @@
     </Compile>
     <Compile Include="admin_header.ascx.designer.cs">
       <DependentUpon>admin_header.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="admin_media_analytics_part.ascx.cs">
+      <DependentUpon>admin_media_analytics_part.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin_media_analytics_part.ascx.designer.cs">
+      <DependentUpon>admin_media_analytics_part.ascx</DependentUpon>
     </Compile>
     <Compile Include="admin_media_itemview_part.ascx.cs">
       <DependentUpon>admin_media_itemview_part.ascx</DependentUpon>

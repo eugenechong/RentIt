@@ -41,7 +41,16 @@
                 <li ><a href="admin.aspx">Home</a></li>
                 <li ><a href="admin.aspx?type=media">Media</a></li>
                 <li ><a href="admin.aspx?type=user">Users</a></li>
-                <li ><a href="admin.aspx?type=analytics">Analytics</a></li>
+             <ul class="nav">
+                <li class="dropdown">
+                    <a id="A1" href="#" class="dropdown-toggle" data-toggle="dropdown">Analytics <b class="caret"></b></a>
+                    <ul class="dropdown-menu" aria-labelledby="drop1">
+                        <li ><a href="admin.aspx?type=user_analytics">User Analytics</a></li>        
+                        <li ><a href="admin.aspx?type=media_analytics">Media Analytics</a></li>                                            
+                    </ul>
+                </li>
+            </ul>
+                                        
                 <li class="divider-vertical"></li>
                 <li class="dropdown"><a href="#" id="drop2" class="dropdown-toggle" data-toggle="dropdown">
 
